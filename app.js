@@ -18,6 +18,10 @@ const currencyFormatter = new Intl.NumberFormat('en-US', {
 let tableBody;
 let sortSelect;
 let expandedTicker = null;
+let modalEl;
+let modalContentEl;
+let modalCloseEl;
+let modalBackdropEl;
 
 function toHundredScale(score) {
   return score * 20;
@@ -129,6 +133,14 @@ function appendDetailRow(stock, row) {
   const colSpan = document.querySelectorAll('#stock-table thead th').length;
   detailRow.innerHTML = `<td colspan="${colSpan}">${buildDetailCard(stock)}</td>`;
   row.insertAdjacentElement('afterend', detailRow);
+
+  const explainBtn = detailRow.querySelector('.explain-btn');
+  if (explainBtn) {
+    explainBtn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      openExplanationModal(stock);
+    });
+  }
 }
 
 function buildDetailCard(stock) {
@@ -169,6 +181,9 @@ function buildDetailCard(stock) {
       <div>
         <span class="label">Last Updated</span>
         <span class="value">${stock.lastUpdated}</span>
+      </div>
+      <div class="explanations">
+        <button type="button" class="explain-btn">View Column Explanations</button>
       </div>
     </div>
   `;
@@ -217,6 +232,19 @@ function showLoading() {
 async function initUndervaluationTable() {
   tableBody = document.querySelector('#stock-table tbody');
   sortSelect = document.querySelector('#sort-select');
+  modalEl = document.getElementById('explanation-modal');
+  modalContentEl = modalEl?.querySelector('.modal__content') || null;
+  modalCloseEl = modalEl?.querySelector('.modal__close') || null;
+  modalBackdropEl = modalEl?.querySelector('.modal__backdrop') || null;
+
+  modalCloseEl?.addEventListener('click', closeExplanationModal);
+  modalBackdropEl?.addEventListener('click', closeExplanationModal);
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeExplanationModal();
+    }
+  });
+
   if (!tableBody || !sortSelect) return;
 
   showLoading();
@@ -236,3 +264,103 @@ async function initUndervaluationTable() {
 }
 
 window.addEventListener('DOMContentLoaded', initUndervaluationTable);
+
+function openExplanationModal(stock) {
+  if (!modalEl || !modalContentEl) return;
+
+  const analysis = stock.analysis || {};
+  const priceNarrative =
+    analysis.price ||
+    `Latest price fetched from Yahoo Finance during the automation run: ${currencyFormatter.format(
+      stock.price,
+    )}.`;
+
+  const dcfNarrative = (scenarioKey, label) => {
+    const scenarioInfo =
+      analysis.dcf?.[scenarioKey]?.narrative ||
+      analysis.dcf?.[scenarioKey] ||
+      'Scenario derived from the analyst agent using the fetched fundamentals.';
+    const range = stock.dcf[scenarioKey];
+    return `<li><strong>${label} (${range})</strong><p>${scenarioInfo}</p></li>`;
+  };
+
+  const scoreNarrative = (key, defaultText) => analysis.scores?.[key] || defaultText;
+
+  const qualityInputs = [
+    stock.fcfQuality,
+    stock.roicStrength,
+    stock.revenueDurability,
+    stock.balanceSheetStrength,
+  ];
+  const avgQuality = (qualityInputs.reduce((sum, value) => sum + value, 0) / qualityInputs.length).toFixed(2);
+
+  const contributions = [
+    ['Value Rank', stock.valueRank, weights.valueRank, 'valueRank'],
+    ['Expected Return', stock.expectedReturn, weights.expectedReturn, 'expectedReturn'],
+    ['FCF Quality', stock.fcfQuality, weights.fcfQuality, 'fcfQuality'],
+    ['ROIC Strength', stock.roicStrength, weights.roicStrength, 'roicStrength'],
+    ['Balance Sheet Strength', stock.balanceSheetStrength, weights.balanceSheetStrength, 'balanceSheetStrength'],
+    ['Revenue Durability', stock.revenueDurability, weights.revenueDurability, 'revenueDurability'],
+    ['Insider Activity', stock.insiderActivity, weights.insiderActivity, 'insiderActivity'],
+  ];
+
+  const contributionList = contributions
+    .map(([label, value, weight, key]) => {
+      const weightPct = Math.round(weight * 100);
+      const points = (toHundredScale(value) * weight).toFixed(1);
+      const extra = analysis.scores?.[key] ? ` — ${analysis.scores[key]}` : '';
+      return `<li><strong>${label}</strong>: score ${value} × weight ${weightPct}% = ${points} pts${extra}</li>`;
+    })
+    .join('');
+
+  modalContentEl.innerHTML = `
+    <h3>${stock.name} (${stock.ticker})</h3>
+    <section>
+      <h4>Price</h4>
+      <p>${priceNarrative}</p>
+    </section>
+    <section>
+      <h4>DCF Ranges</h4>
+      <p>Per-share intrinsic value scenarios (constrained to ±200% of the fetched price unless explicitly justified).</p>
+      <ul>
+        ${dcfNarrative('conservative', 'Conservative')}
+        ${dcfNarrative('base', 'Base')}
+        ${dcfNarrative('aggressive', 'Aggressive')}
+      </ul>
+    </section>
+    <section>
+      <h4>Value Rank</h4>
+      <p>${scoreNarrative('valueRank', 'LLM rating of relative cheapness versus intrinsic value.')}</p>
+    </section>
+    <section>
+      <h4>Quality (FCF + ROIC)</h4>
+      <p>${scoreNarrative(
+        'quality',
+        `Average of FCF Quality (${stock.fcfQuality}) and ROIC Strength (${stock.roicStrength}) = ${deriveQualitySummary(
+          stock,
+        )}.`,
+      )}</p>
+    </section>
+    <section>
+      <h4>Undervaluation Score</h4>
+      <p>${analysis.undervaluation || 'Weighted blend of every factor, max 100.'}</p>
+      <ul>${contributionList}</ul>
+      <p>Total: <strong>${stock.undervaluationScore}</strong> points.</p>
+    </section>
+    <section>
+      <h4>Risk Level</h4>
+      <p>${analysis.risk || `Average quality (${avgQuality}) mapped to ${stock.riskLevel}.`}</p>
+    </section>
+    <section>
+      <h4>Last Updated</h4>
+      <p>${analysis.lastUpdated || `Automation run date: ${stock.lastUpdated}.`}</p>
+    </section>
+  `;
+
+  modalEl.classList.remove('hidden');
+}
+
+function closeExplanationModal() {
+  if (!modalEl) return;
+  modalEl.classList.add('hidden');
+}

@@ -111,6 +111,8 @@ cd automation
 # Set up environment
 cp .env.example .env
 # Add OPENROUTER_API_KEY to .env (get free key at https://openrouter.ai/keys)
+# Optionally set CREW_MODEL (or OPENROUTER_MODEL) to pick which model to run
+# Set CREW_TICKERS if you want to customize the tracked symbols (comma-separated)
 
 # Install dependencies
 pip install -r requirements.txt
@@ -132,7 +134,7 @@ stocktable/
 │   └── stocks.json        # Stock data (auto-updated)
 ├── automation/            # Crew.ai automation
 │   ├── agents/           # AI agents
-│   ├── tools/            # BrightData tools
+│   ├── tools/            # Market data tools
 │   ├── crew_config.py    # Crew orchestration
 │   └── main.py           # Entry point
 ├── .github/
@@ -170,4 +172,3 @@ Powered by:
 - [Crew.ai](https://www.crewai.com/) - AI agent orchestration
 - [OpenRouter](https://openrouter.ai/) - Multi-model AI API (Gemini, GPT-4, Claude, Llama)
 - [GitHub Pages](https://pages.github.com/) - Free hosting & CDN
-

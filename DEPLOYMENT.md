@@ -300,7 +300,7 @@ gh repo clone your-username/joseph-carlson-stock-tracker
 ✅ Site is live and auto-updating weekly!
 
 **Optional Enhancements:**
-- [ ] Add real-time BrightData MCP integration
+- [ ] Add real-time premium market data integration
 - [ ] Implement caching to reduce API costs
 - [ ] Add historical data tracking
 - [ ] Create email/Discord notifications on updates

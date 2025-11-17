@@ -6,7 +6,9 @@ Runs the Crew.ai workflow to update stock data.
 
 import os
 import sys
+import json
 import shutil
+from datetime import datetime
 from pathlib import Path
 from dotenv import load_dotenv
 from crew_config import create_stock_tracker_crew
@@ -43,11 +45,38 @@ def main():
         print("=" * 70)
         print()
 
-        # Copy the generated JSON to the website's data directory
+        # Normalize lastUpdated values before copying
         output_file = Path("output/stocks.json")
         website_data_file = Path("../data/stocks.json")
 
         if output_file.exists():
+            today = datetime.utcnow().strftime("%Y-%m-%d")
+            try:
+                raw_text = output_file.read_text(encoding="utf-8").strip()
+
+                # Remove accidental Markdown code fences (```json ... ```)
+                if raw_text.startswith("```"):
+                    raw_text = raw_text.split("\n", 1)[1] if "\n" in raw_text else ""
+                if raw_text.endswith("```"):
+                    raw_text = raw_text.rsplit("\n", 1)[0]
+
+                data = json.loads(raw_text)
+
+                updated = False
+                if isinstance(data, list):
+                    for entry in data:
+                        if isinstance(entry, dict) and entry.get("lastUpdated") != today:
+                            entry["lastUpdated"] = today
+                            updated = True
+
+                if updated:
+                    output_file.write_text(
+                        json.dumps(data, indent=2) + "\n", encoding="utf-8"
+                    )
+                    print(f"✓ Normalized lastUpdated fields to {today}")
+            except Exception as e:
+                print(f"WARNING: Could not normalize lastUpdated fields ({e})")
+
             # Create parent directory if it doesn't exist
             website_data_file.parent.mkdir(parents=True, exist_ok=True)
 

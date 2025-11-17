@@ -224,6 +224,23 @@ tr.detail-row td {
   font-size: 1rem;
 }
 
+.explanations {
+  grid-column: 1 / -1;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.explanations button {
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
 .badge {
   display: inline-flex;
   align-items: center;
@@ -282,6 +299,77 @@ tr.detail-row td {
   color: var(--muted);
   margin-top: 0.75rem;
   padding-left: 0.25rem;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 4rem 1rem;
+  z-index: 10;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(4px);
+}
+
+.modal__dialog {
+  position: relative;
+  width: min(640px, 95vw);
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem 1.75rem;
+  box-shadow: 0 25px 60px rgba(15, 15, 15, 0.2);
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 1;
+}
+
+.modal__close {
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  cursor: pointer;
+}
+
+.modal__content h3 {
+  margin-top: 0;
+}
+
+.modal__content section {
+  border-bottom: 1px solid #ede3d8;
+  padding: 0.8rem 0;
+}
+
+.modal__content section:last-child {
+  border-bottom: none;
+}
+
+.modal__content h4 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+}
+
+.modal__content p,
+.modal__content ul {
+  margin: 0 0 0.4rem;
+  color: var(--muted);
+}
+
+.modal__content ul {
+  padding-left: 1.2rem;
 }
 
 @media (max-width: 768px) {

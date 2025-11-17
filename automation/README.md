@@ -25,9 +25,12 @@ Copy the example env file:
 cp .env.example .env
 ```
 
-Edit `.env` and add your OpenRouter API key:
+Edit `.env` and add your OpenRouter API key plus any overrides:
 ```
 OPENROUTER_API_KEY=your-actual-api-key-here
+CREW_MODEL=anthropic/claude-3.5-sonnet        # optional
+CREW_TICKERS=DUOL,CMG,ADBE,...               # optional comma-separated list
+# or set OPENROUTER_MODEL=anthropic/claude-3.5-sonnet
 ```
 
 Get a free API key at: https://openrouter.ai/keys
@@ -96,13 +99,20 @@ The automation currently tracks these tickers from The Joseph Carlson Show:
 
 To add/remove tickers, edit `TICKERS` list in `crew_config.py`.
 
-## BrightData MCP Integration
+## Data Sources
 
-The `tools/brightdata_tools.py` file contains placeholders for BrightData MCP server integration.
+The automation uses **yfinance** (Yahoo Finance API) for real-time stock data:
 
-**TODO**: Implement actual MCP server calls for real-time price fetching and web scraping.
+**`tools/market_data_tools.py`** provides:
+- **Stock Price Fetcher** - Real-time prices for all tickers
+- **Financial Data Scraper** - 30+ financial metrics per stock:
+  - Valuation: Market cap, P/E ratios, enterprise value
+  - Profitability: Margins, ROE, ROA, revenue growth
+  - Cash Flow: Free cash flow, operating cash flow
+  - Balance Sheet: Debt, cash, ratios
+  - Dividends: Yield, payout ratio, history
 
-For now, the analyst agent uses its knowledge and reasoning to estimate values.
+The analyst agent combines this real data with AI reasoning to calculate DCF valuations and quality scores.
 
 ## Costs
 

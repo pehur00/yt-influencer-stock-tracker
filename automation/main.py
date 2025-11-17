@@ -55,6 +55,7 @@ def main():
 
         # Normalize lastUpdated values before copying
         output_file = Path("output/stocks.json")
+        fetched_prices_file = Path("output/fetched_prices.json")
         website_data_file = Path("../data/stocks.json")
 
         if output_file.exists():
@@ -70,18 +71,75 @@ def main():
 
                 data = json.loads(raw_text)
 
+                existing_initial_prices = {}
+                if website_data_file.exists():
+                    try:
+                        prior = json.loads(website_data_file.read_text(encoding="utf-8"))
+                        if isinstance(prior, list):
+                            for entry in prior:
+                                if isinstance(entry, dict):
+                                    ticker = (entry.get("ticker") or "").upper()
+                                    if ticker and isinstance(entry.get("initialPrice"), (int, float)):
+                                        existing_initial_prices[ticker] = entry["initialPrice"]
+                    except Exception as e:
+                        print(f"WARNING: Could not load existing initial prices ({e})")
+
+                fetched_prices = {}
+                if fetched_prices_file.exists():
+                    try:
+                        fetched_blob = json.loads(fetched_prices_file.read_text(encoding="utf-8"))
+                        raw_prices = fetched_blob.get("prices", {})
+                        if isinstance(raw_prices, dict):
+                            for ticker, value in raw_prices.items():
+                                if value is None:
+                                    continue
+                                try:
+                                    fetched_prices[ticker.upper()] = round(float(value), 2)
+                                except (TypeError, ValueError):
+                                    continue
+                        print(f"✓ Loaded {len(fetched_prices)} fetched price snapshots")
+                    except Exception as e:
+                        print(f"WARNING: Could not load fetched prices ({e})")
+                else:
+                    print("WARNING: fetched_prices.json not found, using formatter prices")
+
                 updated = False
+                price_updates = 0
+                initial_assignments = 0
                 if isinstance(data, list):
                     for entry in data:
-                        if isinstance(entry, dict) and entry.get("lastUpdated") != today:
+                        if not isinstance(entry, dict):
+                            continue
+
+                        ticker = (entry.get("ticker") or "").upper()
+
+                        if ticker:
+                            fetched = fetched_prices.get(ticker)
+                            if fetched is not None and entry.get("price") != fetched:
+                                entry["price"] = fetched
+                                price_updates += 1
+
+                            prev_initial = existing_initial_prices.get(ticker)
+                            if isinstance(prev_initial, (int, float)):
+                                entry["initialPrice"] = prev_initial
+                            else:
+                                if "initialPrice" not in entry or not isinstance(entry["initialPrice"], (int, float)):
+                                    entry["initialPrice"] = entry.get("price")
+                                    initial_assignments += 1
+
+                        if entry.get("lastUpdated") != today:
                             entry["lastUpdated"] = today
                             updated = True
 
-                if updated:
+                if updated or price_updates or initial_assignments:
                     output_file.write_text(
                         json.dumps(data, indent=2) + "\n", encoding="utf-8"
                     )
                     print(f"✓ Normalized lastUpdated fields to {today}")
+                    if price_updates:
+                        print(f"✓ Overwrote price field for {price_updates} tickers using fetched snapshots")
+                    if initial_assignments:
+                        print(f"✓ Assigned initialPrice for {initial_assignments} tickers")
             except Exception as e:
                 print(f"WARNING: Could not normalize lastUpdated fields ({e})")
 

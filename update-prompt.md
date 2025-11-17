@@ -17,6 +17,7 @@ Use your latest available financial data + reasonable estimates and return **onl
     "ticker": "ADBE",
     "name": "Adobe Inc.",
     "price": 0,
+    "initialPrice": 0,
     "dcf": {
       "conservative": "0-0",
       "base": "0-0",
@@ -38,6 +39,7 @@ Use your latest available financial data + reasonable estimates and return **onl
 
 - `category` = either "Dividend" or "Growth" based on the stock's profile (dividend-paying mature companies vs. growth-focused companies).
 - `price` = latest stock price in USD (number, not string). Fetch the latest financial data for all the tickers.
+- `initialPrice` = the very first automation price for that ticker. If the ticker already exists in `data/stocks.json`, keep its previous `initialPrice`. Only populate `initialPrice` the first time a ticker is added (usually set equal to the fetched `price`).
 - `dcf.conservative`, `dcf.base`, `dcf.aggressive` = intrinsic value ranges as strings `"low-high"` in USD, based on conservative/base/aggressive DCF-style assumptions.
 - All factor fields (`fcfQuality`, `roicStrength`, `revenueDurability`, `balanceSheetStrength`, `insiderActivity`, `valueRank`, `expectedReturn`) are **integers 1–5**, using these meanings:
   - 1 = very poor / very expensive / very low expected return
@@ -52,10 +54,9 @@ Use your latest available financial data + reasonable estimates and return **onl
 
 1. Run this prompt in ChatGPT or Claude Code
 2. Get the JSON response with updated stock data
-3. Replace the `stockData` array in `app.js` (lines 1-200) with the new data
-4. Ensure the format matches the JavaScript object format (use single quotes for string values, no quotes needed for object keys)
-5. Verify each stock has a `category` field set to either "Dividend" or "Growth"
-6. Test the table in the browser to verify all data displays correctly
+3. Update `data/stocks.json` with the new array (preserving any existing `initialPrice` values)
+4. Verify each stock has a `category` field set to either "Dividend" or "Growth"
+5. Test the table in the browser to verify all data displays correctly
 
 ## Column Determination Reference
 

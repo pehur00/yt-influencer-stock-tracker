@@ -1,1 +1,12 @@
-{}
+{
+  "name": "joseph-carlson-stock-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i src/styles/tailwind.css -o styles.css --minify",
+    "dev:css": "tailwindcss -i src/styles/tailwind.css -o styles.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.15"
+  }
+}

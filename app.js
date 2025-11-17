@@ -10,6 +10,22 @@ const weights = {
   insiderActivity: 0.05,
 };
 
+// Free API endpoints for live prices
+const FREE_PRICE_ENDPOINTS = [
+  {
+    name: 'Finnhub',
+    url: 'https://finnhub.io/api/v1/quote?symbol=',
+    transform: (data) => data.c, // current price
+    key: 'cggo519r01qqr8lanv60cggo519r01qqr8lanv6g' // Replace with your free key
+  },
+  {
+    name: 'Google Finance (Proxy)',
+    url: 'https://www.google.com/finance/quote/',
+    transform: null, // Requires custom parsing
+    key: null
+  }
+];
+
 const currencyFormatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
@@ -22,6 +38,8 @@ let modalEl;
 let modalContentEl;
 let modalCloseEl;
 let modalBackdropEl;
+let livePriceStore = {};
+let currentSortKey = 'undervaluationScore';
 
 function toHundredScale(score) {
   return score * 20;
@@ -54,16 +72,66 @@ function deriveQualitySummary(stock) {
   return ((stock.fcfQuality + stock.roicStrength) / 2).toFixed(1);
 }
 
+function getLivePrice(ticker) {
+  const key = ticker.toUpperCase();
+  const value = livePriceStore[key];
+  return typeof value === 'number' ? value : null;
+}
+
+function computePnlPercentage(initialPrice, livePrice) {
+  if (typeof initialPrice !== 'number' || typeof livePrice !== 'number' || initialPrice === 0) {
+    return null;
+  }
+  return ((livePrice - initialPrice) / initialPrice) * 100;
+}
+
+function formatCurrency(value) {
+  if (typeof value !== 'number' || Number.isNaN(value)) {
+    return '—';
+  }
+  return currencyFormatter.format(value);
+}
+
+function formatPnL(pnlPercent) {
+  if (typeof pnlPercent !== 'number' || Number.isNaN(pnlPercent)) {
+    return '—';
+  }
+  const rounded = pnlPercent.toFixed(2);
+  return `${pnlPercent > 0 ? '+' : ''}${rounded}%`;
+}
+
+function pnlClassName(pnlPercent) {
+  if (typeof pnlPercent !== 'number' || Number.isNaN(pnlPercent)) return '';
+  return pnlPercent >= 0 ? 'pnl-positive' : 'pnl-negative';
+}
+
+function normalizeNumber(value) {
+  const numeric = Number(value);
+  return Number.isFinite(numeric) ? numeric : null;
+}
+
 function deriveModels(stock) {
+  const automationPrice = normalizeNumber(stock.price);
+  const initialPriceSource = normalizeNumber(stock.initialPrice);
+  const initialPrice =
+    typeof initialPriceSource === 'number' ? initialPriceSource : normalizeNumber(stock.price ?? automationPrice);
+  const livePrice = normalizeNumber(getLivePrice(stock.ticker));
+  const pnlPercent = computePnlPercentage(initialPrice, livePrice);
+
   return {
     ...stock,
+    price: automationPrice,
+    initialPrice,
+    livePrice,
+    pnlPercent,
     undervaluationScore: computeUndervaluationScore(stock),
     riskLevel: deriveRiskLevel(stock),
     qualitySummary: deriveQualitySummary(stock),
   };
 }
 
-function renderTable(sortKey = 'undervaluationScore') {
+function renderTable(sortKey = currentSortKey) {
+  currentSortKey = sortKey;
   expandedTicker = null;
   const viewModels = stockData.map(deriveModels);
   viewModels.sort((a, b) => {
@@ -86,7 +154,10 @@ function renderTable(sortKey = 'undervaluationScore') {
       <td><span class="badge category-${stock.category.toLowerCase()}">${stock.category}</span></td>
       <td>${stock.ticker}</td>
       <td>${stock.name}</td>
-      <td>${currencyFormatter.format(stock.price)}</td>
+      <td>${formatCurrency(stock.price)}</td>
+      <td>${formatCurrency(stock.initialPrice)}</td>
+      <td>${formatCurrency(stock.livePrice)}</td>
+      <td class="${pnlClassName(stock.pnlPercent)}">${formatPnL(stock.pnlPercent)}</td>
       <td><span class="badge value">${stock.dcf.base}</span></td>
       <td>${stock.valueRank.toFixed(1)}</td>
       <td>${stock.qualitySummary}</td>
@@ -145,6 +216,10 @@ function appendDetailRow(stock, row) {
 
 function buildDetailCard(stock) {
   const factors = [
+    ['Automation Price', formatCurrency(stock.price)],
+    ['Initial Price', formatCurrency(stock.initialPrice)],
+    ['Live Price', formatCurrency(stock.livePrice)],
+    ['PnL %', formatPnL(stock.pnlPercent)],
     ['DCF Conservative', stock.dcf.conservative],
     ['DCF Base', stock.dcf.base],
     ['DCF Aggressive', stock.dcf.aggressive],
@@ -209,7 +284,7 @@ function showError() {
 
   tableBody.innerHTML = `
     <tr>
-      <td colspan="10" style="text-align: center; padding: 2rem; color: var(--muted);">
+      <td colspan="13" style="text-align: center; padding: 2rem; color: hsl(var(--muted-foreground));">
         Failed to load stock data. Please try refreshing the page.
       </td>
     </tr>
@@ -222,7 +297,7 @@ function showLoading() {
 
   tableBody.innerHTML = `
     <tr>
-      <td colspan="10" style="text-align: center; padding: 2rem; color: var(--muted);">
+      <td colspan="13" style="text-align: center; padding: 2rem; color: hsl(var(--muted-foreground));">
         Loading stock data...
       </td>
     </tr>
@@ -261,6 +336,7 @@ async function initUndervaluationTable() {
   });
 
   renderTable();
+  refreshLivePrices(stockData);
 }
 
 window.addEventListener('DOMContentLoaded', initUndervaluationTable);
@@ -363,4 +439,65 @@ function openExplanationModal(stock) {
 function closeExplanationModal() {
   if (!modalEl) return;
   modalEl.classList.add('hidden');
+}
+
+async function refreshLivePrices(stocks) {
+  const fallbackMap = stocks.reduce((acc, stock) => {
+    const ticker = stock.ticker?.toUpperCase();
+    const automationPrice = normalizeNumber(stock.price);
+    if (ticker && typeof automationPrice === 'number') {
+      acc[ticker] = automationPrice;
+    }
+    return acc;
+  }, {});
+  const uniqueTickers = Object.keys(fallbackMap);
+  if (!uniqueTickers.length) return;
+
+  // Attempt to fetch prices from multiple sources
+  for (const endpoint of FREE_PRICE_ENDPOINTS) {
+    try {
+      const chunkSize = 4;
+      for (let i = 0; i < uniqueTickers.length; i += chunkSize) {
+        const chunk = uniqueTickers.slice(i, i + chunkSize);
+
+        // Special handling for different endpoints
+        if (endpoint.name === 'Finnhub') {
+          const pricePromises = chunk.map(async (ticker) => {
+            const url = `${endpoint.url}${ticker}&token=${endpoint.key}`;
+            const response = await fetch(url);
+            const data = await response.json();
+            return { ticker, price: endpoint.transform(data) };
+          });
+
+          const results = await Promise.allSettled(pricePromises);
+          results.forEach((result) => {
+            if (result.status === 'fulfilled' && result.value.price) {
+              livePriceStore[result.value.ticker] = result.value.price;
+            }
+          });
+        }
+
+        // Add more endpoint-specific logic here
+      }
+
+      // If we've successfully fetched some prices, break the loop
+      if (Object.keys(livePriceStore).length > 0) {
+        break;
+      }
+    } catch (error) {
+      console.warn(`Failed to fetch live prices from ${endpoint.name}:`, error);
+    }
+  }
+
+  // Fallback to automation prices if no live prices found
+  uniqueTickers.forEach((ticker) => {
+    if (!livePriceStore[ticker]) {
+      const fallback = fallbackMap[ticker];
+      if (typeof fallback === 'number') {
+        livePriceStore[ticker] = fallback;
+      }
+    }
+  });
+
+  renderTable();
 }

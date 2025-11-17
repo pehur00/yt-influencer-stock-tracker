@@ -1,0 +1,301 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 28 22% 7%;
+  --foreground: 33 60% 94%;
+  --card: 27 24% 10%;
+  --card-foreground: 37 45% 96%;
+  --popover: 28 22% 8%;
+  --popover-foreground: 33 60% 94%;
+  --primary: 23 95% 62%;
+  --primary-foreground: 30 80% 8%;
+  --secondary: 22 20% 16%;
+  --secondary-foreground: 33 60% 92%;
+  --muted: 22 16% 50%;
+  --muted-foreground: 22 16% 70%;
+  --accent: 25 95% 53%;
+  --accent-foreground: 33 60% 94%;
+  --destructive: 0 62% 45%;
+  --destructive-foreground: 33 60% 96%;
+  --border: 23 20% 24%;
+  --input: 23 20% 24%;
+  --ring: 23 95% 62%;
+  color-scheme: dark;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+main.app {
+  max-width: 1200px;
+  width: 100%;
+}
+
+#stock-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+#stock-table thead {
+  background: hsla(var(--border) / 0.3);
+}
+
+#stock-table th,
+#stock-table td {
+  padding: 0.95rem 1.25rem;
+  text-align: left;
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+#stock-table th {
+  font-size: 0.67rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: hsl(var(--muted-foreground));
+}
+
+#stock-table tbody tr:nth-child(even) {
+  background: hsla(var(--secondary) / 0.45);
+}
+
+tr.data-row {
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+tr.data-row:hover {
+  background: hsla(var(--accent) / 0.08);
+  transform: translateY(-1px);
+}
+
+tr.detail-row td {
+  background: hsla(var(--secondary) / 0.6);
+  border-bottom: none;
+}
+
+.hint {
+  border-top: 1px solid hsl(var(--border));
+  font-size: 0.9rem;
+}
+
+.pnl-positive {
+  color: #5ff3b0;
+  font-weight: 600;
+}
+
+.pnl-negative {
+  color: #ff8a8a;
+  font-weight: 600;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid hsl(var(--border));
+  background: hsla(var(--secondary) / 0.3);
+  color: hsl(var(--foreground));
+  backdrop-filter: blur(6px);
+}
+
+.badge.value {
+  background: hsla(var(--accent) / 0.18);
+  border-color: hsla(var(--accent) / 0.5);
+  color: hsl(var(--accent-foreground));
+}
+
+.badge.risk-low {
+  background: rgba(46, 189, 133, 0.15);
+  color: #59f6b8;
+  border-color: rgba(46, 189, 133, 0.4);
+}
+
+.badge.risk-moderate {
+  background: rgba(255, 196, 88, 0.15);
+  color: #ffda9c;
+  border-color: rgba(255, 196, 88, 0.4);
+}
+
+.badge.risk-high {
+  background: rgba(255, 122, 122, 0.18);
+  color: #ffbaba;
+  border-color: rgba(255, 122, 122, 0.4);
+}
+
+.badge.risk-speculative {
+  background: rgba(151, 123, 255, 0.18);
+  color: #dfceff;
+  border-color: rgba(151, 123, 255, 0.4);
+}
+
+.badge.category-dividend {
+  background: rgba(75, 145, 255, 0.14);
+  color: #cfe0ff;
+  border-color: rgba(75, 145, 255, 0.35);
+}
+
+.badge.category-growth {
+  background: rgba(208, 105, 255, 0.16);
+  color: #f2d0ff;
+  border-color: rgba(208, 105, 255, 0.4);
+}
+
+.detail-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  background: hsla(var(--background) / 0.4);
+  border-radius: 1.5rem;
+  border: 1px solid hsl(var(--border));
+  padding: 1.75rem;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+}
+
+.detail-card h4 {
+  grid-column: 1 / -1;
+  margin: 0 0 0.5rem;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+}
+
+.detail-card .factor {
+  border-radius: 1rem;
+  border: 1px solid hsla(var(--border) / 0.7);
+  padding: 0.75rem;
+  background: hsla(var(--secondary) / 0.65);
+}
+
+.detail-card span.label {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground));
+}
+
+.detail-card span.value {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.explanations {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.25rem;
+}
+
+.explanations button {
+  border: none;
+  border-radius: 999px;
+  font-weight: 600;
+  padding: 0.65rem 1.5rem;
+  background: linear-gradient(120deg, hsl(var(--accent)), rgba(255, 255, 255, 0.1));
+  color: hsl(var(--accent-foreground));
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(255, 133, 59, 0.35);
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 4rem 1rem;
+  z-index: 50;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 7, 11, 0.6);
+  backdrop-filter: blur(10px);
+}
+
+.modal__dialog {
+  position: relative;
+  width: min(680px, 96vw);
+  background: hsla(var(--card) / 0.98);
+  border-radius: 1.5rem;
+  border: 1px solid hsl(var(--border));
+  padding: 2rem;
+  box-shadow: 0 30px 120px rgba(0, 0, 0, 0.6);
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 1;
+}
+
+.modal__close {
+  border: none;
+  background: transparent;
+  font-size: 1.75rem;
+  color: hsl(var(--muted-foreground));
+  position: absolute;
+  top: 0.5rem;
+  right: 0.85rem;
+  cursor: pointer;
+}
+
+.modal__content h3 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.modal__content section {
+  border-bottom: 1px solid hsla(var(--border) / 0.6);
+  padding: 0.9rem 0;
+}
+
+.modal__content section:last-child {
+  border-bottom: none;
+}
+
+.modal__content h4 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: hsl(var(--muted-foreground));
+}
+
+.modal__content p,
+.modal__content ul {
+  margin: 0 0 0.35rem;
+  color: hsl(var(--foreground));
+}
+
+.modal__content ul {
+  padding-left: 1.2rem;
+  color: hsl(var(--muted-foreground));
+}
+
+@media (max-width: 768px) {
+  #stock-table th:nth-child(2),
+  #stock-table td:nth-child(2) {
+    display: none;
+  }
+}

@@ -2,8 +2,12 @@
 Market data tools built on yfinance for fetching stock prices and fundamentals.
 """
 
-import yfinance as yf
+import json
+from datetime import datetime
+from pathlib import Path
 from typing import Dict, Any
+
+import yfinance as yf
 from crewai.tools import BaseTool
 
 
@@ -46,7 +50,26 @@ class StockPriceFetcher(BaseTool):
                 print(f"  ✗ {ticker_symbol}: Error - {str(e)}")
                 prices[ticker_symbol] = None
 
+        self._persist_price_snapshot(prices)
         return prices
+
+    @staticmethod
+    def _persist_price_snapshot(prices: Dict[str, float]) -> None:
+        """Persist the fetched prices to output/fetched_prices.json for downstream tasks."""
+        try:
+            output_dir = Path("output")
+            output_dir.mkdir(parents=True, exist_ok=True)
+            snapshot = {
+                "fetched_at": datetime.utcnow().isoformat(),
+                "prices": prices,
+            }
+            (output_dir / "fetched_prices.json").write_text(
+                json.dumps(snapshot, indent=2) + "\n",
+                encoding="utf-8",
+            )
+            print("  ↳ Saved fetched_prices.json snapshot")
+        except Exception as snapshot_error:
+            print(f"  ! Warning: could not persist fetched prices ({snapshot_error})")
 
 
 class FinancialDataScraper(BaseTool):

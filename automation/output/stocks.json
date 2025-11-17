@@ -3,30 +3,31 @@
     "category": "Growth",
     "ticker": "DUOL",
     "name": "Duolingo, Inc.",
-    "price": 179.22,
+    "price": 178.27,
     "dcf": {
-      "conservative": "129-135",
-      "base": "145-155",
-      "aggressive": "165-175"
+      "conservative": "120.00-130.00",
+      "base": "150.00-160.00",
+      "aggressive": "190.00-200.00"
     },
     "fcfQuality": 4,
     "roicStrength": 3,
-    "revenueDurability": 3,
-    "balanceSheetStrength": 4,
+    "revenueDurability": 4,
+    "balanceSheetStrength": 5,
     "insiderActivity": 3,
     "valueRank": 3,
     "expectedReturn": 4,
-    "lastUpdated": "2025-11-17"
+    "lastUpdated": "2025-11-17",
+    "initialPrice": 178.27
   },
   {
     "category": "Growth",
     "ticker": "CMG",
     "name": "Chipotle Mexican Grill, Inc.",
-    "price": 31.13,
+    "price": 30.53,
     "dcf": {
-      "conservative": "25-27",
-      "base": "30-32",
-      "aggressive": "40-42"
+      "conservative": "20.00-22.00",
+      "base": "25.00-27.00",
+      "aggressive": "35.00-37.00"
     },
     "fcfQuality": 5,
     "roicStrength": 3,
@@ -35,17 +36,18 @@
     "insiderActivity": 3,
     "valueRank": 3,
     "expectedReturn": 4,
-    "lastUpdated": "2025-11-17"
+    "lastUpdated": "2025-11-17",
+    "initialPrice": 30.53
   },
   {
     "category": "Growth",
     "ticker": "ADBE",
     "name": "Adobe Inc.",
-    "price": 331.78,
+    "price": 325.07,
     "dcf": {
-      "conservative": "300-310",
-      "base": "320-330",
-      "aggressive": "350-360"
+      "conservative": "250.00-260.00",
+      "base": "300.00-310.00",
+      "aggressive": "350.00-360.00"
     },
     "fcfQuality": 5,
     "roicStrength": 4,
@@ -54,6 +56,7 @@
     "insiderActivity": 3,
     "valueRank": 3,
     "expectedReturn": 4,
-    "lastUpdated": "2025-11-17"
+    "lastUpdated": "2025-11-17",
+    "initialPrice": 325.07
   }
 ]

@@ -32,9 +32,13 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for full guide and options.
 ### Local Development
 
 ```bash
+npm install
+npm run build:css   # or npm run dev:css to watch while editing
 python -m http.server 8000
 # Open http://localhost:8000
 ```
+
+> Live prices are fetched client-side through Yahoo Finance via the read-only `r.jina.ai` proxy, so no backend is required. If that proxy denies access, the UI automatically falls back to the automation price for each ticker. When self-hosting, make sure outbound requests to `r.jina.ai` are allowed for best fidelity.
 
 ## Manual Data Update Prompt
 
@@ -53,6 +57,7 @@ Use your latest available financial data + reasonable estimates and return **onl
     "ticker": "ADBE",
     "name": "Adobe Inc.",
     "price": 0,
+    "initialPrice": 0,
     "dcf": {
       "conservative": "0-0",
       "base": "0-0",
@@ -73,6 +78,7 @@ Use your latest available financial data + reasonable estimates and return **onl
 Rules:
 - `category` = either "Dividend" or "Growth" based on the stock's profile (dividend-paying mature companies vs. growth-focused companies).
 - `price` = latest stock price in USD (number, not string).  Fetch the latest financial data for all the tickers.
+- `initialPrice` = the first automation price captured for that ticker. When a stock already exists in `data/stocks.json`, preserve its existing `initialPrice`. Only when adding a brand-new ticker should you set `initialPrice`, and in that case default it to the fetched `price`.
 - `dcf.conservative`, `dcf.base`, `dcf.aggressive` = intrinsic value ranges as strings `"low-high"` in USD, based on conservative/base/aggressive DCF-style assumptions.  
 - All factor fields (`fcfQuality`, `roicStrength`, `revenueDurability`, `balanceSheetStrength`, `insiderActivity`, `valueRank`, `expectedReturn`) are **integers 1–5**, using these meanings:
   - 1 = very poor / very expensive / very low expected return  

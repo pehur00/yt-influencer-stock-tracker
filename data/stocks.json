@@ -2,16 +2,16 @@
   {
     "category": "Growth",
     "ticker": "DUOL",
-    "name": "Duolingo, Inc.",
-    "price": 200.0,
+    "name": "DUOL",
+    "price": 178.55,
     "dcf": {
-      "conservative": "125-134",
-      "base": "169-178",
-      "aggressive": "205-216"
+      "conservative": "120-130",
+      "base": "160-170",
+      "aggressive": "200-210"
     },
     "fcfQuality": 3,
     "roicStrength": 3,
-    "revenueDurability": 3,
+    "revenueDurability": 4,
     "balanceSheetStrength": 4,
     "insiderActivity": 3,
     "valueRank": 3,
@@ -21,17 +21,17 @@
   {
     "category": "Growth",
     "ticker": "CMG",
-    "name": "Chipotle Mexican Grill, Inc.",
-    "price": 3200.0,
+    "name": "CMG",
+    "price": 30.81,
     "dcf": {
-      "conservative": "21-22",
-      "base": "30-32",
-      "aggressive": "35-37"
+      "conservative": "20-21",
+      "base": "30-31",
+      "aggressive": "40-41"
     },
     "fcfQuality": 4,
-    "roicStrength": 4,
-    "revenueDurability": 4,
-    "balanceSheetStrength": 2,
+    "roicStrength": 3,
+    "revenueDurability": 3,
+    "balanceSheetStrength": 3,
     "insiderActivity": 3,
     "valueRank": 3,
     "expectedReturn": 3,
@@ -40,15 +40,15 @@
   {
     "category": "Growth",
     "ticker": "ADBE",
-    "name": "Adobe Inc.",
-    "price": 550.0,
+    "name": "ADBE",
+    "price": 329.19,
     "dcf": {
-      "conservative": "271-287",
-      "base": "329-346",
-      "aggressive": "377-397"
+      "conservative": "250-265",
+      "base": "320-335",
+      "aggressive": "400-415"
     },
     "fcfQuality": 5,
-    "roicStrength": 5,
+    "roicStrength": 4,
     "revenueDurability": 5,
     "balanceSheetStrength": 4,
     "insiderActivity": 3,
@@ -59,12 +59,12 @@
   {
     "category": "Growth",
     "ticker": "MELI",
-    "name": "MercadoLibre, Inc.",
-    "price": 1600.0,
+    "name": "MELI",
+    "price": 2053.88,
     "dcf": {
-      "conservative": "1435-1520",
-      "base": "1948-2050",
-      "aggressive": "2358-2483"
+      "conservative": "1200-1300",
+      "base": "1900-2000",
+      "aggressive": "2600-2700"
     },
     "fcfQuality": 1,
     "roicStrength": 2,
@@ -78,31 +78,31 @@
   {
     "category": "Growth",
     "ticker": "CRWV",
-    "name": "Corvus",
-    "price": 60.0,
+    "name": "CRWV",
+    "price": 74.24,
     "dcf": {
-      "conservative": "24-26",
-      "base": "66-74",
-      "aggressive": "85-90"
+      "conservative": "20-21",
+      "base": "60-61",
+      "aggressive": "120-121"
     },
     "fcfQuality": 1,
     "roicStrength": 1,
-    "revenueDurability": 1,
+    "revenueDurability": 3,
     "balanceSheetStrength": 1,
     "insiderActivity": 3,
     "valueRank": 1,
-    "expectedReturn": 1,
+    "expectedReturn": 2,
     "lastUpdated": "2025-11-17"
   },
   {
     "category": "Growth",
     "ticker": "CRM",
-    "name": "Salesforce, Inc.",
-    "price": 240.0,
+    "name": "CRM",
+    "price": 238.7,
     "dcf": {
-      "conservative": "197-208",
-      "base": "238-251",
-      "aggressive": "274-289"
+      "conservative": "180-190",
+      "base": "230-240",
+      "aggressive": "280-290"
     },
     "fcfQuality": 5,
     "roicStrength": 4,
@@ -116,17 +116,17 @@
   {
     "category": "Growth",
     "ticker": "SPGI",
-    "name": "S&P Global Inc.",
-    "price": 470.0,
+    "name": "SPGI",
+    "price": 488.68,
     "dcf": {
-      "conservative": "402-425",
-      "base": "464-488",
-      "aggressive": "560-589"
+      "conservative": "380-390",
+      "base": "480-490",
+      "aggressive": "580-590"
     },
-    "fcfQuality": 4,
-    "roicStrength": 5,
+    "fcfQuality": 5,
+    "roicStrength": 4,
     "revenueDurability": 5,
-    "balanceSheetStrength": 3,
+    "balanceSheetStrength": 4,
     "insiderActivity": 3,
     "valueRank": 3,
     "expectedReturn": 3,
@@ -135,15 +135,15 @@
   {
     "category": "Growth",
     "ticker": "EFX",
-    "name": "Equifax Inc.",
-    "price": 220.0,
+    "name": "EFX",
+    "price": 205.21,
     "dcf": {
-      "conservative": "169-179",
-      "base": "205-216",
-      "aggressive": "236-248"
+      "conservative": "160-170",
+      "base": "200-210",
+      "aggressive": "240-250"
     },
-    "fcfQuality": 3,
-    "roicStrength": 4,
+    "fcfQuality": 4,
+    "roicStrength": 3,
     "revenueDurability": 4,
     "balanceSheetStrength": 3,
     "insiderActivity": 3,
@@ -154,12 +154,12 @@
   {
     "category": "Growth",
     "ticker": "NFLX",
-    "name": "Netflix, Inc.",
-    "price": 110.0,
+    "name": "NFLX",
+    "price": 110.55,
     "dcf": {
-      "conservative": "91-96",
-      "base": "105-110",
-      "aggressive": "127-133"
+      "conservative": "80-85",
+      "base": "110-115",
+      "aggressive": "140-145"
     },
     "fcfQuality": 5,
     "roicStrength": 4,
@@ -173,17 +173,17 @@
   {
     "category": "Growth",
     "ticker": "ASML",
-    "name": "ASML Holding N.V.",
-    "price": 1000.0,
+    "name": "ASML",
+    "price": 1020.64,
     "dcf": {
-      "conservative": "846-895",
-      "base": "969-1020",
-      "aggressive": "1173-1235"
+      "conservative": "750-760",
+      "base": "1000-1010",
+      "aggressive": "1250-1260"
     },
-    "fcfQuality": 4,
-    "roicStrength": 5,
-    "revenueDurability": 4,
-    "balanceSheetStrength": 4,
+    "fcfQuality": 5,
+    "roicStrength": 4,
+    "revenueDurability": 5,
+    "balanceSheetStrength": 5,
     "insiderActivity": 3,
     "valueRank": 3,
     "expectedReturn": 3,
@@ -192,12 +192,12 @@
   {
     "category": "Growth",
     "ticker": "MA",
-    "name": "Mastercard Incorporated",
-    "price": 520.0,
+    "name": "MA",
+    "price": 542.51,
     "dcf": {
-      "conservative": "448-474",
-      "base": "515-542",
-      "aggressive": "623-656"
+      "conservative": "400-410",
+      "base": "530-540",
+      "aggressive": "660-670"
     },
     "fcfQuality": 5,
     "roicStrength": 5,

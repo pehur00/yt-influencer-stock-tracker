@@ -163,22 +163,22 @@ function buildDetailCard(stock) {
       ${factors
         .map(
           ([label, value]) => `
-            <div>
+            <div class="factor">
               <span class="label">${label}</span>
               <span class="value">${value}</span>
             </div>
           `,
         )
         .join('')}
-      <div>
+      <div class="factor">
         <span class="label">Undervaluation Score</span>
         <span class="value">${stock.undervaluationScore}</span>
       </div>
-      <div>
+      <div class="factor">
         <span class="label">Risk Level</span>
         <span class="value">${stock.riskLevel}</span>
       </div>
-      <div>
+      <div class="factor">
         <span class="label">Last Updated</span>
         <span class="value">${stock.lastUpdated}</span>
       </div>

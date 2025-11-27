@@ -10,6 +10,66 @@ Track stock picks from top YouTube finance influencers. Aggregate recommendation
 - **Channel Performance**: PnL tracking and win rate stats per channel
 - **Collapsible Video List**: Browse latest videos with ticker summaries
 
+## Valuation Methodology
+
+### DCF (Discounted Cash Flow) Calculation
+
+The AI analyst agent calculates intrinsic value using a standard DCF model with three scenarios:
+
+```
+Intrinsic Value = Σ (FCFₜ / (1 + r)ᵗ) + Terminal Value / (1 + r)ⁿ
+
+Where:
+  FCFₜ     = Free Cash Flow in year t
+  r        = Discount rate (WACC)
+  n        = Projection period (typically 10 years)
+  Terminal = FCFₙ × (1 + g) / (r - g)  [Gordon Growth Model]
+  g        = Terminal growth rate
+```
+
+**Three Scenarios:**
+
+| Scenario | Revenue Growth | FCF Margin | Discount Rate | Terminal Growth |
+|----------|---------------|------------|---------------|-----------------|
+| **Conservative** | Low end of guidance | Compressed margins | Higher WACC (~10-12%) | 2% |
+| **Base** | Consensus estimates | Stable margins | Market WACC (~8-10%) | 2.5% |
+| **Aggressive** | Management targets | Margin expansion | Lower WACC (~7-9%) | 3% |
+
+### Undervaluation Score (0-100)
+
+A weighted composite score indicating how attractive a stock is on a risk-adjusted basis:
+
+```
+Score = Σ (Factor Score × Weight × 20)
+
+Weights:
+  Value Rank           25%   ← How cheap vs intrinsic value
+  Expected Return      20%   ← Projected IRR based on DCF
+  FCF Quality          15%   ← Free cash flow consistency & conversion
+  ROIC Strength        15%   ← Return on invested capital vs WACC
+  Balance Sheet        10%   ← Debt levels, liquidity, coverage
+  Revenue Durability   10%   ← Recurring revenue, customer retention
+  Insider Activity      5%   ← Recent insider buying/selling
+```
+
+Each factor is scored 1-5:
+- **5** = Excellent (top quintile)
+- **4** = Good (above average)
+- **3** = Average
+- **2** = Below average
+- **1** = Poor (bottom quintile)
+
+### Risk Level
+
+Derived from average quality factors:
+
+| Avg Quality | Risk Level |
+|-------------|------------|
+| ≥ 4.3 | Low |
+| ≥ 3.3 | Moderate |
+| ≥ 2.5 | High |
+| < 2.5 | Speculative |
+
 ## Quick Start
 
 1. **View the tracker**: Open `index.html` in a browser (or use a local server)

@@ -1,10 +1,10 @@
-# The Joseph Carlson Show – Stock Data Update Prompt
+# YouTube Influencer Stock Tracker – Data Update Prompt
 
-Use this prompt to generate updated stock data for The Joseph Carlson Show stock tracker.
+Use this prompt to generate updated stock data for the YouTube Influencer Stock Tracker.
 
 ## Prompt
 
-I'm building a stock tracker for The Joseph Carlson Show.
+I'm building a stock tracker for YouTube finance influencers.
 For the following tickers (categorize as Dividend or Growth):
 `DUOL, CMG, ADBE, MELI, CRWV, CRM, SPGI, EFX, NFLX, ASML, MA`
 

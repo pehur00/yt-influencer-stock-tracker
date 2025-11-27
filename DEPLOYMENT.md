@@ -1,4 +1,4 @@
-# Deployment Guide: Joseph Carlson Show Stock Tracker
+# Deployment Guide: YouTube Influencer Stock Tracker
 
 This guide explains how to deploy the stock tracker to GitHub Pages with automated weekly updates.
 
@@ -58,10 +58,10 @@ git init
 
 # Add all files
 git add .
-git commit -m "Initial commit: Joseph Carlson Show Stock Tracker"
+git commit -m "Initial commit: YouTube Influencer Stock Tracker"
 
 # Create repo on GitHub and push
-gh repo create joseph-carlson-stock-tracker --public --source=. --push
+gh repo create youtube-stock-tracker --public --source=. --push
 ```
 
 ### 2. Enable GitHub Pages
@@ -305,4 +305,4 @@ gh repo clone your-username/joseph-carlson-stock-tracker
 - [ ] Add historical data tracking
 - [ ] Create email/Discord notifications on updates
 - [ ] Add mobile-responsive improvements
-- [ ] Integrate with Joseph Carlson's YouTube API
+- [ ] Integrate with more YouTube finance channels

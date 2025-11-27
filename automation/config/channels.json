@@ -1,0 +1,56 @@
+{
+  "channels": [
+    {
+      "id": "joseph-carlson",
+      "name": "The Joseph Carlson Show",
+      "handle": "@josephcarlsonshow",
+      "url": "https://www.youtube.com/@josephcarlsonshow/videos",
+      "enabled": true,
+      "description": "Long-term dividend and growth investing focused on quality companies"
+    },
+    {
+      "id": "leven-van-dividend",
+      "name": "Leven van Dividend",
+      "handle": "@levenvandividend",
+      "url": "https://www.youtube.com/@levenvandividend/videos",
+      "enabled": true,
+      "description": "Dutch dividend investing channel"
+    },
+    {
+      "id": "couch-investor",
+      "name": "CouchInvestor",
+      "handle": "@CouchInvestor",
+      "url": "https://www.youtube.com/@CouchInvestor/videos",
+      "enabled": true,
+      "description": "Dividend and passive income investing"
+    },
+    {
+      "id": "everything-money",
+      "name": "Everything Money",
+      "handle": "@EverythingMoney",
+      "url": "https://www.youtube.com/@EverythingMoney/videos",
+      "enabled": true,
+      "description": "Value investing and stock analysis"
+    },
+    {
+      "id": "dividend-bull",
+      "name": "Dividend Bull",
+      "handle": "@DividendBull",
+      "url": "https://www.youtube.com/@DividendBull/videos",
+      "enabled": true,
+      "description": "Dividend investing strategies"
+    },
+    {
+      "id": "fired-up-wealth",
+      "name": "FiredUpWealth",
+      "handle": "@FiredUpWealth",
+      "url": "https://www.youtube.com/@FiredUpWealth/videos",
+      "enabled": true,
+      "description": "Financial independence and dividend investing"
+    }
+  ],
+  "settings": {
+    "maxVideosPerChannel": 5,
+    "fetchDetails": true
+  }
+}

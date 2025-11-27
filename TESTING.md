@@ -83,10 +83,10 @@ python main.py
 **Expected output:**
 ```
 ======================================================================
-  Joseph Carlson Show Stock Tracker - Automated Update
+  YouTube Influencer Stock Tracker - Automated Update
 ======================================================================
 
-Starting Joseph Carlson Show Stock Tracker Crew...
+Starting YouTube Influencer Stock Tracker Crew...
 Analyzing tickers: DUOL, CMG, ADBE, MELI, CRWV, CRM, SPGI, EFX, NFLX, ASML, MA
 ------------------------------------------------------------
 
@@ -198,7 +198,7 @@ SERVER_PID=$!
 sleep 2
 
 # 5. Test website loads
-curl -s http://localhost:8000 | grep "Joseph Carlson" > /dev/null
+curl -s http://localhost:8000 | grep "Influencer Stock Tracker" > /dev/null
 echo "✓ Website loads"
 
 # 6. Test data endpoint

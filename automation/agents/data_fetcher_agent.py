@@ -12,7 +12,7 @@ def create_data_fetcher_agent(llm):
 
     return Agent(
         role='Stock Data Fetcher',
-        goal='Fetch the latest stock prices and basic financial metrics for Joseph Carlson Show stocks',
+        goal='Fetch the latest stock prices and basic financial metrics for tracked stocks',
         backstory="""You are an expert data gatherer who specializes in collecting
         real-time stock market data. You use reliable sources and web scraping tools
         to gather accurate, up-to-date information about stock prices, trading volumes,

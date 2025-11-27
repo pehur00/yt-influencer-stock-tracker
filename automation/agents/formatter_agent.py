@@ -11,7 +11,7 @@ def create_formatter_agent(llm):
 
     return Agent(
         role='Data Formatter',
-        goal='Format stock analysis data into valid JSON for The Joseph Carlson Show stock tracker',
+        goal='Format stock analysis data into valid JSON for the YouTube Influencer Stock Tracker',
         backstory="""You are a meticulous data engineer who specializes in
         structuring and formatting data. You take raw financial analysis and
         transform it into clean, valid JSON that matches exact specifications.

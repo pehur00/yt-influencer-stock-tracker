@@ -33,13 +33,15 @@ const currencyFormatter = new Intl.NumberFormat('en-US', {
 
 let tableBody;
 let sortSelect;
-let expandedTicker = null;
+let sourceFilter;
+let expandedStockKey = null;  // ticker|source unique key
 let modalEl;
 let modalContentEl;
 let modalCloseEl;
 let modalBackdropEl;
 let livePriceStore = {};
 let currentSortKey = 'undervaluationScore';
+let currentSourceFilter = 'all';
 
 function toHundredScale(score) {
   return score * 20;
@@ -132,8 +134,14 @@ function deriveModels(stock) {
 
 function renderTable(sortKey = currentSortKey) {
   currentSortKey = sortKey;
-  expandedTicker = null;
-  const viewModels = stockData.map(deriveModels);
+  expandedStockKey = null;
+  let viewModels = stockData.map(deriveModels);
+  
+  // Apply source filter
+  if (currentSourceFilter !== 'all') {
+    viewModels = viewModels.filter(stock => stock.source === currentSourceFilter);
+  }
+  
   viewModels.sort((a, b) => {
     const dir = sortKey === 'price' ? 1 : -1; // price is ascending, scores descending
     const aVal = a[sortKey];
@@ -148,13 +156,16 @@ function renderTable(sortKey = currentSortKey) {
   viewModels.forEach((stock) => {
     const row = document.createElement('tr');
     row.classList.add('data-row');
-    row.dataset.ticker = stock.ticker;
+    // Use ticker + source as unique key
+    const stockKey = `${stock.ticker}|${stock.source || 'Unknown'}`;
+    row.dataset.stockKey = stockKey;
 
     row.innerHTML = `
       <td><span class="badge category-${stock.category.toLowerCase()}">${stock.category}</span></td>
       <td>${stock.ticker}</td>
       <td>${stock.name}</td>
-      <td>${formatCurrency(stock.price)}</td>
+      <td><span class="badge source">${stock.source || 'Unknown'}</span></td>
+      <td>${stock.recommendedDate || '-'}</td>
       <td>${formatCurrency(stock.initialPrice)}</td>
       <td>${formatCurrency(stock.livePrice)}</td>
       <td class="${pnlClassName(stock.pnlPercent)}">${formatPnL(stock.pnlPercent)}</td>
@@ -169,7 +180,7 @@ function renderTable(sortKey = currentSortKey) {
     row.addEventListener('click', () => toggleDetailRow(stock, row));
     tableBody.appendChild(row);
 
-    if (expandedTicker === stock.ticker) {
+    if (expandedStockKey === stockKey) {
       appendDetailRow(stock, row);
     }
   });
@@ -181,11 +192,12 @@ function renderRiskBadge(riskLevel) {
 }
 
 function toggleDetailRow(stock, row) {
-  const alreadyExpanded = expandedTicker === stock.ticker;
+  const stockKey = `${stock.ticker}|${stock.source || 'Unknown'}`;
+  const alreadyExpanded = expandedStockKey === stockKey;
   collapseDetailRow();
 
   if (!alreadyExpanded) {
-    expandedTicker = stock.ticker;
+    expandedStockKey = stockKey;
     appendDetailRow(stock, row);
   }
 }
@@ -195,7 +207,7 @@ function collapseDetailRow() {
   if (detailRow) {
     detailRow.remove();
   }
-  expandedTicker = null;
+  expandedStockKey = null;
 }
 
 function appendDetailRow(stock, row) {
@@ -216,6 +228,7 @@ function appendDetailRow(stock, row) {
 
 function buildDetailCard(stock) {
   const factors = [
+    ['Source', stock.source || 'Unknown'],
     ['Automation Price', formatCurrency(stock.price)],
     ['Initial Price', formatCurrency(stock.initialPrice)],
     ['Live Price', formatCurrency(stock.livePrice)],
@@ -232,9 +245,19 @@ function buildDetailCard(stock) {
     ['Expected Return', stock.expectedReturn],
   ];
 
+  const recommendedDate = stock.recommendedDate || 'N/A';
+
   return `
     <div class="detail-card">
       <h4>${stock.name} (${stock.ticker})</h4>
+      <div class="factor">
+        <span class="label">Source</span>
+        <span class="value">${stock.source || 'Unknown'}</span>
+      </div>
+      <div class="factor">
+        <span class="label">Recommended Date</span>
+        <span class="value">${recommendedDate}</span>
+      </div>
       ${factors
         .map(
           ([label, value]) => `
@@ -284,7 +307,7 @@ function showError() {
 
   tableBody.innerHTML = `
     <tr>
-      <td colspan="13" style="text-align: center; padding: 2rem; color: hsl(var(--muted-foreground));">
+      <td colspan="14" style="text-align: center; padding: 2rem; color: hsl(var(--muted-foreground));">
         Failed to load stock data. Please try refreshing the page.
       </td>
     </tr>
@@ -297,7 +320,7 @@ function showLoading() {
 
   tableBody.innerHTML = `
     <tr>
-      <td colspan="13" style="text-align: center; padding: 2rem; color: hsl(var(--muted-foreground));">
+      <td colspan="14" style="text-align: center; padding: 2rem; color: hsl(var(--muted-foreground));">
         Loading stock data...
       </td>
     </tr>
@@ -307,6 +330,7 @@ function showLoading() {
 async function initUndervaluationTable() {
   tableBody = document.querySelector('#stock-table tbody');
   sortSelect = document.querySelector('#sort-select');
+  sourceFilter = document.querySelector('#source-filter');
   modalEl = document.getElementById('explanation-modal');
   modalContentEl = modalEl?.querySelector('.modal__content') || null;
   modalCloseEl = modalEl?.querySelector('.modal__close') || null;
@@ -330,13 +354,331 @@ async function initUndervaluationTable() {
     return;
   }
 
+  // Populate source filter dropdown
+  if (sourceFilter) {
+    const sources = [...new Set(stockData.map(s => s.source || 'Unknown'))].sort();
+    sources.forEach(source => {
+      const option = document.createElement('option');
+      option.value = source;
+      option.textContent = source;
+      sourceFilter.appendChild(option);
+    });
+    
+    sourceFilter.addEventListener('change', (event) => {
+      currentSourceFilter = event.target.value;
+      renderTable();
+    });
+  }
+
   sortSelect.addEventListener('change', (event) => {
     const sortKey = event.target.value;
     renderTable(sortKey);
   });
 
   renderTable();
+  renderChannelStats();
   refreshLivePrices(stockData);
+
+  // Initialize YouTube modal
+  initYouTubeModal();
+}
+
+// Channel Performance Stats
+function calculateChannelStats() {
+  const channelMap = {};
+  
+  stockData.forEach(stock => {
+    const source = stock.source || 'Unknown';
+    if (!channelMap[source]) {
+      channelMap[source] = {
+        name: source,
+        stocks: [],
+        totalPnl: 0,
+        avgPnl: 0,
+        winners: 0,
+        losers: 0,
+        totalStocks: 0,
+        avgScore: 0,
+        avgQuality: 0,
+        categories: { Dividend: 0, Growth: 0 }
+      };
+    }
+    
+    const model = deriveModels(stock);
+    channelMap[source].stocks.push(model);
+    channelMap[source].totalStocks++;
+    channelMap[source].categories[stock.category] = (channelMap[source].categories[stock.category] || 0) + 1;
+    
+    if (typeof model.pnlPercent === 'number' && !isNaN(model.pnlPercent)) {
+      channelMap[source].totalPnl += model.pnlPercent;
+      if (model.pnlPercent >= 0) {
+        channelMap[source].winners++;
+      } else {
+        channelMap[source].losers++;
+      }
+    }
+    
+    channelMap[source].avgScore += model.undervaluationScore;
+    channelMap[source].avgQuality += parseFloat(model.qualitySummary) || 0;
+  });
+  
+  // Calculate averages
+  Object.values(channelMap).forEach(channel => {
+    if (channel.totalStocks > 0) {
+      channel.avgPnl = channel.totalPnl / channel.totalStocks;
+      channel.avgScore = Math.round(channel.avgScore / channel.totalStocks);
+      channel.avgQuality = (channel.avgQuality / channel.totalStocks).toFixed(1);
+      channel.winRate = channel.totalStocks > 0 
+        ? Math.round((channel.winners / channel.totalStocks) * 100) 
+        : 0;
+    }
+  });
+  
+  return Object.values(channelMap).sort((a, b) => b.avgPnl - a.avgPnl);
+}
+
+function renderChannelStatsCard(channel) {
+  const pnlClass = channel.avgPnl >= 0 ? 'pnl-positive' : 'pnl-negative';
+  const pnlSign = channel.avgPnl >= 0 ? '+' : '';
+  
+  return `
+    <div class="channel-stat-card">
+      <div class="channel-stat-card__header">
+        <span class="badge source">${channel.name}</span>
+        <span class="channel-stat-card__pnl ${pnlClass}">${pnlSign}${channel.avgPnl.toFixed(2)}%</span>
+      </div>
+      <div class="channel-stat-card__stats">
+        <div class="channel-stat-card__stat">
+          <span class="channel-stat-card__label">Stocks</span>
+          <span class="channel-stat-card__value">${channel.totalStocks}</span>
+        </div>
+        <div class="channel-stat-card__stat">
+          <span class="channel-stat-card__label">Win Rate</span>
+          <span class="channel-stat-card__value">${channel.winRate}%</span>
+        </div>
+        <div class="channel-stat-card__stat">
+          <span class="channel-stat-card__label">Avg Score</span>
+          <span class="channel-stat-card__value">${channel.avgScore}</span>
+        </div>
+        <div class="channel-stat-card__stat">
+          <span class="channel-stat-card__label">Quality</span>
+          <span class="channel-stat-card__value">${channel.avgQuality}</span>
+        </div>
+      </div>
+      <div class="channel-stat-card__breakdown">
+        <span class="badge category-dividend">${channel.categories.Dividend || 0} Div</span>
+        <span class="badge category-growth">${channel.categories.Growth || 0} Growth</span>
+        <span class="channel-stat-card__record">${channel.winners}W / ${channel.losers}L</span>
+      </div>
+    </div>
+  `;
+}
+
+function renderChannelStats() {
+  const container = document.getElementById('channel-stats-container');
+  if (!container) return;
+  
+  const stats = calculateChannelStats();
+  
+  if (stats.length === 0) {
+    container.innerHTML = '<p class="text-sm text-muted-foreground">No channel data available yet.</p>';
+    return;
+  }
+  
+  container.innerHTML = stats.map(renderChannelStatsCard).join('');
+}
+
+// YouTube Modal Functionality
+let youtubeModalEl;
+let youtubeVideosContainer;
+let youtubeVideosData = [];
+
+async function fetchYouTubeVideos() {
+  try {
+    const response = await fetch('data/youtube_videos.json');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    youtubeVideosData = await response.json();
+    return true;
+  } catch (error) {
+    console.warn('Could not load YouTube videos data:', error);
+    return false;
+  }
+}
+
+function renderYouTubeVideoCard(video, index) {
+  const allTickers = [
+    ...(video.tickersBought || []),
+    ...(video.tickersRecommended || []),
+    ...(video.tickersMentioned || [])
+  ];
+  const uniqueTickers = [...new Set(allTickers)];
+  const tickerSummary = uniqueTickers.length > 0 
+    ? uniqueTickers.slice(0, 5).join(', ') + (uniqueTickers.length > 5 ? '...' : '')
+    : 'No tickers';
+
+  const tickersBoughtHtml = video.tickersBought?.length
+    ? `<div class="youtube-video-card__tickers-section">
+        <span class="youtube-video-card__tickers-label">Bought:</span>
+        ${video.tickersBought.map(t => `<span class="ticker-badge bought">${t}</span>`).join('')}
+      </div>`
+    : '';
+
+  const tickersRecommendedHtml = video.tickersRecommended?.length
+    ? `<div class="youtube-video-card__tickers-section">
+        <span class="youtube-video-card__tickers-label">Recommended:</span>
+        ${video.tickersRecommended.map(t => `<span class="ticker-badge recommended">${t}</span>`).join('')}
+      </div>`
+    : '';
+
+  const tickersMentionedHtml = video.tickersMentioned?.length
+    ? `<div class="youtube-video-card__tickers-section">
+        <span class="youtube-video-card__tickers-label">Mentioned:</span>
+        ${video.tickersMentioned.map(t => `<span class="ticker-badge">${t}</span>`).join('')}
+      </div>`
+    : '';
+
+  const insightsHtml = video.keyInsights?.length
+    ? `<div class="youtube-video-card__insights">
+        <p class="youtube-video-card__insights-title">Key Insights</p>
+        <ul class="youtube-video-card__insights-list">
+          ${video.keyInsights.map(insight => `<li>${insight}</li>`).join('')}
+        </ul>
+      </div>`
+    : '';
+
+  const thumbnailHtml = video.thumbnail && !video.thumbnail.includes('example')
+    ? `<img src="${video.thumbnail}" alt="${video.title}" onerror="this.parentElement.innerHTML='<div class=\\'youtube-video-card__thumbnail-placeholder\\'><svg viewBox=\\'0 0 24 24\\' fill=\\'currentColor\\'><path d=\\'M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z\\'/></svg></div>'">`
+    : `<div class="youtube-video-card__thumbnail-placeholder">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        </svg>
+      </div>`;
+
+  const videoUrl = `https://www.youtube.com/watch?v=${video.videoId}`;
+  const channelName = video.channelName || 'Unknown Channel';
+
+  return `
+    <article class="youtube-video-row" data-video-id="${video.videoId}">
+      <div class="youtube-video-row__header" onclick="toggleVideoDetails('${video.videoId}')">
+        <span class="youtube-video-row__expand-icon">▶</span>
+        <span class="youtube-video-row__channel badge source">${channelName}</span>
+        <span class="youtube-video-row__title">${video.title}</span>
+        <span class="youtube-video-row__tickers">${tickerSummary}</span>
+        <span class="youtube-video-row__date">${video.publishedAt}</span>
+      </div>
+      <div class="youtube-video-row__details" id="video-details-${video.videoId}">
+        <div class="youtube-video-card__expanded">
+          <a href="${videoUrl}" target="_blank" rel="noopener noreferrer" class="youtube-video-card__thumbnail-link">
+            <div class="youtube-video-card__thumbnail">
+              ${thumbnailHtml}
+              <div class="youtube-video-card__play-overlay">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+            </div>
+          </a>
+          <div class="youtube-video-card__content">
+            <p class="youtube-video-card__summary">${video.summary}</p>
+            <div class="youtube-video-card__tickers">
+              ${tickersBoughtHtml}
+              ${tickersRecommendedHtml}
+              ${tickersMentionedHtml}
+            </div>
+            ${insightsHtml}
+            <a href="${videoUrl}" target="_blank" rel="noopener noreferrer" class="youtube-video-card__watch-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+              Watch on YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+// Toggle video details expansion
+function toggleVideoDetails(videoId) {
+  const details = document.getElementById(`video-details-${videoId}`);
+  const row = details?.closest('.youtube-video-row');
+  if (!details || !row) return;
+  
+  const isExpanded = row.classList.contains('expanded');
+  
+  // Collapse all others first
+  document.querySelectorAll('.youtube-video-row.expanded').forEach(el => {
+    el.classList.remove('expanded');
+  });
+  
+  // Toggle this one
+  if (!isExpanded) {
+    row.classList.add('expanded');
+  }
+}
+
+function renderYouTubeVideos() {
+  if (!youtubeVideosContainer) return;
+
+  // Filter videos based on current source filter
+  let filteredVideos = youtubeVideosData;
+  if (currentSourceFilter !== 'all') {
+    filteredVideos = youtubeVideosData.filter(v => v.channelName === currentSourceFilter);
+  }
+
+  if (!filteredVideos.length) {
+    const filterMsg = currentSourceFilter !== 'all' 
+      ? `<p style="font-size: 0.85rem; margin-top: 0.5rem;">No videos from "${currentSourceFilter}". Try selecting "All Channels" in the filter.</p>`
+      : `<p style="font-size: 0.85rem; margin-top: 0.5rem;">Run the automation crew to fetch the latest videos from YouTube finance channels.</p>`;
+    
+    youtubeVideosContainer.innerHTML = `
+      <div class="youtube-error">
+        <p>No video data available.</p>
+        ${filterMsg}
+      </div>
+    `;
+    return;
+  }
+
+  youtubeVideosContainer.innerHTML = filteredVideos
+    .map((video, index) => renderYouTubeVideoCard(video, index))
+    .join('');
+}
+
+function openYouTubeModal() {
+  if (!youtubeModalEl) return;
+  renderYouTubeVideos();
+  youtubeModalEl.classList.remove('hidden');
+}
+
+function closeYouTubeModal() {
+  if (!youtubeModalEl) return;
+  youtubeModalEl.classList.add('hidden');
+}
+
+async function initYouTubeModal() {
+  youtubeModalEl = document.getElementById('youtube-modal');
+  youtubeVideosContainer = document.getElementById('youtube-videos-container');
+
+  const youtubeBtn = document.getElementById('youtube-videos-btn');
+  const youtubeCloseBtn = youtubeModalEl?.querySelector('.modal__close');
+  const youtubeBackdrop = youtubeModalEl?.querySelector('.modal__backdrop');
+
+  youtubeBtn?.addEventListener('click', openYouTubeModal);
+  youtubeCloseBtn?.addEventListener('click', closeYouTubeModal);
+  youtubeBackdrop?.addEventListener('click', closeYouTubeModal);
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && youtubeModalEl && !youtubeModalEl.classList.contains('hidden')) {
+      closeYouTubeModal();
+    }
+  });
+
+  // Pre-fetch YouTube videos data
+  await fetchYouTubeVideos();
 }
 
 window.addEventListener('DOMContentLoaded', initUndervaluationTable);
@@ -482,6 +824,7 @@ async function refreshLivePrices(stocks) {
 
       // If we've successfully fetched some prices, break the loop
       if (Object.keys(livePriceStore).length > 0) {
+        console.log(`✓ Fetched ${Object.keys(livePriceStore).length} live prices from ${endpoint.name}`);
         break;
       }
     } catch (error) {
@@ -495,9 +838,19 @@ async function refreshLivePrices(stocks) {
       const fallback = fallbackMap[ticker];
       if (typeof fallback === 'number') {
         livePriceStore[ticker] = fallback;
+        console.log(`Using fallback price for ${ticker}: $${fallback}`);
       }
     }
   });
 
+  // Update last fetched timestamp
+  const now = new Date();
+  const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+  const priceHeader = document.getElementById('live-price-header');
+  if (priceHeader) {
+    priceHeader.innerHTML = `Live Price <span style="font-size:0.6rem;opacity:0.7">(${timeStr})</span>`;
+  }
+
   renderTable();
+  renderChannelStats();
 }

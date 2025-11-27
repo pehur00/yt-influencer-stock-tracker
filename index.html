@@ -3,7 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Joseph Carlson Show - Stock Tracker</title>
+    <title>YT Influencer Stock Tracker</title>
+    <meta name="description" content="Track stock picks from top YouTube finance influencers. Aggregate recommendations, analyze valuations, and discover what the experts are buying." />
+    <meta name="keywords" content="stock tracker, YouTube finance, dividend investing, stock picks, DCF valuation" />
+    <meta property="og:title" content="YouTube Influencer Stock Tracker" />
+    <meta property="og:description" content="Track stock picks from top YouTube finance influencers. Aggregate recommendations and analyze valuations." />
+    <meta property="og:type" content="website" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -22,11 +27,11 @@
           <div
             class="rounded-3xl border border-border/60 bg-card/90 p-8 shadow-[0_25px_80px_rgba(0,0,0,0.45)] backdrop-blur"
           >
-            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary">The Joseph Carlson Show</p>
-            <h1 class="mt-3 text-4xl font-semibold leading-tight sm:text-5xl">Stock Tracker</h1>
+            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary">YouTube Finance</p>
+            <h1 class="mt-3 text-4xl font-semibold leading-tight sm:text-5xl">Influencer Stock Tracker</h1>
             <p class="mt-4 max-w-2xl text-base text-muted-foreground">
-              A comprehensive tracker for stocks featured on The Joseph Carlson Show, ranking dividend and growth stocks
-              by intrinsic value, quality metrics, and expected returns.
+              Track stock picks from top YouTube finance influencers. Aggregate recommendations, analyze valuations,
+              and discover what the experts are buying.
             </p>
             <dl class="mt-8 grid gap-4 sm:grid-cols-2">
               <div class="rounded-2xl border border-border/50 bg-background/40 p-4">
@@ -34,10 +39,20 @@
                 <dd class="mt-2 text-lg font-medium text-foreground">Dividend &amp; Growth</dd>
               </div>
               <div class="rounded-2xl border border-border/50 bg-background/40 p-4">
-                <dt class="text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-muted-foreground">Source</dt>
-                <dd class="mt-2 text-lg font-medium text-foreground">Joseph Carlson Channel</dd>
+                <dt class="text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-muted-foreground">Sources</dt>
+                <dd class="mt-2 text-lg font-medium text-foreground">Multiple Channels</dd>
               </div>
             </dl>
+            <button
+              id="youtube-videos-btn"
+              type="button"
+              class="mt-6 inline-flex items-center gap-3 rounded-2xl border border-[#ff0000]/40 bg-[#ff0000]/10 px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-[#ff0000]/20 hover:border-[#ff0000]/60 hover:shadow-[0_0_20px_rgba(255,0,0,0.2)]"
+            >
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+              Latest Videos &amp; Stock Picks
+            </button>
           </div>
           <div class="rounded-3xl border border-border/50 bg-muted/20 p-6 backdrop-blur">
             <div class="grid gap-4">
@@ -56,6 +71,22 @@
                   <span class="badge risk-speculative">Speculative</span>
                 </div>
               </div>
+              <label class="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">
+                Source
+                <div class="relative">
+                  <select
+                    id="source-filter"
+                    class="h-11 w-full rounded-2xl border border-border/60 bg-background/60 px-4 text-base font-medium text-foreground shadow-inner focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  >
+                    <option value="all" selected>All Channels</option>
+                  </select>
+                  <span
+                    class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-muted-foreground"
+                    aria-hidden="true"
+                    >&#9662;</span
+                  >
+                </div>
+              </label>
               <label class="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">
                 Sort by
                 <div class="relative">
@@ -95,6 +126,25 @@
             </div>
           </div>
         </section>
+        <section
+          id="channel-stats-section"
+          class="rounded-3xl border border-border/60 bg-card/60 px-6 py-5 shadow-[0_18px_50px_rgba(0,0,0,0.35)] backdrop-blur"
+        >
+          <div class="flex flex-col gap-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">Channel Performance</p>
+                <p class="mt-1 text-sm text-muted-foreground">PnL and stats for each YouTube channel's stock picks</p>
+              </div>
+            </div>
+            <div id="channel-stats-container" class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              <p class="text-sm text-muted-foreground">Loading channel stats...</p>
+            </div>
+          </div>
+        </section>
+            </div>
+          </div>
+        </section>
         <section class="rounded-3xl border border-border/70 bg-card/70 shadow-[0_25px_90px_rgba(0,0,0,0.35)]">
           <div class="border-b border-border/60 px-6 py-5">
             <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
@@ -112,9 +162,10 @@
                   <th>Category</th>
                   <th>Ticker</th>
                   <th>Name</th>
-                  <th>Automation Price</th>
+                  <th>Source</th>
+                  <th>Video Date</th>
                   <th>Initial Price</th>
-                  <th>Live Price</th>
+                  <th id="live-price-header">Live Price</th>
                   <th>PnL %</th>
                   <th>DCF Base</th>
                   <th>Value Rank</th>
@@ -128,7 +179,7 @@
             </table>
           </div>
           <p class="hint border-t border-border/60 px-6 py-4 text-sm text-muted-foreground">
-            Tip: automation price reflects the latest model run, while Initial Price locks in your first entry; Live Price and PnL% refresh directly from Yahoo Finance.
+            Tip: Initial Price is locked from the recommendation date; Live Price and PnL% refresh from market data.
           </p>
         </section>
       </main>
@@ -138,6 +189,19 @@
       <div class="modal__dialog">
         <button class="modal__close" aria-label="Close explanations">&times;</button>
         <div class="modal__content"></div>
+      </div>
+    </div>
+    <div id="youtube-modal" class="modal hidden">
+      <div class="modal__backdrop"></div>
+      <div class="modal__dialog youtube-modal__dialog">
+        <button class="modal__close" aria-label="Close videos">&times;</button>
+        <div class="youtube-modal__header">
+          <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          <h3>Latest Videos &amp; Stock Picks</h3>
+        </div>
+        <div id="youtube-videos-container" class="youtube-videos"></div>
       </div>
     </div>
     <script src="app.js"></script>

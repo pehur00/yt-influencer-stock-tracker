@@ -94,10 +94,12 @@ graph LR
 
 ## Tracked Stocks
 
-The automation currently tracks these tickers from The Joseph Carlson Show:
-- DUOL, CMG, ADBE, MELI, CRWV, CRM, SPGI, EFX, NFLX, ASML, MA
+The automation discovers and tracks tickers mentioned by YouTube finance influencers:
+- Currently configured channels are in `config/channels.json`
+- New tickers are automatically discovered from video analysis
+- Default tracked tickers: DUOL, CMG, ADBE, MELI, CRWV, CRM, SPGI, EFX, NFLX, ASML, MA
 
-To add/remove tickers, edit `TICKERS` list in `crew_config.py`.
+To add/remove tickers, edit `TICKERS` list in `crew_config.py` or the `data/stocks.json` file.
 
 ## Data Sources
 

@@ -1,35 +1,50 @@
 """
-Crew Configuration for Joseph Carlson Show Stock Tracker
-Orchestrates agents to fetch, analyze, and format stock data.
+Crew Configuration for YouTube Influencer Stock Tracker
+Orchestrates agents to fetch, analyze, and format stock data from multiple channels.
 """
 
 import os
+import json
 from datetime import datetime
 from crewai import Crew, Task, Process, LLM
 from agents.data_fetcher_agent import create_data_fetcher_agent
 from agents.analyst_agent import create_analyst_agent
 from agents.formatter_agent import create_formatter_agent
+from agents.youtube_agent import create_youtube_agent
 from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
 
 
-# List of tickers to track (defaulting to Joseph Carlson Show list)
+def load_prefetched_youtube_data():
+    """Load pre-fetched YouTube video data from file with full details."""
+    try:
+        with open("output/youtube_videos.json", "r") as f:
+            videos = json.load(f)
+            # Enrich with URLs
+            for v in videos:
+                v['url'] = f"https://www.youtube.com/watch?v={v.get('videoId', '')}"
+            return videos
+    except Exception as e:
+        print(f"Warning: Could not load pre-fetched YouTube data: {e}")
+        return None
+
+
+# Default tickers (fallback if none provided)
 DEFAULT_TICKERS = [
     "DUOL", "CMG", "ADBE", "MELI", "CRWV",
     "CRM", "SPGI", "EFX", "NFLX", "ASML", "MA"
 ]
-_tickers_env = os.getenv("CREW_TICKERS", os.getenv("TICKERS"))
-if _tickers_env:
-    parsed_tickers = [
-        t.strip().upper()
-        for t in _tickers_env.split(",")
-        if t.strip()
-    ]
-    TICKERS = parsed_tickers or DEFAULT_TICKERS
-else:
-    TICKERS = DEFAULT_TICKERS
+
+
+def get_tickers():
+    """Get tickers to analyze - reads from environment at call time."""
+    tickers_env = os.getenv("CREW_TICKERS", os.getenv("TICKERS"))
+    if tickers_env:
+        parsed = [t.strip().upper() for t in tickers_env.split(",") if t.strip()]
+        return parsed or DEFAULT_TICKERS
+    return DEFAULT_TICKERS
 
 
 def create_stock_tracker_crew():
@@ -64,11 +79,116 @@ def create_stock_tracker_crew():
     data_fetcher = create_data_fetcher_agent(llm)
     analyst = create_analyst_agent(llm)
     formatter = create_formatter_agent(llm)
+    youtube_researcher = create_youtube_agent(llm)
+
+    # Load pre-fetched YouTube video data with URLs
+    prefetched_videos = load_prefetched_youtube_data()
+    
+    # Build detailed video info for the task - includes pre-extracted tickers
+    if prefetched_videos:
+        video_details = []
+        for i, v in enumerate(prefetched_videos[:5]):
+            video_details.append(f"""
+Video {i+1}:
+  Title: "{v.get('title', '')}"
+  Video ID: {v.get('videoId', '')}
+  URL: {v.get('url', '')}
+  Date: {v.get('publishedAt', '')}
+  Pre-extracted tickers: {', '.join(v.get('tickersMentioned', [])) or 'None found'}
+  Pre-extracted bought: {', '.join(v.get('tickersBought', [])) or 'None found'}
+  Initial summary: {v.get('summary', '')}
+  Initial insights: {v.get('keyInsights', [])}""")
+        video_list = "\n".join(video_details)
+    else:
+        video_list = "No pre-fetched videos available."
 
     # Define tasks
+    youtube_task = Task(
+        description=f"""Analyze the following YouTube videos from finance influencers.
+
+        I've already extracted some initial data from video titles and descriptions.
+        Your job is to use your YoutubeVideoSearchTool to search within each video's 
+        actual transcript/content and ENHANCE the analysis with better summaries and 
+        any additional tickers or insights.
+
+        PRE-FETCHED VIDEO DATA:
+        {video_list}
+
+        For EACH video:
+        1. Use YoutubeVideoSearchTool with the video URL to search for stock mentions
+        2. Search queries to try: "bought buying", "recommend", ticker symbols
+        3. Compare what you find with the pre-extracted data
+        4. Create an enhanced summary that's more detailed and insightful
+        5. Add any additional tickers or insights you discover
+
+        Return for each video:
+        - videoId (KEEP EXACTLY AS PROVIDED)
+        - title (keep as provided)
+        - tickersMentioned (combine pre-extracted + any new ones you find)
+        - tickersBought (stocks he explicitly says he bought)
+        - tickersRecommended (stocks he recommends)
+        - summary (YOUR enhanced 2-3 sentence summary - make it more specific)
+        - keyInsights (YOUR enhanced list of 2-3 actionable insights)
+
+        Focus on making the summaries and insights more specific and valuable than 
+        the generic pre-extracted ones.""",
+        agent=youtube_researcher,
+        expected_output="Enhanced analysis for each video with better summaries and complete ticker lists"
+    )
+
+    # Build video ID reference for formatter
+    if prefetched_videos:
+        video_id_list = ", ".join([v['videoId'] for v in prefetched_videos[:5]])
+        video_reference = "\n".join([
+            f"        Video {i+1}: videoId=\"{v['videoId']}\", title=\"{v['title']}\""
+            for i, v in enumerate(prefetched_videos[:5])
+        ])
+    else:
+        video_id_list = "unknown"
+        video_reference = "No video reference available"
+
+    youtube_format_task = Task(
+        description=f"""Format the YouTube video analysis into a valid JSON array
+        following this exact structure:
+
+        [
+          {{
+            "videoId": "EXACT VIDEO ID - DO NOT CHANGE",
+            "title": "Video Title",
+            "publishedAt": "YYYY-MM-DD",
+            "thumbnail": "https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg",
+            "tickersMentioned": ["AAPL", "MSFT"],
+            "tickersBought": ["AAPL"],
+            "tickersRecommended": ["MSFT"],
+            "summary": "Brief 2-3 sentence summary of video content",
+            "keyInsights": ["Insight 1", "Insight 2"]
+          }}
+        ]
+
+        VIDEO REFERENCE (use these exact video IDs):
+{video_reference}
+
+        CRITICAL REQUIREMENTS:
+        - Use the EXACT videoId values listed above - do NOT change them
+        - thumbnail URL format: https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg
+        - All ticker symbols should be uppercase (e.g., AAPL, GOOGL, NVDA)
+        - summary should be 2-3 sentences about the investment content
+        - keyInsights should be actionable takeaways from the video
+        - Output ONLY valid JSON array, no commentary or markdown
+
+        Save the output to output/youtube_videos.json""",
+        agent=formatter,
+        expected_output="Valid JSON array saved to output/youtube_videos.json with correct video IDs",
+        context=[youtube_task],
+        output_file="output/youtube_videos.json"
+    )
+
+    # Get tickers dynamically at crew creation time
+    tickers = get_tickers()
+
     fetch_task = Task(
         description=f"""Fetch the latest stock prices and basic financial metrics
-        for the following tickers: {', '.join(TICKERS)}.
+        for the following tickers: {', '.join(tickers)}.
 
         For each ticker, gather:
         - Current stock price (in USD)
@@ -159,8 +279,8 @@ def create_stock_tracker_crew():
 
     # Create and return the crew
     crew = Crew(
-        agents=[data_fetcher, analyst, formatter],
-        tasks=[fetch_task, analysis_task, format_task],
+        agents=[data_fetcher, analyst, formatter, youtube_researcher],
+        tasks=[youtube_task, youtube_format_task, fetch_task, analysis_task, format_task],
         process=Process.sequential,  # Tasks run in order
         verbose=True,
     )
@@ -169,8 +289,8 @@ def create_stock_tracker_crew():
 
 
 if __name__ == "__main__":
-    print("Starting Joseph Carlson Show Stock Tracker Crew...")
-    print(f"Analyzing tickers: {', '.join(TICKERS)}")
+    print("Starting YouTube Influencer Stock Tracker Crew...")
+    print(f"Analyzing tickers: {', '.join(get_tickers())}")
     print("-" * 60)
 
     crew = create_stock_tracker_crew()

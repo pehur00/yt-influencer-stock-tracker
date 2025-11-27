@@ -302,8 +302,12 @@ body {
 .data-table thead {
   background: var(--color-surface);
   position: sticky;
-  top: 56px;
+  top: 0;
   z-index: 10;
+}
+
+.data-table thead th {
+  background: var(--color-surface);
 }
 
 .data-table th {

@@ -1,144 +1,424 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html><!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>YT Influencer Stock Tracker</title>
-    <meta name="description" content="Track stock picks from top YouTube finance influencers. Aggregate recommendations, analyze valuations, and discover what the experts are buying." />
-    <meta name="keywords" content="stock tracker, YouTube finance, dividend investing, stock picks, DCF valuation" />
-    <meta property="og:title" content="YouTube Influencer Stock Tracker" />
-    <meta property="og:description" content="Track stock picks from top YouTube finance influencers. Aggregate recommendations and analyze valuations." />
-    <meta property="og:type" content="website" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body class="min-h-screen bg-background text-foreground antialiased">
-    <div class="relative isolate overflow-hidden">
-      <div
-        class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[520px] bg-gradient-to-b from-[#f48d4a40] via-[#111]/5 to-transparent blur-3xl"
-      ></div>
-      <main class="app container relative z-10 flex flex-col gap-6 pb-16 pt-10">
-        <header class="grid gap-6 lg:grid-cols-[minmax(0,3fr)_minmax(280px,2fr)]">
-          <div
-            class="rounded-3xl border border-border/60 bg-card/90 p-8 shadow-[0_25px_80px_rgba(0,0,0,0.45)] backdrop-blur"
-          >
-            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary">YouTube Finance</p>
-            <h1 class="mt-3 text-4xl font-semibold leading-tight sm:text-5xl">Influencer Stock Tracker</h1>
-            <p class="mt-4 max-w-2xl text-base text-muted-foreground">
-              Track stock picks from top YouTube finance influencers. Aggregate recommendations, analyze valuations,
-              and discover what the experts are buying.
-            </p>
-            <dl class="mt-8 grid gap-4 sm:grid-cols-2">
-              <div class="rounded-2xl border border-border/50 bg-background/40 p-4">
-                <dt class="text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-muted-foreground">Focus</dt>
-                <dd class="mt-2 text-lg font-medium text-foreground">Dividend &amp; Growth</dd>
-              </div>
-              <div class="rounded-2xl border border-border/50 bg-background/40 p-4">
-                <dt class="text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-muted-foreground">Sources</dt>
-                <dd class="mt-2 text-lg font-medium text-foreground">Multiple Channels</dd>
-              </div>
-            </dl>
-            <button
-              id="youtube-videos-btn"
-              type="button"
-              class="mt-6 inline-flex items-center gap-3 rounded-2xl border border-[#ff0000]/40 bg-[#ff0000]/10 px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-[#ff0000]/20 hover:border-[#ff0000]/60 hover:shadow-[0_0_20px_rgba(255,0,0,0.2)]"
-            >
-              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-              </svg>
-              Latest Videos &amp; Stock Picks
-            </button>
-          </div>
-          <div class="rounded-3xl border border-border/50 bg-muted/20 p-6 backdrop-blur">
-            <div class="grid gap-4">
-              <div class="rounded-2xl border border-border/40 bg-background/40 p-4">
-                <p class="text-xs uppercase tracking-[0.3em] text-muted-foreground">Quality Vector</p>
-                <p class="mt-2 text-sm text-muted-foreground">
-                  Average of FCF Quality and ROIC Strength per ticker for a quick view of resilience.
-                </p>
-              </div>
-              <div class="rounded-2xl border border-border/40 bg-background/40 p-4">
-                <p class="text-xs uppercase tracking-[0.3em] text-muted-foreground">Risk Palette</p>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  <span class="badge risk-low">Low</span>
-                  <span class="badge risk-moderate">Moderate</span>
-                  <span class="badge risk-high">High</span>
-                  <span class="badge risk-speculative">Speculative</span>
-                </div>
-              </div>
-              <label class="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">
-                Source
-                <div class="relative">
-                  <select
-                    id="source-filter"
+
+<head><html lang="en"><html lang="en">
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  <head>  <head>
+
+  <title>YT Influencer Stock Tracker</title>
+
+  <meta name="description" content="Track stock picks from top YouTube finance influencers. Aggregate recommendations, analyze valuations, and discover what the experts are buying." />    <meta charset="UTF-8" />    <meta charset="UTF-8" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />    <title>YT Influencer Stock Tracker</title>    <title>YT Influencer Stock Tracker</title>
+
+</head>
+
+<body>    <meta name="description" content="Track stock picks from top YouTube finance influencers. Aggregate recommendations, analyze valuations, and discover what the experts are buying." />    <meta name="description" content="Track stock picks from top YouTube finance influencers. Aggregate recommendations, analyze valuations, and discover what the experts are buying." />
+
+  <!-- Header -->
+
+  <header class="header">    <meta name="keywords" content="stock tracker, YouTube finance, dividend investing, stock picks, DCF valuation" />    <meta name="keywords" content="stock tracker, YouTube finance, dividend investing, stock picks, DCF valuation" />
+
+    <div class="container header__inner">
+
+      <div class="header__brand">    <meta property="og:title" content="YouTube Influencer Stock Tracker" />    <meta property="og:title" content="YouTube Influencer Stock Tracker" />
+
+        <svg class="header__logo" viewBox="0 0 24 24" fill="currentColor">
+
+          <path d="M3 3h18v18H3V3zm16 16V5H5v14h14zM7 7h4v4H7V7zm0 6h10v4H7v-4zm6-6h4v4h-4V7z"/>    <meta property="og:description" content="Track stock picks from top YouTube finance influencers. Aggregate recommendations and analyze valuations." />    <meta property="og:description" content="Track stock picks from top YouTube finance influencers. Aggregate recommendations and analyze valuations." />
+
+        </svg>
+
+        <span class="header__title">YT Stock Tracker</span>    <meta property="og:type" content="website" />    <meta property="og:type" content="website" />
+
+      </div>
+
+      <nav class="header__nav">    <link rel="preconnect" href="https://fonts.googleapis.com" />    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+        <button id="youtube-videos-btn" class="btn btn--youtube" type="button">
+
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+
+          </svg>    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />    <link
+
+          Videos
+
+        </button>    <link rel="stylesheet" href="styles.css" />      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+
+      </nav>
+
+    </div>  </head>      rel="stylesheet"
+
+  </header>
+
+  <body>    />
+
+  <main class="main">
+
+    <div class="container">    <header class="top-bar">    <link rel="stylesheet" href="styles.css" />
+
+      <!-- Stats Bar -->
+
+      <section class="stats-bar">      <div class="container">  </head>
+
+        <div class="stat-item">
+
+          <span class="stat-label">Focus</span>        <div class="top-bar__brand">  <body class="min-h-screen bg-background text-foreground antialiased">
+
+          <span class="stat-value">Dividend & Growth</span>
+
+        </div>          <svg class="top-bar__logo" viewBox="0 0 24 24" fill="currentColor">    <div class="relative isolate overflow-hidden">
+
+        <div class="stat-item">
+
+          <span class="stat-label">Sources</span>            <path d="M3 3h18v18H3V3zm16 16V5H5v14h14zM7 7h4v4H7V7zm0 6h10v4H7v-4zm6-6h4v4h-4V7z"/>      <div
+
+          <span class="stat-value">6 Channels</span>
+
+        </div>          </svg>        class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[520px] bg-gradient-to-b from-[#f48d4a40] via-[#111]/5 to-transparent blur-3xl"
+
+        <div class="stat-item stat-item--filters">
+
+          <label class="filter-group">          <span class="top-bar__title">YT Stock Tracker</span>      ></div>
+
+            <span class="filter-label">Channel</span>
+
+            <select id="source-filter" class="filter-select">        </div>      <main class="app container relative z-10 flex flex-col gap-6 pb-16 pt-10">
+
+              <option value="all" selected>All Channels</option>
+
+            </select>        <nav class="top-bar__nav">        <header class="grid gap-6 lg:grid-cols-[minmax(0,3fr)_minmax(280px,2fr)]">
+
+          </label>
+
+          <label class="filter-group">          <button id="youtube-videos-btn" class="nav-btn nav-btn--youtube">          <div
+
+            <span class="filter-label">Sort by</span>
+
+            <select id="sort-select" class="filter-select">            <svg viewBox="0 0 24 24" fill="currentColor">            class="rounded-3xl border border-border/60 bg-card/90 p-8 shadow-[0_25px_80px_rgba(0,0,0,0.45)] backdrop-blur"
+
+              <option value="undervaluationScore" selected>Undervaluation</option>
+
+              <option value="valueRank">Value Rank</option>              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>          >
+
+              <option value="expectedReturn">Expected Return</option>
+
+              <option value="pnlPercent">PnL %</option>            </svg>            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary">YouTube Finance</p>
+
+              <option value="price">Price</option>
+
+            </select>            Videos            <h1 class="mt-3 text-4xl font-semibold leading-tight sm:text-5xl">Influencer Stock Tracker</h1>
+
+          </label>
+
+        </div>          </button>            <p class="mt-4 max-w-2xl text-base text-muted-foreground">
+
+      </section>
+
+        </nav>              Track stock picks from top YouTube finance influencers. Aggregate recommendations, analyze valuations,
+
+      <!-- Channel Performance -->
+
+      <section class="card" id="channel-stats-section">      </div>              and discover what the experts are buying.
+
+        <div class="card__header">
+
+          <h2 class="card__title">Channel Performance</h2>    </header>            </p>
+
+          <p class="card__subtitle">PnL and stats for each YouTube channel's stock picks</p>
+
+        </div>            <dl class="mt-8 grid gap-4 sm:grid-cols-2">
+
+        <div id="channel-stats-container" class="channel-grid">
+
+          <p class="loading-text">Loading channel stats...</p>    <main class="main-content">              <div class="rounded-2xl border border-border/50 bg-background/40 p-4">
+
+        </div>
+
+      </section>      <div class="container">                <dt class="text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-muted-foreground">Focus</dt>
+
+
+
+      <!-- Stock Table -->        <!-- Hero Stats Bar -->                <dd class="mt-2 text-lg font-medium text-foreground">Dividend &amp; Growth</dd>
+
+      <section class="card card--table">
+
+        <div class="card__header">        <section class="stats-bar">              </div>
+
+          <h2 class="card__title">Stock Picks</h2>
+
+          <p class="card__subtitle" id="live-price-header">Click any row to see detailed analysis</p>          <div class="stat-item">              <div class="rounded-2xl border border-border/50 bg-background/40 p-4">
+
+        </div>
+
+        <div class="table-wrapper">            <span class="stat-label">Focus</span>                <dt class="text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-muted-foreground">Sources</dt>
+
+          <table id="stock-table" class="data-table">
+
+            <thead>            <span class="stat-value">Dividend & Growth</span>                <dd class="mt-2 text-lg font-medium text-foreground">Multiple Channels</dd>
+
+              <tr>
+
+                <th>Category</th>          </div>              </div>
+
+                <th>Ticker</th>
+
+                <th>Name</th>          <div class="stat-item">            </dl>
+
+                <th>Source</th>
+
+                <th>Video Date</th>            <span class="stat-label">Sources</span>            <button
+
+                <th class="text-right">Initial</th>
+
+                <th class="text-right">Live Price</th>            <span class="stat-value">6 Channels</span>              id="youtube-videos-btn"
+
+                <th class="text-right">PnL %</th>
+
+                <th class="text-right">DCF Base</th>          </div>              type="button"
+
+                <th class="text-center">Value</th>
+
+                <th class="text-center">Quality</th>          <div class="stat-item stat-item--filters">              class="mt-6 inline-flex items-center gap-3 rounded-2xl border border-[#ff0000]/40 bg-[#ff0000]/10 px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-[#ff0000]/20 hover:border-[#ff0000]/60 hover:shadow-[0_0_20px_rgba(255,0,0,0.2)]"
+
+                <th class="text-center">Score</th>
+
+                <th>Risk</th>            <label class="filter-group">            >
+
+                <th>Updated</th>
+
+              </tr>              <span class="filter-label">Channel</span>              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+
+            </thead>
+
+            <tbody></tbody>              <select id="source-filter" class="filter-select">                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+
+          </table>
+
+        </div>                <option value="all" selected>All Channels</option>              </svg>
+
+        <div class="card__footer">
+
+          <p>Initial Price is from the video recommendation date. Live Price refreshes from market data.</p>              </select>              Latest Videos &amp; Stock Picks
+
+        </div>
+
+      </section>            </label>            </button>
+
+    </div>
+
+  </main>            <label class="filter-group">          </div>
+
+
+
+  <!-- Explanation Modal -->              <span class="filter-label">Sort by</span>          <div class="rounded-3xl border border-border/50 bg-muted/20 p-6 backdrop-blur">
+
+  <div id="explanation-modal" class="modal hidden">
+
+    <div class="modal__backdrop"></div>              <select id="sort-select" class="filter-select">            <div class="grid gap-4">
+
+    <div class="modal__dialog">
+
+      <button class="modal__close" aria-label="Close">&times;</button>                <option value="undervaluationScore" selected>Undervaluation</option>              <div class="rounded-2xl border border-border/40 bg-background/40 p-4">
+
+      <div class="modal__content"></div>
+
+    </div>                <option value="valueRank">Value Rank</option>                <p class="text-xs uppercase tracking-[0.3em] text-muted-foreground">Quality Vector</p>
+
+  </div>
+
+                <option value="expectedReturn">Expected Return</option>                <p class="mt-2 text-sm text-muted-foreground">
+
+  <!-- YouTube Modal -->
+
+  <div id="youtube-modal" class="modal hidden">                <option value="pnlPercent">PnL %</option>                  Average of FCF Quality and ROIC Strength per ticker for a quick view of resilience.
+
+    <div class="modal__backdrop"></div>
+
+    <div class="modal__dialog modal__dialog--wide">                <option value="price">Price</option>                </p>
+
+      <button class="modal__close" aria-label="Close">&times;</button>
+
+      <div class="youtube-modal__header">              </select>              </div>
+
+        <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>            </label>              <div class="rounded-2xl border border-border/40 bg-background/40 p-4">
+
+        </svg>
+
+        <h3>Latest Videos & Stock Picks</h3>          </div>                <p class="text-xs uppercase tracking-[0.3em] text-muted-foreground">Risk Palette</p>
+
+      </div>
+
+      <div id="youtube-videos-container" class="youtube-videos"></div>        </section>                <div class="mt-3 flex flex-wrap gap-2">
+
+    </div>
+
+  </div>                  <span class="badge risk-low">Low</span>
+
+
+
+  <script src="app.js"></script>        <!-- Channel Performance -->                  <span class="badge risk-moderate">Moderate</span>
+
+</body>
+
+</html>        <section class="card" id="channel-stats-section">                  <span class="badge risk-high">High</span>
+
+
+          <div class="card__header">                  <span class="badge risk-speculative">Speculative</span>
+
+            <h2 class="card__title">Channel Performance</h2>                </div>
+
+            <p class="card__subtitle">PnL and stats for each YouTube channel's stock picks</p>              </div>
+
+          </div>              <label class="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">
+
+          <div id="channel-stats-container" class="channel-grid">                Source
+
+            <p class="loading-text">Loading channel stats...</p>                <div class="relative">
+
+          </div>                  <select
+
+        </section>                    id="source-filter"
+
                     class="h-11 w-full rounded-2xl border border-border/60 bg-background/60 px-4 text-base font-medium text-foreground shadow-inner focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                  >
-                    <option value="all" selected>All Channels</option>
-                  </select>
-                  <span
-                    class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-muted-foreground"
-                    aria-hidden="true"
-                    >&#9662;</span
-                  >
-                </div>
-              </label>
-              <label class="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">
-                Sort by
-                <div class="relative">
-                  <select
-                    id="sort-select"
-                    class="h-11 w-full rounded-2xl border border-border/60 bg-background/60 px-4 text-base font-medium text-foreground shadow-inner focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                  >
-                    <option value="undervaluationScore" selected>Undervaluation Score</option>
-                    <option value="valueRank">Value Rank</option>
-                    <option value="expectedReturn">Expected Return</option>
-                    <option value="price">Price</option>
-                  </select>
-                  <span
-                    class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-muted-foreground"
-                    aria-hidden="true"
-                    >&#9662;</span
-                  >
-                </div>
-              </label>
-            </div>
-          </div>
-        </header>
-        <section
-          class="rounded-3xl border border-border/60 bg-card/60 px-6 py-5 shadow-[0_18px_50px_rgba(0,0,0,0.35)] backdrop-blur"
+
+        <!-- Stock Table -->                  >
+
+        <section class="card card--table">                    <option value="all" selected>All Channels</option>
+
+          <div class="card__header">                  </select>
+
+            <h2 class="card__title">Stock Picks</h2>                  <span
+
+            <p class="card__subtitle" id="live-price-header">Click any row to see detailed analysis</p>                    class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-muted-foreground"
+
+          </div>                    aria-hidden="true"
+
+          <div class="table-wrapper">                    >&#9662;</span
+
+            <table id="stock-table" class="data-table">                  >
+
+              <thead>                </div>
+
+                <tr>              </label>
+
+                  <th>Symbol</th>              <label class="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">
+
+                  <th>Name</th>                Sort by
+
+                  <th>Category</th>                <div class="relative">
+
+                  <th>Source</th>                  <select
+
+                  <th>Video Date</th>                    id="sort-select"
+
+                  <th class="text-right">Initial</th>                    class="h-11 w-full rounded-2xl border border-border/60 bg-background/60 px-4 text-base font-medium text-foreground shadow-inner focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+
+                  <th class="text-right">Live Price</th>                  >
+
+                  <th class="text-right">Change %</th>                    <option value="undervaluationScore" selected>Undervaluation Score</option>
+
+                  <th class="text-right">DCF Base</th>                    <option value="valueRank">Value Rank</option>
+
+                  <th class="text-center">Value</th>                    <option value="expectedReturn">Expected Return</option>
+
+                  <th class="text-center">Quality</th>                    <option value="price">Price</option>
+
+                  <th class="text-center">Score</th>                  </select>
+
+                  <th>Risk</th>                  <span
+
+                </tr>                    class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-muted-foreground"
+
+              </thead>                    aria-hidden="true"
+
+              <tbody></tbody>                    >&#9662;</span
+
+            </table>                  >
+
+          </div>                </div>
+
+          <div class="card__footer">              </label>
+
+            <p>Initial Price is from the video recommendation date. Live Price refreshes from market data.</p>            </div>
+
+          </div>          </div>
+
+        </section>        </header>
+
+      </div>        <section
+
+    </main>          class="rounded-3xl border border-border/60 bg-card/60 px-6 py-5 shadow-[0_18px_50px_rgba(0,0,0,0.35)] backdrop-blur"
+
         >
-          <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">Legend</p>
-              <p class="mt-1 max-w-xl text-sm text-muted-foreground">
-                Risk palette mirrors shadcn badge styling, while the quality vector shows how durable the cash flows
-                look based on FCF + ROIC averages.
-              </p>
-            </div>
+
+    <!-- Explanation Modal -->          <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+
+    <div id="explanation-modal" class="modal hidden">            <div>
+
+      <div class="modal__backdrop"></div>              <p class="text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">Legend</p>
+
+      <div class="modal__dialog">              <p class="mt-1 max-w-xl text-sm text-muted-foreground">
+
+        <button class="modal__close" aria-label="Close">&times;</button>                Risk palette mirrors shadcn badge styling, while the quality vector shows how durable the cash flows
+
+        <div class="modal__content"></div>                look based on FCF + ROIC averages.
+
+      </div>              </p>
+
+    </div>            </div>
+
             <div class="flex flex-wrap gap-2 text-xs text-muted-foreground">
-              <span class="rounded-full border border-border/40 px-3 py-1">Dividend = blue badge</span>
-              <span class="rounded-full border border-border/40 px-3 py-1">Growth = violet badge</span>
-            </div>
-          </div>
-        </section>
-        <section
-          id="channel-stats-section"
-          class="rounded-3xl border border-border/60 bg-card/60 px-6 py-5 shadow-[0_18px_50px_rgba(0,0,0,0.35)] backdrop-blur"
-        >
-          <div class="flex flex-col gap-4">
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">Channel Performance</p>
-                <p class="mt-1 text-sm text-muted-foreground">PnL and stats for each YouTube channel's stock picks</p>
+
+    <!-- YouTube Modal -->              <span class="rounded-full border border-border/40 px-3 py-1">Dividend = blue badge</span>
+
+    <div id="youtube-modal" class="modal hidden">              <span class="rounded-full border border-border/40 px-3 py-1">Growth = violet badge</span>
+
+      <div class="modal__backdrop"></div>            </div>
+
+      <div class="modal__dialog modal__dialog--wide">          </div>
+
+        <button class="modal__close" aria-label="Close">&times;</button>        </section>
+
+        <div class="youtube-modal__header">        <section
+
+          <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">          id="channel-stats-section"
+
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>          class="rounded-3xl border border-border/60 bg-card/60 px-6 py-5 shadow-[0_18px_50px_rgba(0,0,0,0.35)] backdrop-blur"
+
+          </svg>        >
+
+          <h3>Latest Videos & Stock Picks</h3>          <div class="flex flex-col gap-4">
+
+        </div>            <div class="flex items-center justify-between">
+
+        <div id="youtube-videos-container" class="youtube-videos"></div>              <div>
+
+      </div>                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">Channel Performance</p>
+
+    </div>                <p class="mt-1 text-sm text-muted-foreground">PnL and stats for each YouTube channel's stock picks</p>
+
               </div>
-            </div>
-            <div id="channel-stats-container" class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              <p class="text-sm text-muted-foreground">Loading channel stats...</p>
+
+    <script src="app.js"></script>            </div>
+
+  </body>            <div id="channel-stats-container" class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+
+</html>              <p class="text-sm text-muted-foreground">Loading channel stats...</p>
+
             </div>
           </div>
         </section>

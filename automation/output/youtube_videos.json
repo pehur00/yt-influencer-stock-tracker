@@ -6,28 +6,28 @@
     "thumbnail": "https://img.youtube.com/vi/hl6Pjwp4xG8/maxresdefault.jpg",
     "channelId": "channel-id",
     "channelName": "Channel Name",
-    "sentiment": "neutral",
-    "tickersMentioned": ["T"],
-    "tickersBought": [],
-    "tickersRecommended": [],
+    "sentiment": "bullish",
+    "tickersMentioned": ["NVDA", "TSLA", "ADBE", "T"],
+    "tickersBought": ["NVDA", "TSLA"],
+    "tickersRecommended": ["ADBE"],
     "tickersCautioned": [],
-    "summary": "The creator discusses T as an undervalued stock but does not explicitly recommend buying it or indicate any personal purchases. The analysis remains neutral without strong buy or sell signals.",
-    "keyInsights": ["The video provides insights into T's current valuation but lacks actionable recommendations for viewers."]
+    "summary": "The creator expresses a bullish sentiment towards NVDA and TSLA, stating they have bought these stocks. They recommend considering ADBE as an undervalued stock worth looking into.",
+    "keyInsights": ["The creator believes NVDA and TSLA are strong buys due to their potential for recovery and growth.", "ADBE is highlighted as a stock that could be undervalued."]
   },
   {
     "videoId": "S115YsuWX8g",
-    "title": "URGENT: Is AMD Stock a Buy, Sell, or Hold After the Plunge?",
+    "title": "Is This Growth Stock Still a Buy After a 20% Pullback?",
     "publishedAt": "2023-10-01",
     "thumbnail": "https://img.youtube.com/vi/S115YsuWX8g/maxresdefault.jpg",
     "channelId": "channel-id",
     "channelName": "Channel Name",
     "sentiment": "neutral",
-    "tickersMentioned": ["T", "AMD"],
+    "tickersMentioned": ["AMD", "NVDA", "TSLA", "T"],
     "tickersBought": [],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "summary": "The creator analyzes AMD's recent performance and discusses T, but does not provide a clear recommendation to buy or sell either stock. The sentiment remains neutral as they weigh the pros and cons.",
-    "keyInsights": ["The video serves as an analysis of AMD's situation without definitive investment advice."]
+    "summary": "The creator analyzes AMD, NVDA, and TSLA but does not express a strong recommendation to buy any of these stocks. The discussion remains neutral without any personal buying or selling actions mentioned.",
+    "keyInsights": ["The creator provides insights into the performance of AMD, NVDA, and TSLA but does not advocate for any immediate buying or selling actions."]
   },
   {
     "videoId": "eQ1A5Sr7JHI",
@@ -36,13 +36,13 @@
     "thumbnail": "https://img.youtube.com/vi/eQ1A5Sr7JHI/maxresdefault.jpg",
     "channelId": "channel-id",
     "channelName": "Channel Name",
-    "sentiment": "neutral",
-    "tickersMentioned": ["V", "NOW", "D"],
-    "tickersBought": [],
+    "sentiment": "bullish",
+    "tickersMentioned": ["NOW", "V", "MO", "D"],
+    "tickersBought": ["NOW", "V"],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "summary": "The creator discusses V, NOW, and D as beaten-down stocks but does not explicitly recommend buying any of them. The analysis is more of a review rather than a strong buy signal.",
-    "keyInsights": ["The video highlights stocks that may be undervalued but lacks actionable recommendations for viewers."]
+    "summary": "The creator is bullish on NOW and V, stating they have bought these stocks. They discuss the potential for recovery in these companies but do not recommend any specific stocks for viewers to consider.",
+    "keyInsights": ["NOW and V are highlighted as good buying opportunities based on their current valuations.", "The creator expresses confidence in their recovery."]
   },
   {
     "videoId": "ovIom8GbQXM",
@@ -52,12 +52,12 @@
     "channelId": "channel-id",
     "channelName": "Channel Name",
     "sentiment": "bullish",
-    "tickersMentioned": ["T", "NVDA", "AMD", "NOW", "PLTR"],
-    "tickersBought": ["T", "NVDA"],
-    "tickersRecommended": ["AMD", "NOW", "PLTR"],
+    "tickersMentioned": ["NVDA", "AMD", "NOW", "PLTR", "GOOGL", "T"],
+    "tickersBought": ["NVDA", "AMD"],
+    "tickersRecommended": ["NOW", "PLTR", "GOOGL"],
     "tickersCautioned": [],
-    "summary": "The creator expresses a bullish sentiment, stating they are buying T and NVDA, while also recommending AMD, NOW, and PLTR for viewers to consider. The video emphasizes a positive outlook on these stocks.",
-    "keyInsights": ["The creator's personal purchases and recommendations provide actionable insights for viewers looking to invest in these stocks."]
+    "summary": "The creator is bullish on NVDA and AMD, stating they have bought these stocks. They recommend viewers consider NOW, PLTR, and GOOGL as strong investment opportunities.",
+    "keyInsights": ["The creator emphasizes the potential of NVDA and AMD.", "NOW, PLTR, and GOOGL are worth considering for investment due to their growth prospects."]
   },
   {
     "videoId": "aCX8pJPCy1s",
@@ -66,12 +66,12 @@
     "thumbnail": "https://img.youtube.com/vi/aCX8pJPCy1s/maxresdefault.jpg",
     "channelId": "channel-id",
     "channelName": "Channel Name",
-    "sentiment": "neutral",
-    "tickersMentioned": [],
-    "tickersBought": [],
+    "sentiment": "bullish",
+    "tickersMentioned": ["SHEL", "SHELL", "TGT"],
+    "tickersBought": ["SHEL", "SHELL"],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "summary": "The creator discusses AI-related investment opportunities but does not mention specific stocks or provide recommendations. The sentiment remains neutral as the focus is on broader trends rather than specific investments.",
-    "keyInsights": ["The video highlights the potential of AI investments but lacks specific actionable advice for viewers."]
+    "summary": "The creator expresses a bullish sentiment towards SHEL and SHELL, stating they have bought these stocks. They discuss the potential for growth in these companies but do not recommend any additional stocks.",
+    "keyInsights": ["The creator believes SHEL and SHELL are solid investments.", "Encouraging viewers to consider these stocks for their portfolios."]
   }
 ]

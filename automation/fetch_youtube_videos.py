@@ -208,7 +208,8 @@ def analyze_title_for_buying(title):
     CrewAI transcript analysis will do the full sentiment analysis.
     """
     title_lower = title.lower()
-    buying_keywords = ['buying', 'bought', "i'm buying", 'i bought', 'adding', 'added']
+    buying_keywords = ['buying', 'bought', "i'm buying", 'i bought', 'adding', 'added', 
+                       'buy now', 'to buy', 'stocks to buy', 'buy this', 'i buy', 'dca']
     return any(kw in title_lower for kw in buying_keywords)
 
 

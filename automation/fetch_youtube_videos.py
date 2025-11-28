@@ -98,6 +98,42 @@ def analyze_title_for_buying(title):
     return any(kw in title_lower for kw in buying_keywords)
 
 
+def analyze_title_sentiment(title):
+    """
+    Analyze title to determine overall sentiment toward mentioned stocks.
+    Returns: 'bullish', 'bearish', or 'neutral'
+    """
+    title_lower = title.lower()
+    
+    # Bearish/warning signals
+    bearish_keywords = [
+        'sell', 'selling', 'sold', 'dump', 'dumping', 'crash', 'avoid', 
+        'overvalued', 'bubble', 'warning', 'danger', 'killed', 'dead',
+        'time to sell', 'stay away', "don't buy", 'falling', 'plunge',
+        'bearish', 'short', 'puts'
+    ]
+    
+    # Bullish/buying signals
+    bullish_keywords = [
+        'buy', 'buying', 'bought', 'adding', 'added', 'undervalued',
+        'opportunity', 'bullish', 'moon', 'soar', 'best stock',
+        'must own', 'time to buy', 'great deal', 'bargain', 'calls'
+    ]
+    
+    bearish_count = sum(1 for kw in bearish_keywords if kw in title_lower)
+    bullish_count = sum(1 for kw in bullish_keywords if kw in title_lower)
+    
+    # Question marks with negative words suggest caution
+    if '?' in title and bearish_count > 0:
+        bearish_count += 1
+    
+    if bearish_count > bullish_count:
+        return 'bearish'
+    elif bullish_count > bearish_count:
+        return 'bullish'
+    return 'neutral'
+
+
 def generate_summary_from_title(title, tickers, channel_name):
     """Generate a summary based on the video title and found tickers."""
     title_lower = title.lower()
@@ -218,16 +254,32 @@ def fetch_channel_videos(channel, max_videos=5, fetch_details=True):
                         upload_date = datetime.now().strftime("%Y-%m-%d")
                         print(f"      Warning: Could not get upload date, using today")
                     
-                    # Determine if buying
+                    # Analyze sentiment and determine buying/recommending
+                    sentiment = analyze_title_sentiment(title)
                     is_buying = analyze_title_for_buying(title)
-                    tickers_bought = all_tickers[:2] if is_buying else []
+                    
+                    # Only mark as bought/recommended if sentiment is bullish or neutral
+                    tickers_bought = []
+                    tickers_recommended = []
+                    
+                    if sentiment == 'bullish':
+                        tickers_bought = all_tickers[:2] if is_buying else []
+                        tickers_recommended = all_tickers[:3] if all_tickers else []
+                    elif sentiment == 'neutral':
+                        # Neutral sentiment - only mark as bought if explicitly buying
+                        tickers_bought = all_tickers[:2] if is_buying else []
+                        # Don't mark as recommended for neutral sentiment
+                        tickers_recommended = tickers_bought  # Only what's bought
+                    # If bearish, don't mark anything as bought/recommended
                     
                     # Generate summary
                     summary = generate_summary_from_title(title, all_tickers, channel_name)
                     
                     # Generate insights
                     insights = []
-                    if is_buying and tickers_bought:
+                    if sentiment == 'bearish':
+                        insights.append(f"⚠️ Bearish/cautionary tone on {', '.join(all_tickers[:3])}")
+                    elif is_buying and tickers_bought:
                         insights.append(f"Actively buying {', '.join(tickers_bought)}")
                     if 'overvalued' in title.lower():
                         insights.append("Market valuations elevated - focus on quality")
@@ -245,7 +297,8 @@ def fetch_channel_videos(channel, max_videos=5, fetch_details=True):
                         "channelName": channel_name,
                         "tickersMentioned": all_tickers,
                         "tickersBought": tickers_bought,
-                        "tickersRecommended": all_tickers[:3] if all_tickers else [],
+                        "tickersRecommended": tickers_recommended,
+                        "sentiment": sentiment,
                         "summary": summary,
                         "keyInsights": insights if insights else ["Watch for full analysis"]
                     })

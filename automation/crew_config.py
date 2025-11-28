@@ -231,9 +231,10 @@ Video {i+1}:
            - Base case scenario (most likely assumptions)
            - Aggressive scenario (optimistic assumptions)
            * Requirements:
+             • Each range must be a proper range with low and high values that DIFFER by 5-10%
+               WRONG: "250-250" | CORRECT: "240-260"
              • Always work in the SAME share units as the fetched price. If the company recently split, divide historical per-share values by the split ratio.
              • conservative high <= base low, aggressive low >= base high
-             • Every range must have a non-zero spread (high-low >= 5% of price)
              • Each range must stay within ±200% of the fetched price unless you explicitly justify the deviation with fundamentals.
              • Tie each scenario back to the revenue/FCF/debt inputs you were given
 
@@ -282,7 +283,11 @@ Video {i+1}:
 
         Requirements:
         - All factor scores must be integers between 1 and 5
-        - DCF ranges must be strings in format "low-high" (e.g., "450-500") with low < high
+        - DCF ranges MUST be strings in format "low-high" where low and high are DIFFERENT numbers
+          * WRONG: "250-250" (same number twice)
+          * CORRECT: "240-260" (proper range with ~5-10% spread)
+          * The spread between low and high should be approximately 5-10% of the midpoint
+          * Example: for a $500 stock, conservative might be "420-480", base "480-520", aggressive "520-580"
         - Use the exact price and company name supplied by the data fetcher; never zero them out
         - Category must be either "Dividend" or "Growth"
         - Output ONLY valid JSON, no commentary or extra text

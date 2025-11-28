@@ -7,27 +7,27 @@
     "channelId": "channel-id",
     "channelName": "Channel Name",
     "sentiment": "bullish",
-    "tickersMentioned": ["TSLA", "NVDA", "ADBE", "T"],
-    "tickersBought": ["TSLA", "NVDA"],
-    "tickersRecommended": ["TSLA", "NVDA"],
+    "tickersMentioned": ["NVDA", "T", "TSLA", "ADBE"],
+    "tickersBought": ["NVDA", "T"],
+    "tickersRecommended": ["NVDA", "T"],
     "tickersCautioned": [],
-    "summary": "The creator expresses a bullish sentiment towards TSLA and NVDA, stating they have bought these stocks and recommending them as undervalued opportunities. They analyze the potential for growth in these companies, particularly focusing on their future prospects.",
-    "keyInsights": ["The creator emphasizes the undervaluation of TSLA and NVDA, suggesting that they are good buys before 2026 due to their strong fundamentals and market position."]
+    "summary": "The creator expresses a bullish sentiment towards NVDA and T, stating they have bought these stocks and consider them undervalued opportunities. They analyze the potential for growth in these companies, particularly focusing on their market positions and future prospects.",
+    "keyInsights": ["Investors should consider adding NVDA and T to their portfolios due to their current undervaluation and strong market fundamentals."]
   },
   {
     "videoId": "S115YsuWX8g",
-    "title": "Is This Growth Stock Still a Buy After a 20% Pullback?",
+    "title": "URGENT: Is AMD Stock a Buy, Sell, or Hold After the Plunge?",
     "publishedAt": "2023-10-01",
     "thumbnail": "https://img.youtube.com/vi/S115YsuWX8g/maxresdefault.jpg",
     "channelId": "channel-id",
     "channelName": "Channel Name",
     "sentiment": "neutral",
-    "tickersMentioned": ["TSLA", "NVDA", "AMD", "T"],
+    "tickersMentioned": ["NVDA", "T", "AMD", "TSLA"],
     "tickersBought": [],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "summary": "The creator discusses TSLA, NVDA, and AMD, analyzing their recent performance and market conditions. However, they do not explicitly recommend any of these stocks for purchase or indicate any personal buying activity.",
-    "keyInsights": ["The video provides an analysis of the stocks' recent pullbacks but lacks strong recommendations or personal buying decisions, maintaining a neutral stance."]
+    "summary": "The creator provides an analysis of AMD's recent performance but does not explicitly recommend buying or selling. They discuss the competitive landscape and AMD's position relative to NVDA and T, maintaining a neutral stance without strong recommendations.",
+    "keyInsights": ["Viewers should stay informed about AMD's market position but no immediate action is recommended."]
   },
   {
     "videoId": "eQ1A5Sr7JHI",
@@ -37,12 +37,12 @@
     "channelId": "channel-id",
     "channelName": "Channel Name",
     "sentiment": "bullish",
-    "tickersMentioned": ["NOW", "V", "MO", "D"],
-    "tickersBought": ["NOW", "V"],
-    "tickersRecommended": ["NOW", "V"],
+    "tickersMentioned": ["MO", "V", "D", "NOW"],
+    "tickersBought": ["MO", "V"],
+    "tickersRecommended": ["MO", "V"],
     "tickersCautioned": [],
-    "summary": "The creator is bullish on NOW and V, stating they have bought these stocks and recommending them as good opportunities in the current market. They discuss the potential for recovery and growth in these companies.",
-    "keyInsights": ["The creator highlights NOW and V as beaten-down stocks with potential upside, encouraging viewers to consider them for their portfolios."]
+    "summary": "The creator is bullish on MO and V, stating they have bought these stocks and see them as strong recovery plays. They highlight the potential for these companies to rebound and provide solid returns.",
+    "keyInsights": ["Investors should consider adding MO and V to their portfolios as they are currently undervalued and have strong recovery potential."]
   },
   {
     "videoId": "ovIom8GbQXM",
@@ -52,12 +52,12 @@
     "channelId": "channel-id",
     "channelName": "Channel Name",
     "sentiment": "bullish",
-    "tickersMentioned": ["NVDA", "GOOGL", "PLTR", "NOW", "T", "AMD"],
-    "tickersBought": ["NVDA", "GOOGL"],
-    "tickersRecommended": ["NVDA", "GOOGL"],
+    "tickersMentioned": ["GOOGL", "PLTR", "NOW", "NVDA", "T", "AMD"],
+    "tickersBought": ["GOOGL", "PLTR"],
+    "tickersRecommended": ["GOOGL", "PLTR"],
     "tickersCautioned": [],
-    "summary": "The creator expresses a strong bullish sentiment towards NVDA and GOOGL, stating they have bought these stocks and recommending them as top picks for investment. They provide insights into the companies' growth potential and market strategies.",
-    "keyInsights": ["The creator emphasizes the strong fundamentals of NVDA and GOOGL, suggesting they are excellent buys for investors looking for growth opportunities."]
+    "summary": "The creator expresses a bullish sentiment towards GOOGL and PLTR, stating they have bought these stocks and recommend them for viewers. They discuss the strong fundamentals and growth potential of these companies.",
+    "keyInsights": ["GOOGL and PLTR are recommended for investment due to their strong market positions and growth prospects."]
   },
   {
     "videoId": "i-mg7qDGmNs",
@@ -67,11 +67,14 @@
     "channelId": "channel-id",
     "channelName": "Channel Name",
     "sentiment": "bullish",
-    "tickersMentioned": ["META", "NVDA", "TSLA", "PLTR", "NOW"],
-    "tickersBought": ["META", "NVDA"],
-    "tickersRecommended": ["META", "NVDA"],
+    "tickersMentioned": ["PLTR", "NOW", "NVDA", "META", "TSLA"],
+    "tickersBought": ["PLTR", "NOW"],
+    "tickersRecommended": ["PLTR", "NOW"],
     "tickersCautioned": [],
-    "summary": "The creator is bullish on META and NVDA, stating they have bought these stocks and recommending them as key investments for the remainder of 2025. They discuss the potential for AI-related growth in these companies.",
-    "keyInsights": ["The creator highlights the importance of META and NVDA in the context of AI advancements, suggesting they are strong candidates for investment due to their innovative capabilities and market positioning."]
+    "summary": "The creator is bullish on PLTR and NOW, stating they have bought these stocks and see them as key investments for the remainder of 2025. They emphasize the potential for growth in AI-related sectors.",
+    "keyInsights": ["Investors should consider PLTR and NOW for their portfolios, especially given the anticipated growth in AI technologies."]
+  },
+  {
+    "lastUpdated": "2023-10-01"
   }
 ]

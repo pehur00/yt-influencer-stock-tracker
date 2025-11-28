@@ -96,7 +96,7 @@ def step_3_add_new_tickers(new_tickers, current_stocks):
         print("\n  No new tickers to add.")
         return current_stocks, []
     
-    updated_stocks, added = add_new_tickers_to_stocks(new_tickers, current_stocks, max_to_add=5)
+    updated_stocks, added = add_new_tickers_to_stocks(new_tickers, current_stocks, max_to_add=20)
     
     if added:
         print(f"\n  Added {len(added)} new ticker(s): {', '.join(added)}")

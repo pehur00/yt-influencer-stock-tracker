@@ -81,6 +81,14 @@ def extract_recommendations_from_videos(videos: List[Dict]) -> Dict[str, Dict]:
         video_date = video.get('publishedAt', datetime.now().strftime('%Y-%m-%d'))
         video_title = video.get('title', '')
         
+        # Check sentiment - only process bullish/neutral videos for recommendations
+        # Sentiment should be set by CrewAI transcript analysis, not title parsing
+        sentiment = video.get('sentiment', 'neutral')
+        
+        # Skip bearish videos - don't add cautioned stocks as recommendations
+        if sentiment == 'bearish':
+            continue
+        
         # Get tickers that were bought or recommended
         bought = set(video.get('tickersBought', []))
         recommended = set(video.get('tickersRecommended', []))

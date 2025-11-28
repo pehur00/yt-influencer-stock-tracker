@@ -104,36 +104,48 @@ Video {i+1}:
 
     # Define tasks
     youtube_task = Task(
-        description=f"""Analyze the following YouTube videos from finance influencers.
+        description=f"""Analyze YouTube videos from finance influencers using their ACTUAL TRANSCRIPT CONTENT.
 
-        I've already extracted some initial data from video titles and descriptions.
-        Your job is to use your YoutubeVideoSearchTool to search within each video's 
-        actual transcript/content and ENHANCE the analysis with better summaries and 
-        any additional tickers or insights.
+        IMPORTANT: Video titles are often clickbait! Do NOT rely on titles to determine sentiment.
+        You MUST use YoutubeVideoSearchTool to analyze what the creator ACTUALLY SAYS in the video.
 
-        PRE-FETCHED VIDEO DATA:
+        PRE-FETCHED VIDEO DATA (titles may be misleading - verify with transcript):
         {video_list}
 
-        For EACH video:
-        1. Use YoutubeVideoSearchTool with the video URL to search for stock mentions
-        2. Search queries to try: "bought buying", "recommend", ticker symbols
-        3. Compare what you find with the pre-extracted data
-        4. Create an enhanced summary that's more detailed and insightful
-        5. Add any additional tickers or insights you discover
+        For EACH video, use YoutubeVideoSearchTool to search the transcript:
+        
+        1. SENTIMENT ANALYSIS (most important):
+           - Search for: "I'm buying", "I bought", "adding to position", "great opportunity"
+           - Search for: "I'm selling", "sold", "avoid", "stay away", "overvalued"
+           - Search for: "be careful", "wait for pullback", "not buying yet"
+           - Determine the creator's ACTUAL stance from what they SAY, not the title
+           
+        2. STOCK CLASSIFICATION (based on transcript, not title):
+           - tickersBought: ONLY stocks they explicitly say "I bought" or "I'm buying"
+           - tickersRecommended: Stocks they say viewers should "consider", "look at", "is undervalued"
+           - tickersMentioned: All stocks discussed (even negatively)
+           - tickersCautioned: Stocks they warn against or suggest selling
+           
+        3. SENTIMENT FIELD:
+           - "bullish" = creator is positive, buying, recommending
+           - "bearish" = creator is warning, selling, suggesting to avoid
+           - "neutral" = just analyzing without strong recommendation
+           
+        Example: A video titled "Time to SELL AMD?" might actually have the creator saying 
+        "I'm still holding AMD and think it's a great long-term buy" - the TRANSCRIPT matters!
 
         Return for each video:
         - videoId (KEEP EXACTLY AS PROVIDED)
-        - title (keep as provided)
-        - tickersMentioned (combine pre-extracted + any new ones you find)
-        - tickersBought (stocks he explicitly says he bought)
-        - tickersRecommended (stocks he recommends)
-        - summary (YOUR enhanced 2-3 sentence summary - make it more specific)
-        - keyInsights (YOUR enhanced list of 2-3 actionable insights)
-
-        Focus on making the summaries and insights more specific and valuable than 
-        the generic pre-extracted ones.""",
+        - title (keep as provided) 
+        - sentiment (bullish/bearish/neutral based on TRANSCRIPT)
+        - tickersMentioned (all stocks discussed)
+        - tickersBought (ONLY if they explicitly say they bought)
+        - tickersRecommended (ONLY if they actually recommend buying)
+        - tickersCautioned (stocks they warn against)
+        - summary (2-3 sentences about their ACTUAL stance from the video)
+        - keyInsights (actionable takeaways from what they SAID)""",
         agent=youtube_researcher,
-        expected_output="Enhanced analysis for each video with better summaries and complete ticker lists"
+        expected_output="Transcript-based analysis with accurate sentiment and stock classifications"
     )
 
     # Build video ID reference for formatter
@@ -157,10 +169,14 @@ Video {i+1}:
             "title": "Video Title",
             "publishedAt": "YYYY-MM-DD",
             "thumbnail": "https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg",
+            "channelId": "channel-id",
+            "channelName": "Channel Name",
+            "sentiment": "bullish|bearish|neutral",
             "tickersMentioned": ["AAPL", "MSFT"],
             "tickersBought": ["AAPL"],
             "tickersRecommended": ["MSFT"],
-            "summary": "Brief 2-3 sentence summary of video content",
+            "tickersCautioned": [],
+            "summary": "Brief 2-3 sentence summary based on ACTUAL video content",
             "keyInsights": ["Insight 1", "Insight 2"]
           }}
         ]
@@ -170,15 +186,18 @@ Video {i+1}:
 
         CRITICAL REQUIREMENTS:
         - Use the EXACT videoId values listed above - do NOT change them
+        - sentiment MUST be based on transcript analysis, NOT the clickbait title
+        - tickersRecommended should ONLY include stocks the creator explicitly recommends
+        - tickersBought should ONLY include stocks they say they bought
+        - tickersCautioned should include stocks they warn against
+        - If sentiment is "bearish", tickersRecommended should typically be empty
         - thumbnail URL format: https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg
         - All ticker symbols should be uppercase (e.g., AAPL, GOOGL, NVDA)
-        - summary should be 2-3 sentences about the investment content
-        - keyInsights should be actionable takeaways from the video
         - Output ONLY valid JSON array, no commentary or markdown
 
         Save the output to output/youtube_videos.json""",
         agent=formatter,
-        expected_output="Valid JSON array saved to output/youtube_videos.json with correct video IDs",
+        expected_output="Valid JSON array saved to output/youtube_videos.json with correct video IDs and transcript-based sentiment",
         context=[youtube_task],
         output_file="output/youtube_videos.json"
     )

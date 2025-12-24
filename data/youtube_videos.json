@@ -14,10 +14,12 @@
     ],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "bullish",
+    "sentiment": "pending",
+    "titleSentiment": "bullish",
     "summary": "Leven analyzes SHEL and shares investment perspectives on these companies.",
     "keyInsights": [
-      "\ud83d\uded2 Buying: SHEL"
+      "\ud83d\uded2 Title suggests buying: SHEL",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -35,10 +37,12 @@
     "tickersBought": [],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "neutral",
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
     "summary": "Everything analyzes NOW, MO, V and shares investment perspectives on these companies.",
     "keyInsights": [
-      "\ud83d\udcca Also mentioned: NOW, MO, V"
+      "\ud83d\udcca Stocks mentioned: NOW, MO, V",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -55,10 +59,12 @@
     "tickersBought": [],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "neutral",
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
     "summary": "Dividend analyzes T, SO and shares investment perspectives on these companies.",
     "keyInsights": [
-      "\ud83d\udcca Also mentioned: T, SO"
+      "\ud83d\udcca Stocks mentioned: T, SO",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -69,19 +75,21 @@
     "channelId": "financial-education",
     "channelName": "Financial Education",
     "tickersMentioned": [
-      "META",
-      "PLTR",
       "TSLA",
+      "NOW",
+      "META",
       "NVDA",
-      "NOW"
+      "PLTR"
     ],
     "tickersBought": [],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "neutral",
-    "summary": "Financial analyzes META, PLTR, TSLA and shares investment perspectives on these companies.",
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
+    "summary": "Financial analyzes TSLA, NOW, META and shares investment perspectives on these companies.",
     "keyInsights": [
-      "\ud83d\udcca Also mentioned: META, PLTR, TSLA, NVDA, NOW"
+      "\ud83d\udcca Stocks mentioned: TSLA, NOW, META, NVDA, PLTR",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -98,10 +106,12 @@
     "tickersBought": [],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "neutral",
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
     "summary": "The provides a portfolio update, discussing recent buys, sells, and overall investment strategy.",
     "keyInsights": [
-      "\ud83d\udcca Also mentioned: AMZN, COST"
+      "\ud83d\udcca Stocks mentioned: AMZN, COST",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -115,48 +125,47 @@
     "tickersBought": [],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "bearish",
+    "sentiment": "pending",
+    "titleSentiment": "bearish",
     "summary": "Leven provides a portfolio update, discussing recent buys, sells, and overall investment strategy.",
     "keyInsights": [
-      "General market/investing discussion"
+      "\u26a0\ufe0f Title suggests caution",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
     "videoId": "BgbdjKfeyzs",
-    "title": "Are Magnificent 7 Stocks Still Worth Buying Going Into 2026?",
+    "title": "Are These Incredible Stocks Still Worth Buying Today?",
     "publishedAt": "2025-12-22",
     "thumbnail": "https://img.youtube.com/vi/BgbdjKfeyzs/maxresdefault.jpg",
     "channelId": "couch-investor",
     "channelName": "CouchInvestor",
     "tickersMentioned": [
-      "AAPL",
-      "AVGO",
+      "AMZN",
+      "T",
+      "TSLA",
       "MSFT",
       "META",
-      "T",
-      "AMZN",
-      "GOOGL",
-      "TSLA",
+      "AVGO",
       "NVDA",
-      "NFLX"
+      "GOOGL",
+      "NFLX",
+      "AAPL"
     ],
     "tickersBought": [
-      "AAPL",
-      "AVGO",
-      "MSFT"
-    ],
-    "tickersRecommended": [
-      "META",
+      "AMZN",
       "T",
-      "AMZN"
+      "TSLA"
     ],
+    "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "bullish",
-    "summary": "CouchInvestor discusses stocks being bought, mentioning AAPL, AVGO, MSFT. Investment thesis and portfolio strategy shared.",
+    "sentiment": "pending",
+    "titleSentiment": "bullish",
+    "summary": "CouchInvestor discusses stocks being bought, mentioning AMZN, T, TSLA. Investment thesis and portfolio strategy shared.",
     "keyInsights": [
-      "\ud83d\uded2 Buying: AAPL, AVGO, MSFT",
-      "\ud83d\udc4d Recommended: META, T, AMZN",
-      "\ud83d\udcca Also mentioned: GOOGL, TSLA, NVDA, NFLX"
+      "\ud83d\uded2 Title suggests buying: AMZN, T, TSLA",
+      "\ud83d\udcca Stocks mentioned: MSFT, META, AVGO, NVDA, GOOGL",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -175,10 +184,12 @@
     "tickersBought": [],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "neutral",
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
     "summary": "Everything covers AI-related investment opportunities and which companies may benefit from AI growth.",
     "keyInsights": [
-      "\ud83d\udcca Also mentioned: T, MO, V, SO"
+      "\ud83d\udcca Stocks mentioned: T, MO, V, SO",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -192,10 +203,12 @@
     "tickersBought": [],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "neutral",
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
     "summary": "Leven discusses dividend investing strategies and income-generating stocks.",
     "keyInsights": [
-      "General market/investing discussion"
+      "\ud83d\udcfa General market/investing discussion",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -207,60 +220,53 @@
     "channelName": "CouchInvestor",
     "tickersMentioned": [
       "T",
-      "PLTR",
-      "META",
       "TSLA",
-      "GOOGL",
+      "NOW",
+      "META",
       "NVDA",
-      "UNH",
-      "NOW"
+      "GOOGL",
+      "PLTR",
+      "UNH"
     ],
     "tickersBought": [
       "T",
-      "PLTR",
-      "META"
-    ],
-    "tickersRecommended": [
       "TSLA",
-      "GOOGL",
-      "NVDA"
+      "NOW"
     ],
+    "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "bullish",
-    "summary": "CouchInvestor discusses stocks being bought, mentioning T, PLTR, META. Investment thesis and portfolio strategy shared.",
+    "sentiment": "pending",
+    "titleSentiment": "bullish",
+    "summary": "CouchInvestor discusses stocks being bought, mentioning T, TSLA, NOW. Investment thesis and portfolio strategy shared.",
     "keyInsights": [
-      "\ud83d\uded2 Buying: T, PLTR, META",
-      "\ud83d\udc4d Recommended: TSLA, GOOGL, NVDA",
-      "\ud83d\udcca Also mentioned: UNH, NOW"
+      "\ud83d\uded2 Title suggests buying: T, TSLA, NOW",
+      "\ud83d\udcca Stocks mentioned: META, NVDA, GOOGL, PLTR, UNH",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
     "videoId": "WKbJn9g0ZLM",
-    "title": "2 Undervalued Stocks Down 40% and 45% to Buy For 2026",
+    "title": "2 Growth Stocks to Grab While Everyone Else Sells",
     "publishedAt": "2025-12-21",
     "thumbnail": "https://img.youtube.com/vi/WKbJn9g0ZLM/maxresdefault.jpg",
     "channelId": "couch-investor",
     "channelName": "CouchInvestor",
     "tickersMentioned": [
-      "UNH",
-      "TSLA",
       "T",
-      "NVDA"
-    ],
-    "tickersBought": [
-      "UNH",
+      "NVDA",
       "TSLA",
-      "T"
+      "UNH"
     ],
-    "tickersRecommended": [
-      "NVDA"
-    ],
+    "tickersBought": [],
+    "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "bullish",
-    "summary": "CouchInvestor analyzes UNH, TSLA, T and shares investment perspectives on these companies.",
+    "sentiment": "pending",
+    "titleSentiment": "bearish",
+    "summary": "CouchInvestor analyzes T, NVDA, TSLA and shares investment perspectives on these companies.",
     "keyInsights": [
-      "\ud83d\uded2 Buying: UNH, TSLA, T",
-      "\ud83d\udc4d Recommended: NVDA"
+      "\u26a0\ufe0f Title suggests caution",
+      "\ud83d\udcca Stocks mentioned: T, NVDA, TSLA, UNH",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -271,25 +277,25 @@
     "channelId": "everything-money",
     "channelName": "Everything Money",
     "tickersMentioned": [
-      "MO",
-      "T",
       "NOW",
+      "T",
+      "MO",
       "V"
     ],
     "tickersBought": [
-      "MO",
+      "NOW",
       "T",
-      "NOW"
+      "MO"
     ],
-    "tickersRecommended": [
-      "V"
-    ],
+    "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "bullish",
-    "summary": "Everything discusses stocks being bought, mentioning MO, T, NOW. Investment thesis and portfolio strategy shared.",
+    "sentiment": "pending",
+    "titleSentiment": "bullish",
+    "summary": "Everything discusses stocks being bought, mentioning NOW, T, MO. Investment thesis and portfolio strategy shared.",
     "keyInsights": [
-      "\ud83d\uded2 Buying: MO, T, NOW",
-      "\ud83d\udc4d Recommended: V"
+      "\ud83d\uded2 Title suggests buying: NOW, T, MO",
+      "\ud83d\udcca Stocks mentioned: V",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -300,19 +306,21 @@
     "channelId": "financial-education",
     "channelName": "Financial Education",
     "tickersMentioned": [
-      "META",
-      "PLTR",
       "TSLA",
+      "NOW",
+      "META",
       "NVDA",
-      "NOW"
+      "PLTR"
     ],
     "tickersBought": [],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "neutral",
-    "summary": "Financial analyzes META, PLTR, TSLA and shares investment perspectives on these companies.",
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
+    "summary": "Financial analyzes TSLA, NOW, META and shares investment perspectives on these companies.",
     "keyInsights": [
-      "\ud83d\udcca Also mentioned: META, PLTR, TSLA, NVDA, NOW"
+      "\ud83d\udcca Stocks mentioned: TSLA, NOW, META, NVDA, PLTR",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -323,19 +331,21 @@
     "channelId": "couch-investor",
     "channelName": "CouchInvestor",
     "tickersMentioned": [
-      "PYPL",
       "T",
       "TSLA",
       "NVDA",
-      "NKE"
+      "NKE",
+      "PYPL"
     ],
     "tickersBought": [],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "neutral",
-    "summary": "CouchInvestor analyzes PYPL, T, TSLA and shares investment perspectives on these companies.",
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
+    "summary": "CouchInvestor analyzes T, TSLA, NVDA and shares investment perspectives on these companies.",
     "keyInsights": [
-      "\ud83d\udcca Also mentioned: PYPL, T, TSLA, NVDA, NKE"
+      "\ud83d\udcca Stocks mentioned: T, TSLA, NVDA, NKE, PYPL",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -352,10 +362,12 @@
     "tickersBought": [],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "neutral",
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
     "summary": "Dividend analyzes NOW, SCHD and shares investment perspectives on these companies.",
     "keyInsights": [
-      "\ud83d\udcca Also mentioned: NOW, SCHD"
+      "\ud83d\udcca Stocks mentioned: NOW, SCHD",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -373,10 +385,12 @@
     "tickersBought": [],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "neutral",
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
     "summary": "Leven analyzes T, V, JEPI and shares investment perspectives on these companies.",
     "keyInsights": [
-      "\ud83d\udcca Also mentioned: T, V, JEPI"
+      "\ud83d\udcca Stocks mentioned: T, V, JEPI",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -389,18 +403,20 @@
     "tickersMentioned": [
       "T",
       "SCHD",
-      "SO",
-      "V",
+      "MO",
       "COST",
-      "MO"
+      "V",
+      "SO"
     ],
     "tickersBought": [],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "neutral",
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
     "summary": "Everything discusses dividend investing strategies and income-generating stocks.",
     "keyInsights": [
-      "\ud83d\udcca Also mentioned: T, SCHD, SO, V, COST"
+      "\ud83d\udcca Stocks mentioned: T, SCHD, MO, COST, V",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -411,50 +427,50 @@
     "channelId": "fired-up-wealth",
     "channelName": "FiredUpWealth",
     "tickersMentioned": [
-      "AVGO",
       "AMD",
+      "AVGO",
+      "NOW",
       "ORCL",
-      "MELI",
       "NVDA",
-      "NOW"
+      "MELI"
     ],
     "tickersBought": [
-      "AVGO",
       "AMD",
-      "ORCL"
-    ],
-    "tickersRecommended": [
-      "MELI",
-      "NVDA",
+      "AVGO",
       "NOW"
     ],
+    "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "bullish",
-    "summary": "FiredUpWealth discusses stocks being bought, mentioning AVGO, AMD, ORCL. Investment thesis and portfolio strategy shared.",
+    "sentiment": "pending",
+    "titleSentiment": "bullish",
+    "summary": "FiredUpWealth discusses stocks being bought, mentioning AMD, AVGO, NOW. Investment thesis and portfolio strategy shared.",
     "keyInsights": [
-      "\ud83d\uded2 Buying: AVGO, AMD, ORCL",
-      "\ud83d\udc4d Recommended: MELI, NVDA, NOW"
+      "\ud83d\uded2 Title suggests buying: AMD, AVGO, NOW",
+      "\ud83d\udcca Stocks mentioned: ORCL, NVDA, MELI",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
     "videoId": "JdRBbVUCBtk",
-    "title": "IT'S HAPPENING AGAIN: Is This the Second Leg of the April Crash?",
+    "title": "AI Bubble POPPING? Why Big Tech is Crashing & The External Factors Causing This",
     "publishedAt": "2025-12-17",
     "thumbnail": "https://img.youtube.com/vi/JdRBbVUCBtk/maxresdefault.jpg",
     "channelId": "couch-investor",
     "channelName": "CouchInvestor",
     "tickersMentioned": [
-      "TSLA",
       "T",
-      "NVDA"
+      "NVDA",
+      "TSLA"
     ],
     "tickersBought": [],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "neutral",
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
     "summary": "CouchInvestor covers AI-related investment opportunities and which companies may benefit from AI growth.",
     "keyInsights": [
-      "\ud83d\udcca Also mentioned: TSLA, T, NVDA"
+      "\ud83d\udcca Stocks mentioned: T, NVDA, TSLA",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -470,10 +486,12 @@
     "tickersBought": [],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "neutral",
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
     "summary": "Dividend discusses dividend investing strategies and income-generating stocks.",
     "keyInsights": [
-      "\ud83d\udcca Also mentioned: NOW"
+      "\ud83d\udcca Stocks mentioned: NOW",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -484,19 +502,21 @@
     "channelId": "financial-education",
     "channelName": "Financial Education",
     "tickersMentioned": [
-      "META",
-      "PLTR",
       "TSLA",
+      "NOW",
+      "META",
       "NVDA",
-      "NOW"
+      "PLTR"
     ],
     "tickersBought": [],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "neutral",
-    "summary": "Financial analyzes META, PLTR, TSLA and shares investment perspectives on these companies.",
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
+    "summary": "Financial analyzes TSLA, NOW, META and shares investment perspectives on these companies.",
     "keyInsights": [
-      "\ud83d\udcca Also mentioned: META, PLTR, TSLA, NVDA, NOW"
+      "\ud83d\udcca Stocks mentioned: TSLA, NOW, META, NVDA, PLTR",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -507,21 +527,23 @@
     "channelId": "leven-van-dividend",
     "channelName": "Leven van Dividend",
     "tickersMentioned": [
-      "TOT",
       "T",
-      "V"
+      "V",
+      "TOT"
     ],
     "tickersBought": [
-      "TOT",
       "T",
-      "V"
+      "V",
+      "TOT"
     ],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "bullish",
-    "summary": "Leven analyzes TOT, T, V and shares investment perspectives on these companies.",
+    "sentiment": "pending",
+    "titleSentiment": "bullish",
+    "summary": "Leven analyzes T, V, TOT and shares investment perspectives on these companies.",
     "keyInsights": [
-      "\ud83d\uded2 Buying: TOT, T, V"
+      "\ud83d\uded2 Title suggests buying: T, V, TOT",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -532,21 +554,23 @@
     "channelId": "everything-money",
     "channelName": "Everything Money",
     "tickersMentioned": [
-      "MO",
       "NOW",
+      "MO",
       "V"
     ],
     "tickersBought": [
-      "MO",
       "NOW",
+      "MO",
       "V"
     ],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "bullish",
-    "summary": "Everything analyzes MO, NOW, V and shares investment perspectives on these companies.",
+    "sentiment": "pending",
+    "titleSentiment": "bullish",
+    "summary": "Everything analyzes NOW, MO, V and shares investment perspectives on these companies.",
     "keyInsights": [
-      "\ud83d\uded2 Buying: MO, NOW, V"
+      "\ud83d\uded2 Title suggests buying: NOW, MO, V",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -557,27 +581,26 @@
     "channelId": "financial-education",
     "channelName": "Financial Education",
     "tickersMentioned": [
-      "META",
-      "PLTR",
       "TSLA",
+      "NOW",
+      "META",
       "NVDA",
-      "NOW"
+      "PLTR"
     ],
     "tickersBought": [
-      "META",
-      "PLTR",
-      "TSLA"
+      "TSLA",
+      "NOW",
+      "META"
     ],
-    "tickersRecommended": [
-      "NVDA",
-      "NOW"
-    ],
+    "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "bullish",
-    "summary": "Financial analyzes META, PLTR, TSLA and shares investment perspectives on these companies.",
+    "sentiment": "pending",
+    "titleSentiment": "bullish",
+    "summary": "Financial analyzes TSLA, NOW, META and shares investment perspectives on these companies.",
     "keyInsights": [
-      "\ud83d\uded2 Buying: META, PLTR, TSLA",
-      "\ud83d\udc4d Recommended: NVDA, NOW"
+      "\ud83d\uded2 Title suggests buying: TSLA, NOW, META",
+      "\ud83d\udcca Stocks mentioned: NVDA, PLTR",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -591,10 +614,12 @@
     "tickersBought": [],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "neutral",
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
     "summary": "Dividend provides a portfolio update, discussing recent buys, sells, and overall investment strategy.",
     "keyInsights": [
-      "General market/investing discussion"
+      "\ud83d\udcfa General market/investing discussion",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -605,20 +630,22 @@
     "channelId": "financial-education",
     "channelName": "Financial Education",
     "tickersMentioned": [
-      "META",
-      "PLTR",
-      "NET",
       "TSLA",
+      "NOW",
+      "META",
+      "NET",
       "NVDA",
-      "NOW"
+      "PLTR"
     ],
     "tickersBought": [],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "neutral",
-    "summary": "Financial analyzes META, PLTR, NET and shares investment perspectives on these companies.",
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
+    "summary": "Financial analyzes TSLA, NOW, META and shares investment perspectives on these companies.",
     "keyInsights": [
-      "\ud83d\udcca Also mentioned: META, PLTR, NET, TSLA, NVDA"
+      "\ud83d\udcca Stocks mentioned: TSLA, NOW, META, NET, NVDA",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -634,10 +661,12 @@
     "tickersBought": [],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "neutral",
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
     "summary": "Dividend analyzes T and shares investment perspectives on these companies.",
     "keyInsights": [
-      "\ud83d\udcca Also mentioned: T"
+      "\ud83d\udcca Stocks mentioned: T",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -648,29 +677,27 @@
     "channelId": "fired-up-wealth",
     "channelName": "FiredUpWealth",
     "tickersMentioned": [
-      "MSFT",
-      "PLTR",
-      "NFLX",
-      "NVDA",
       "AMZN",
-      "NOW"
+      "MSFT",
+      "NOW",
+      "NVDA",
+      "NFLX",
+      "PLTR"
     ],
     "tickersBought": [
-      "MSFT",
-      "PLTR",
-      "NFLX"
-    ],
-    "tickersRecommended": [
-      "NVDA",
       "AMZN",
+      "MSFT",
       "NOW"
     ],
+    "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "bullish",
-    "summary": "FiredUpWealth discusses stocks being bought, mentioning MSFT, PLTR, NFLX. Investment thesis and portfolio strategy shared.",
+    "sentiment": "pending",
+    "titleSentiment": "bullish",
+    "summary": "FiredUpWealth discusses stocks being bought, mentioning AMZN, MSFT, NOW. Investment thesis and portfolio strategy shared.",
     "keyInsights": [
-      "\ud83d\uded2 Buying: MSFT, PLTR, NFLX",
-      "\ud83d\udc4d Recommended: NVDA, AMZN, NOW"
+      "\ud83d\uded2 Title suggests buying: AMZN, MSFT, NOW",
+      "\ud83d\udcca Stocks mentioned: NVDA, NFLX, PLTR",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -681,25 +708,25 @@
     "channelId": "joseph-carlson",
     "channelName": "The Joseph Carlson Show",
     "tickersMentioned": [
-      "AMZN",
       "GOOGL",
+      "AMZN",
       "COST",
       "NVDA"
     ],
     "tickersBought": [
-      "AMZN",
       "GOOGL",
+      "AMZN",
       "COST"
     ],
-    "tickersRecommended": [
-      "NVDA"
-    ],
+    "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "bullish",
-    "summary": "The discusses stocks being bought, mentioning AMZN, GOOGL, COST. Investment thesis and portfolio strategy shared.",
+    "sentiment": "pending",
+    "titleSentiment": "bullish",
+    "summary": "The discusses stocks being bought, mentioning GOOGL, AMZN, COST. Investment thesis and portfolio strategy shared.",
     "keyInsights": [
-      "\ud83d\uded2 Buying: AMZN, GOOGL, COST",
-      "\ud83d\udc4d Recommended: NVDA"
+      "\ud83d\uded2 Title suggests buying: GOOGL, AMZN, COST",
+      "\ud83d\udcca Stocks mentioned: NVDA",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -711,28 +738,26 @@
     "channelName": "FiredUpWealth",
     "tickersMentioned": [
       "T",
-      "PLTR",
       "AMD",
-      "GOOGL",
+      "NOW",
       "NVDA",
-      "NOW"
+      "GOOGL",
+      "PLTR"
     ],
     "tickersBought": [
       "T",
-      "PLTR",
-      "AMD"
-    ],
-    "tickersRecommended": [
-      "GOOGL",
-      "NVDA",
+      "AMD",
       "NOW"
     ],
+    "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "bullish",
-    "summary": "FiredUpWealth discusses stocks being bought, mentioning T, PLTR, AMD. Investment thesis and portfolio strategy shared.",
+    "sentiment": "pending",
+    "titleSentiment": "bullish",
+    "summary": "FiredUpWealth discusses stocks being bought, mentioning T, AMD, NOW. Investment thesis and portfolio strategy shared.",
     "keyInsights": [
-      "\ud83d\uded2 Buying: T, PLTR, AMD",
-      "\ud83d\udc4d Recommended: GOOGL, NVDA, NOW"
+      "\ud83d\uded2 Title suggests buying: T, AMD, NOW",
+      "\ud83d\udcca Stocks mentioned: NVDA, GOOGL, PLTR",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -748,10 +773,12 @@
     "tickersBought": [],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "neutral",
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
     "summary": "FiredUpWealth analyzes NVDA and shares investment perspectives on these companies.",
     "keyInsights": [
-      "\ud83d\udcca Also mentioned: NVDA"
+      "\ud83d\udcca Stocks mentioned: NVDA",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -762,31 +789,28 @@
     "channelId": "fired-up-wealth",
     "channelName": "FiredUpWealth",
     "tickersMentioned": [
-      "META",
-      "PLTR",
-      "ORCL",
-      "MELI",
-      "NVDA",
       "CRWV",
-      "NOW"
+      "NOW",
+      "META",
+      "ORCL",
+      "NVDA",
+      "MELI",
+      "PLTR"
     ],
     "tickersBought": [
-      "META",
-      "PLTR",
-      "ORCL"
+      "CRWV",
+      "NOW",
+      "META"
     ],
-    "tickersRecommended": [
-      "MELI",
-      "NVDA",
-      "CRWV"
-    ],
+    "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "bullish",
-    "summary": "FiredUpWealth discusses stocks being bought, mentioning META, PLTR, ORCL. Investment thesis and portfolio strategy shared.",
+    "sentiment": "pending",
+    "titleSentiment": "bullish",
+    "summary": "FiredUpWealth discusses stocks being bought, mentioning CRWV, NOW, META. Investment thesis and portfolio strategy shared.",
     "keyInsights": [
-      "\ud83d\uded2 Buying: META, PLTR, ORCL",
-      "\ud83d\udc4d Recommended: MELI, NVDA, CRWV",
-      "\ud83d\udcca Also mentioned: NOW"
+      "\ud83d\uded2 Title suggests buying: CRWV, NOW, META",
+      "\ud83d\udcca Stocks mentioned: ORCL, NVDA, MELI, PLTR",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -797,25 +821,27 @@
     "channelId": "joseph-carlson",
     "channelName": "The Joseph Carlson Show",
     "tickersMentioned": [
-      "META",
       "AMZN",
       "CRM",
-      "ADBE",
+      "META",
       "COST",
+      "ADBE",
       "NFLX"
     ],
     "tickersBought": [
-      "META",
       "AMZN",
-      "CRM"
+      "CRM",
+      "META"
     ],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "neutral",
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
     "summary": "The analyzes current market valuations and discusses how to find value in an overvalued market.",
     "keyInsights": [
-      "\ud83d\uded2 Buying: META, AMZN, CRM",
-      "\ud83d\udcca Also mentioned: ADBE, COST, NFLX"
+      "\ud83d\uded2 Title suggests buying: AMZN, CRM, META",
+      "\ud83d\udcca Stocks mentioned: COST, ADBE, NFLX",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -826,27 +852,26 @@
     "channelId": "joseph-carlson",
     "channelName": "The Joseph Carlson Show",
     "tickersMentioned": [
-      "AVGO",
-      "COST",
-      "NVDA",
       "AMZN",
-      "NOW"
-    ],
-    "tickersBought": [
       "AVGO",
+      "NOW",
       "COST",
       "NVDA"
     ],
-    "tickersRecommended": [
+    "tickersBought": [
       "AMZN",
+      "AVGO",
       "NOW"
     ],
+    "tickersRecommended": [],
     "tickersCautioned": [],
-    "sentiment": "bullish",
-    "summary": "The discusses stocks being bought, mentioning AVGO, COST, NVDA. Investment thesis and portfolio strategy shared.",
+    "sentiment": "pending",
+    "titleSentiment": "bullish",
+    "summary": "The discusses stocks being bought, mentioning AMZN, AVGO, NOW. Investment thesis and portfolio strategy shared.",
     "keyInsights": [
-      "\ud83d\uded2 Buying: AVGO, COST, NVDA",
-      "\ud83d\udc4d Recommended: AMZN, NOW"
+      "\ud83d\uded2 Title suggests buying: AMZN, AVGO, NOW",
+      "\ud83d\udcca Stocks mentioned: COST, NVDA",
+      "\u23f3 Full analysis pending"
     ]
   },
   {
@@ -857,23 +882,21 @@
     "channelId": "joseph-carlson",
     "channelName": "The Joseph Carlson Show",
     "tickersMentioned": [
+      "NOW",
       "AMZN",
       "O",
-      "NOW",
       "COST"
     ],
     "tickersBought": [],
     "tickersRecommended": [],
-    "tickersCautioned": [
-      "AMZN",
-      "O",
-      "NOW"
-    ],
-    "sentiment": "bearish",
+    "tickersCautioned": [],
+    "sentiment": "pending",
+    "titleSentiment": "bearish",
     "summary": "The analyzes current market valuations and discusses how to find value in an overvalued market.",
     "keyInsights": [
-      "\u26a0\ufe0f Cautioned: AMZN, O, NOW",
-      "\ud83d\udcca Also mentioned: COST"
+      "\u26a0\ufe0f Title suggests caution",
+      "\ud83d\udcca Stocks mentioned: NOW, AMZN, O, COST",
+      "\u23f3 Full analysis pending"
     ]
   }
 ]

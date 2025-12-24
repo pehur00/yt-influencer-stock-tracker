@@ -210,8 +210,40 @@ def analyze_title_for_buying(title):
     title_lower = title.lower()
     buying_keywords = ['buying', 'bought', "i'm buying", 'i bought', 'adding', 'added', 
                        'buy now', 'to buy', 'stocks to buy', 'buy this', 'i buy', 'dca',
-                       'i will buy', 'stock to buy', 'best stock', 'top stock', '#1 stock']
+                       'i will buy', 'stock to buy', 'best stock', 'top stock', '#1 stock',
+                       "we're buying", 'we bought', 'just bought']
     return any(kw in title_lower for kw in buying_keywords)
+
+
+def analyze_title_sentiment(title):
+    """
+    Analyze title to determine overall sentiment.
+    Returns: 'bullish', 'bearish', or 'neutral'
+    """
+    title_lower = title.lower()
+    
+    # Strong bearish signals
+    bearish_keywords = ['sell', 'selling', 'sold', 'avoid', 'stay away', 'crash', 
+                       'collapse', 'bubble', 'warning', 'danger', 'dump', 'dumping',
+                       'overvalued', 'too expensive', 'time to sell', 'get out']
+    
+    # Strong bullish signals
+    bullish_keywords = ['buy', 'buying', 'bought', 'undervalued', 'opportunity',
+                       'cheap', 'discount', 'all-in', 'loading up', 'accumulating',
+                       'best stock', 'top pick', 'must own', 'adding']
+    
+    bearish_count = sum(1 for kw in bearish_keywords if kw in title_lower)
+    bullish_count = sum(1 for kw in bullish_keywords if kw in title_lower)
+    
+    # Check for question marks which often indicate neutral analysis
+    is_question = '?' in title
+    
+    if bearish_count > bullish_count and not is_question:
+        return 'bearish'
+    elif bullish_count > bearish_count:
+        return 'bullish'
+    else:
+        return 'neutral'
 
 
 def generate_summary_from_title(title, tickers, channel_name):
@@ -334,26 +366,38 @@ def fetch_channel_videos(channel, max_videos=5, fetch_details=True):
                         upload_date = datetime.now().strftime("%Y-%m-%d")
                         print(f"      Warning: Could not get upload date, using today")
                     
-                    # Initial fetch: Don't make assumptions about sentiment from clickbait titles
-                    # CrewAI will analyze the actual transcript to determine sentiment
+                    # Analyze title for buying signals and sentiment
                     is_buying = analyze_title_for_buying(title)
+                    sentiment = analyze_title_sentiment(title)
                     
-                    # For initial fetch, be conservative:
-                    # - Only mark as bought if title explicitly says "buying/bought"
-                    # - Don't mark anything as recommended until CrewAI analyzes transcript
-                    # - Set sentiment to "pending" for CrewAI to determine
-                    tickers_bought = all_tickers[:2] if is_buying else []
+                    # For buying videos, mark first 2-3 tickers as bought
+                    tickers_bought = all_tickers[:3] if is_buying else []
                     
-                    # Generate summary placeholder
+                    # For bullish videos, mark remaining tickers as recommended
+                    tickers_recommended = []
+                    if sentiment == 'bullish' and all_tickers:
+                        tickers_recommended = [t for t in all_tickers if t not in tickers_bought][:3]
+                    
+                    # For bearish videos, mark tickers as cautioned
+                    tickers_cautioned = all_tickers[:3] if sentiment == 'bearish' else []
+                    
+                    # Generate summary based on title and sentiment
                     summary = generate_summary_from_title(title, all_tickers, channel_name)
                     
-                    # Generate insights
+                    # Generate insights based on analysis
                     insights = []
                     if is_buying and tickers_bought:
-                        insights.append(f"Title suggests buying {', '.join(tickers_bought)}")
+                        insights.append(f"🛒 Buying: {', '.join(tickers_bought)}")
+                    if tickers_recommended:
+                        insights.append(f"👍 Recommended: {', '.join(tickers_recommended)}")
+                    if tickers_cautioned:
+                        insights.append(f"⚠️ Cautioned: {', '.join(tickers_cautioned)}")
                     if all_tickers:
-                        insights.append(f"Stocks mentioned: {', '.join(all_tickers[:5])}")
-                    insights.append("⏳ Awaiting transcript analysis for accurate sentiment")
+                        other_tickers = [t for t in all_tickers if t not in tickers_bought + tickers_recommended + tickers_cautioned]
+                        if other_tickers:
+                            insights.append(f"📊 Also mentioned: {', '.join(other_tickers[:5])}")
+                    if not insights:
+                        insights.append("General market/investing discussion")
                     
                     videos.append({
                         "videoId": video_id,
@@ -364,13 +408,11 @@ def fetch_channel_videos(channel, max_videos=5, fetch_details=True):
                         "channelName": channel_name,
                         "tickersMentioned": all_tickers,
                         "tickersBought": tickers_bought,
-                        # Don't pre-populate recommended - let CrewAI determine from transcript
-                        "tickersRecommended": [],
-                        "tickersCautioned": [],
-                        # Sentiment pending CrewAI transcript analysis
-                        "sentiment": "pending",
+                        "tickersRecommended": tickers_recommended,
+                        "tickersCautioned": tickers_cautioned,
+                        "sentiment": sentiment,
                         "summary": summary,
-                        "keyInsights": insights if insights else ["Watch for full analysis"]
+                        "keyInsights": insights
                     })
 
             return videos

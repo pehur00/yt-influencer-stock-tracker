@@ -147,6 +147,10 @@ def step_5_finalize():
     pre_analysis_file = OUTPUT_DIR / "stocks_pre_analysis.json"
     website_data_file = DATA_DIR / "stocks.json"
     
+    # Also copy updated youtube_videos.json if CrewAI updated it
+    crew_youtube_file = OUTPUT_DIR / "youtube_videos.json"
+    website_youtube_file = DATA_DIR / "youtube_videos.json"
+    
     today = datetime.utcnow().strftime("%Y-%m-%d")
     
     # Load pre-analysis stocks (with source, recommendedDate, initialPrice)
@@ -263,6 +267,21 @@ def step_5_finalize():
     shutil.copy(output_file, website_data_file)
     print(f"  Merged and copied stocks.json to {website_data_file}")
     print(f"  Total stocks: {len(merged_data)}")
+    
+    # Copy updated youtube_videos.json if CrewAI processed it
+    if crew_youtube_file.exists():
+        try:
+            youtube_data = json.load(open(crew_youtube_file))
+            # Check if any videos have been processed (sentiment != "pending")
+            processed = [v for v in youtube_data if v.get('sentiment') != 'pending']
+            if processed:
+                shutil.copy(crew_youtube_file, website_youtube_file)
+                print(f"  Copied youtube_videos.json with {len(processed)} analyzed videos")
+            else:
+                print(f"  Warning: No videos were analyzed by CrewAI (all still 'pending')")
+        except Exception as e:
+            print(f"  Warning: Could not process youtube_videos.json: {e}")
+    
     return True
 
 

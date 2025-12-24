@@ -10,7 +10,7 @@ on:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -39,9 +39,16 @@ jobs:
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           CREW_MODEL: openai/gpt-4o-mini
-          CREW_TICKERS: DUOL,CMG,ADBE,MELI,CRWV,CRM,SPGI,EFX,NFLX,ASML,MA
         run: |
           python main.py
+
+      - name: Commit updated data
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/ automation/output/
+          git diff --staged --quiet || git commit -m "Update stock data [automated]"
+          git push
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

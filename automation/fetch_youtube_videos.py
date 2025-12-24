@@ -25,6 +25,25 @@ CONFIG_FILE = SCRIPT_DIR / "config" / "channels.json"
 OUTPUT_FILE = SCRIPT_DIR / "output" / "youtube_videos.json"
 DATA_FILE = SCRIPT_DIR.parent / "data" / "youtube_videos.json"
 
+
+def load_video_cache():
+    """Load previously processed videos (from output file, not separate cache)."""
+    try:
+        # Use the actual output file as the cache - these are already processed
+        if OUTPUT_FILE.exists():
+            with open(OUTPUT_FILE, 'r') as f:
+                videos = json.load(f)
+                return {v['videoId']: v for v in videos if 'videoId' in v}
+    except Exception as e:
+        print(f"  Could not load existing videos: {e}")
+    return {}
+
+
+def get_cached_video_ids():
+    """Get just the video IDs we've already processed."""
+    cache = load_video_cache()
+    return set(cache.keys())
+
 # Common stock tickers to look for (US + European)
 KNOWN_TICKERS = {
     # US Large Cap Tech
@@ -308,12 +327,17 @@ def fetch_video_details(video_id):
     return None
 
 
-def fetch_channel_videos(channel, max_videos=5, fetch_details=True):
+def fetch_channel_videos(channel, max_videos=5, fetch_details=True, video_cache=None):
     """Fetch recent videos from a single YouTube channel."""
+    if video_cache is None:
+        video_cache = {}
+    
+    # Use extract_flat=False to get full video info in one request
+    # This is slower per-channel but avoids N separate requests per video
     ydl_opts = {
         'quiet': True,
         'no_warnings': True,
-        'extract_flat': True,
+        'extract_flat': 'in_playlist',  # Get basic info first, then expand
         'playlistend': max_videos,
         'ignoreerrors': True,
     }
@@ -340,64 +364,85 @@ def fetch_channel_videos(channel, max_videos=5, fetch_details=True):
                     video_id = entry.get('id', '')
                     title = entry.get('title', '')
                     
+                    # Check if we already processed this video - skip expensive API call
+                    if video_id and video_id in video_cache:
+                        cached = video_cache[video_id]
+                        # Re-use existing data
+                        cached['_from_cache'] = True
+                        print(f"    ✓ Already have: {title[:40]}...")
+                        videos.append(cached)
+                        continue
+                    
                     # Start with tickers from title
                     tickers_from_title = extract_tickers_from_text(title)
                     all_tickers = tickers_from_title.copy()
-                    upload_date = None  # Will be set from video details
                     
-                    # Always fetch details to get accurate upload date
+                    # Try to get upload date from playlist entry first (faster)
+                    upload_date = None
+                    entry_date = entry.get('upload_date', '')
+                    if entry_date and len(entry_date) == 8 and entry_date.isdigit():
+                        upload_date = f"{entry_date[:4]}-{entry_date[4:6]}-{entry_date[6:8]}"
+                    
+                    # Only fetch video details if we need the date or description
                     if video_id:
                         print(f"    Fetching: {title[:45]}...")
-                        details = fetch_video_details(video_id)
-                        if details:
-                            # Extract tickers from description
-                            description = details.get('description', '')
-                            desc_tickers = extract_tickers_from_text(description)
-                            all_tickers = list(set(all_tickers + desc_tickers))
-                            
-                            # Parse upload date (format: YYYYMMDD -> YYYY-MM-DD)
-                            ud = details.get('upload_date', '')
-                            if ud and len(ud) == 8 and ud.isdigit():
-                                upload_date = f"{ud[:4]}-{ud[4:6]}-{ud[6:8]}"
-                                print(f"      Date: {upload_date}")
+                        if upload_date:
+                            print(f"      Date: {upload_date}")
+                        
+                        # Only do extra fetch if we don't have a date yet
+                        if not upload_date:
+                            details = fetch_video_details(video_id)
+                            if details:
+                                # Extract tickers from description
+                                description = details.get('description', '')
+                                desc_tickers = extract_tickers_from_text(description)
+                                all_tickers = list(set(all_tickers + desc_tickers))
+                                
+                                # Parse upload date (format: YYYYMMDD -> YYYY-MM-DD)
+                                ud = details.get('upload_date', '')
+                                if ud and len(ud) == 8 and ud.isdigit():
+                                    upload_date = f"{ud[:4]}-{ud[4:6]}-{ud[6:8]}"
+                                    print(f"      Date: {upload_date}")
                     
                     # Fallback to today if no date found (shouldn't happen)
                     if not upload_date:
                         upload_date = datetime.now().strftime("%Y-%m-%d")
                         print(f"      Warning: Could not get upload date, using today")
                     
-                    # Analyze title for buying signals and sentiment
+                    # Analyze title for buying signals and preliminary sentiment
                     is_buying = analyze_title_for_buying(title)
-                    sentiment = analyze_title_sentiment(title)
+                    title_sentiment = analyze_title_sentiment(title)
                     
-                    # For buying videos, mark first 2-3 tickers as bought
+                    # For buying videos, mark first 2-3 tickers as bought (for discovery)
                     tickers_bought = all_tickers[:3] if is_buying else []
                     
-                    # For bullish videos, mark remaining tickers as recommended
+                    # For display purposes only - show what title suggests
+                    # But actual sentiment stays "pending" for CrewAI to confirm
                     tickers_recommended = []
-                    if sentiment == 'bullish' and all_tickers:
-                        tickers_recommended = [t for t in all_tickers if t not in tickers_bought][:3]
+                    tickers_cautioned = []
                     
-                    # For bearish videos, mark tickers as cautioned
-                    tickers_cautioned = all_tickers[:3] if sentiment == 'bearish' else []
-                    
-                    # Generate summary based on title and sentiment
+                    # Generate summary based on title
                     summary = generate_summary_from_title(title, all_tickers, channel_name)
                     
-                    # Generate insights based on analysis
+                    # Generate insights based on title analysis (for video list display)
                     insights = []
                     if is_buying and tickers_bought:
-                        insights.append(f"🛒 Buying: {', '.join(tickers_bought)}")
-                    if tickers_recommended:
-                        insights.append(f"👍 Recommended: {', '.join(tickers_recommended)}")
-                    if tickers_cautioned:
-                        insights.append(f"⚠️ Cautioned: {', '.join(tickers_cautioned)}")
+                        insights.append(f"🛒 Title suggests buying: {', '.join(tickers_bought)}")
+                    if title_sentiment == 'bearish':
+                        insights.append(f"⚠️ Title suggests caution")
                     if all_tickers:
-                        other_tickers = [t for t in all_tickers if t not in tickers_bought + tickers_recommended + tickers_cautioned]
+                        other_tickers = [t for t in all_tickers if t not in tickers_bought]
                         if other_tickers:
-                            insights.append(f"📊 Also mentioned: {', '.join(other_tickers[:5])}")
+                            insights.append(f"📊 Stocks mentioned: {', '.join(other_tickers[:5])}")
+                        elif tickers_bought:
+                            pass  # Already shown in buying insight
+                        else:
+                            insights.append(f"📊 Stocks mentioned: {', '.join(all_tickers[:5])}")
                     if not insights:
-                        insights.append("General market/investing discussion")
+                        insights.append("📺 General market/investing discussion")
+                    
+                    # Add pending indicator for phased analysis
+                    insights.append("⏳ Full analysis pending")
                     
                     videos.append({
                         "videoId": video_id,
@@ -410,7 +455,10 @@ def fetch_channel_videos(channel, max_videos=5, fetch_details=True):
                         "tickersBought": tickers_bought,
                         "tickersRecommended": tickers_recommended,
                         "tickersCautioned": tickers_cautioned,
-                        "sentiment": sentiment,
+                        # Keep sentiment pending for CrewAI to determine from transcript
+                        "sentiment": "pending",
+                        # Store title-based sentiment as hint for display
+                        "titleSentiment": title_sentiment,
                         "summary": summary,
                         "keyInsights": insights
                     })
@@ -423,13 +471,17 @@ def fetch_channel_videos(channel, max_videos=5, fetch_details=True):
 
 
 def fetch_all_channels():
-    """Fetch videos from all enabled channels."""
+    """Fetch videos from all enabled channels, using cache when possible."""
     config = load_channel_config()
     channels = config.get('channels', [])
     settings = config.get('settings', {})
     
     max_videos = settings.get('maxVideosPerChannel', 5)
     fetch_details = settings.get('fetchDetails', True)
+    
+    # Load cache
+    video_cache = load_video_cache()
+    cache_hits = 0
     
     all_videos = []
     
@@ -440,12 +492,20 @@ def fetch_all_channels():
         return []
     
     print(f"Fetching from {len(enabled_channels)} channel(s)...")
+    if video_cache:
+        print(f"  ({len(video_cache)} videos already processed)")
     
     for channel in enabled_channels:
         channel_name = channel.get('name', 'Unknown')
         print(f"\n  [{channel_name}]")
         
-        videos = fetch_channel_videos(channel, max_videos, fetch_details)
+        videos = fetch_channel_videos(channel, max_videos, fetch_details, video_cache)
+        
+        # Count cache hits
+        for v in videos:
+            if v.get('_from_cache'):
+                cache_hits += 1
+                del v['_from_cache']  # Remove internal flag
         
         if videos:
             print(f"    Found {len(videos)} videos")
@@ -455,6 +515,13 @@ def fetch_all_channels():
     
     # Sort by date (newest first)
     all_videos.sort(key=lambda v: v.get('publishedAt', ''), reverse=True)
+    
+    if cache_hits > 0:
+        print(f"\n  ✅ Already processed: {cache_hits} videos (skipped)")
+    
+    new_count = len(all_videos) - cache_hits
+    if new_count > 0:
+        print(f"  🆕 New videos fetched: {new_count}")
     
     return all_videos
 

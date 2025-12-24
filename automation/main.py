@@ -287,9 +287,18 @@ def step_5_finalize():
 
 def main():
     """Main execution function."""
+    import argparse
+    
+    parser = argparse.ArgumentParser(description='Stock Tracker - Multi-Channel Automated Update')
+    parser.add_argument('--skip-youtube', action='store_true', 
+                        help='Skip YouTube fetch, use existing videos from cache')
+    parser.add_argument('--prices-only', action='store_true',
+                        help='Only update prices, skip YouTube and analysis')
+    args = parser.parse_args()
+    
     load_dotenv()
     
-    if not os.getenv("OPENROUTER_API_KEY"):
+    if not args.prices_only and not os.getenv("OPENROUTER_API_KEY"):
         print("ERROR: OPENROUTER_API_KEY not found.")
         print("Please set it in your .env file.")
         sys.exit(1)
@@ -298,18 +307,36 @@ def main():
     print("  Stock Tracker - Multi-Channel Automated Update")
     print("=" * 70)
     
+    if args.prices_only:
+        print("\n  Mode: Prices only (skipping YouTube and analysis)")
+    elif args.skip_youtube:
+        print("\n  Mode: Skip YouTube fetch (using cached videos)")
+    
     try:
-        videos = step_1_fetch_videos()
-        new_tickers, current_stocks = step_2_discover_tickers(videos)
-        updated_stocks, added_tickers = step_3_add_new_tickers(new_tickers, current_stocks)
-        step_4_run_analysis(updated_stocks)
-        step_5_finalize()
+        if args.prices_only:
+            # Just load existing stocks and update prices
+            current_stocks = load_current_stocks()
+            step_5_finalize()
+        else:
+            if args.skip_youtube:
+                # Load videos from cache instead of fetching
+                from fetch_youtube_videos import load_video_cache
+                cache = load_video_cache()
+                videos = list(cache.values())
+                print(f"\n  Loaded {len(videos)} videos from cache")
+            else:
+                videos = step_1_fetch_videos()
+            
+            new_tickers, current_stocks = step_2_discover_tickers(videos)
+            updated_stocks, added_tickers = step_3_add_new_tickers(new_tickers, current_stocks)
+            step_4_run_analysis(updated_stocks)
+            step_5_finalize()
         
         print("\n" + "=" * 70)
         print("  SUCCESS! Stock data has been updated.")
         print("=" * 70)
         
-        if added_tickers:
+        if not args.prices_only and 'added_tickers' in dir() and added_tickers:
             print(f"\nNew stocks added: {', '.join(added_tickers)}")
         
     except Exception as e:

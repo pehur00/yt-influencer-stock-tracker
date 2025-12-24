@@ -58,7 +58,7 @@
     }
   ],
   "settings": {
-    "maxVideosPerChannel": 5,
+    "maxVideosPerChannel": 3,
     "fetchDetails": true
   }
 }

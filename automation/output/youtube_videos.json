@@ -2,76 +2,546 @@
   {
     "videoId": "tiIYp5yg7Uc",
     "title": "DCA Tuesday - Buy Shell",
-    "publishedAt": "2023-10-10",
+    "publishedAt": "2025-12-23",
     "thumbnail": "https://img.youtube.com/vi/tiIYp5yg7Uc/maxresdefault.jpg",
-    "channelId": "channel-id",
-    "channelName": "Channel Name",
-    "sentiment": "bullish",
-    "tickersMentioned": ["SHEL"],
-    "tickersBought": ["SHEL"],
-    "tickersRecommended": ["SHEL"],
+    "channelId": "leven-van-dividend",
+    "channelName": "Leven van Dividend",
+    "tickersMentioned": [
+      "SHEL"
+    ],
+    "tickersBought": [
+      "SHEL"
+    ],
+    "tickersRecommended": [],
     "tickersCautioned": [],
-    "summary": "The creator expresses a strong bullish sentiment towards Shell (SHEL), indicating they have bought shares and recommend it as a good investment opportunity. They analyze the company's fundamentals and market position.",
-    "keyInsights": ["The creator believes Shell is undervalued and presents a solid opportunity for dollar-cost averaging."]
+    "sentiment": "pending",
+    "titleSentiment": "bullish",
+    "summary": "Leven analyzes SHEL and shares investment perspectives on these companies.",
+    "keyInsights": [
+      "\ud83d\uded2 Title suggests buying: SHEL",
+      "\u23f3 Full analysis pending"
+    ]
   },
   {
     "videoId": "z5ZvqWV0hoQ",
     "title": "These 3 Stocks Will Make (Smart) Investors Rich in 2026!",
-    "publishedAt": "2023-10-10",
+    "publishedAt": "2025-12-23",
     "thumbnail": "https://img.youtube.com/vi/z5ZvqWV0hoQ/maxresdefault.jpg",
-    "channelId": "channel-id",
-    "channelName": "Channel Name",
-    "sentiment": "bullish",
-    "tickersMentioned": ["NOW", "MO", "V"],
+    "channelId": "everything-money",
+    "channelName": "Everything Money",
+    "tickersMentioned": [
+      "V",
+      "MO",
+      "NOW"
+    ],
     "tickersBought": [],
-    "tickersRecommended": ["NOW", "MO", "V"],
+    "tickersRecommended": [],
     "tickersCautioned": [],
-    "summary": "The creator discusses three stocks—ServiceNow (NOW), Altria (MO), and Visa (V)—that they believe will perform well in the coming years. They recommend these stocks for viewers to consider adding to their portfolios.",
-    "keyInsights": ["The creator emphasizes the growth potential of these companies and suggests they are worth investing in for long-term gains."]
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
+    "summary": "Everything analyzes V, MO, NOW and shares investment perspectives on these companies.",
+    "keyInsights": [
+      "\ud83d\udcca Stocks mentioned: V, MO, NOW",
+      "\u23f3 Full analysis pending"
+    ]
   },
   {
     "videoId": "uZdQETgTJNQ",
     "title": "These Were My Hardest Lessons as a High Yield Investor",
-    "publishedAt": "2023-10-10",
+    "publishedAt": "2025-12-23",
     "thumbnail": "https://img.youtube.com/vi/uZdQETgTJNQ/maxresdefault.jpg",
-    "channelId": "channel-id",
-    "channelName": "Channel Name",
-    "sentiment": "neutral",
-    "tickersMentioned": ["T", "SO"],
+    "channelId": "dividend-bull",
+    "channelName": "Dividend Bull",
+    "tickersMentioned": [
+      "SO",
+      "T"
+    ],
     "tickersBought": [],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "summary": "The creator reflects on their experiences as a high-yield investor, discussing AT&T (T) and Southern Company (SO) without making strong recommendations. They provide insights into the challenges of investing in high-yield stocks.",
-    "keyInsights": ["The creator shares lessons learned from past investments, emphasizing the importance of thorough research and caution in high-yield investing."]
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
+    "summary": "Dividend analyzes SO, T and shares investment perspectives on these companies.",
+    "keyInsights": [
+      "\ud83d\udcca Stocks mentioned: SO, T",
+      "\u23f3 Full analysis pending"
+    ]
   },
   {
     "videoId": "GEdvZf9Mk4I",
     "title": "Stocks that have the MOST UPSIDE in my opinion",
-    "publishedAt": "2023-10-10",
+    "publishedAt": "2025-12-23",
     "thumbnail": "https://img.youtube.com/vi/GEdvZf9Mk4I/maxresdefault.jpg",
-    "channelId": "channel-id",
-    "channelName": "Channel Name",
-    "sentiment": "bullish",
-    "tickersMentioned": ["TSLA", "NOW", "META", "NVDA", "PLTR"],
+    "channelId": "financial-education",
+    "channelName": "Financial Education",
+    "tickersMentioned": [
+      "PLTR",
+      "NOW",
+      "META",
+      "NVDA",
+      "TSLA"
+    ],
     "tickersBought": [],
-    "tickersRecommended": ["TSLA", "NOW", "META", "NVDA", "PLTR"],
+    "tickersRecommended": [],
     "tickersCautioned": [],
-    "summary": "The creator discusses several stocks, including Tesla (TSLA), ServiceNow (NOW), Meta (META), NVIDIA (NVDA), and Palantir (PLTR), expressing a bullish outlook on their potential for growth. They recommend these stocks for viewers to consider.",
-    "keyInsights": ["The creator highlights the innovative aspects of these companies and their potential to outperform the market."]
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
+    "summary": "Financial analyzes PLTR, NOW, META and shares investment perspectives on these companies.",
+    "keyInsights": [
+      "\ud83d\udcca Stocks mentioned: PLTR, NOW, META, NVDA, TSLA",
+      "\u23f3 Full analysis pending"
+    ]
   },
   {
     "videoId": "r06k8lF4isc",
     "title": "How To Grow A $1 Million Portfolio",
-    "publishedAt": "2023-10-10",
+    "publishedAt": "2025-12-22",
     "thumbnail": "https://img.youtube.com/vi/r06k8lF4isc/maxresdefault.jpg",
-    "channelId": "channel-id",
-    "channelName": "Channel Name",
-    "sentiment": "neutral",
-    "tickersMentioned": ["AMZN", "COST"],
+    "channelId": "joseph-carlson",
+    "channelName": "The Joseph Carlson Show",
+    "tickersMentioned": [
+      "AMZN",
+      "COST"
+    ],
     "tickersBought": [],
     "tickersRecommended": [],
     "tickersCautioned": [],
-    "summary": "The creator provides a portfolio update discussing Amazon (AMZN) and Costco (COST) among other stocks. They share their overall investment strategy without making specific buy or sell recommendations.",
-    "keyInsights": ["The creator emphasizes the importance of diversification and strategic planning in growing a portfolio, rather than focusing on specific stock picks."]
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
+    "summary": "The provides a portfolio update, discussing recent buys, sells, and overall investment strategy.",
+    "keyInsights": [
+      "\ud83d\udcca Stocks mentioned: AMZN, COST",
+      "\u23f3 Full analysis pending"
+    ]
+  },
+  {
+    "videoId": "CxqXMj-l0g4",
+    "title": "Portfolio Update - Kinder Morgan sold, additional Vopak acquired",
+    "publishedAt": "2025-12-22",
+    "thumbnail": "https://img.youtube.com/vi/CxqXMj-l0g4/maxresdefault.jpg",
+    "channelId": "leven-van-dividend",
+    "channelName": "Leven van Dividend",
+    "tickersMentioned": [],
+    "tickersBought": [],
+    "tickersRecommended": [],
+    "tickersCautioned": [],
+    "sentiment": "pending",
+    "titleSentiment": "bearish",
+    "summary": "Leven provides a portfolio update, discussing recent buys, sells, and overall investment strategy.",
+    "keyInsights": [
+      "\u26a0\ufe0f Title suggests caution",
+      "\u23f3 Full analysis pending"
+    ]
+  },
+  {
+    "videoId": "BgbdjKfeyzs",
+    "title": "Are These Incredible Stocks Still Worth Buying Today?",
+    "publishedAt": "2025-12-22",
+    "thumbnail": "https://img.youtube.com/vi/BgbdjKfeyzs/maxresdefault.jpg",
+    "channelId": "couch-investor",
+    "channelName": "CouchInvestor",
+    "tickersMentioned": [
+      "AAPL",
+      "MSFT",
+      "T",
+      "AMZN",
+      "AVGO",
+      "META",
+      "NFLX",
+      "NVDA",
+      "GOOGL",
+      "TSLA"
+    ],
+    "tickersBought": [
+      "AAPL",
+      "MSFT",
+      "T"
+    ],
+    "tickersRecommended": [],
+    "tickersCautioned": [],
+    "sentiment": "pending",
+    "titleSentiment": "bullish",
+    "summary": "CouchInvestor discusses stocks being bought, mentioning AAPL, MSFT, T. Investment thesis and portfolio strategy shared.",
+    "keyInsights": [
+      "\ud83d\uded2 Title suggests buying: AAPL, MSFT, T",
+      "\ud83d\udcca Stocks mentioned: AMZN, AVGO, META, NFLX, NVDA",
+      "\u23f3 Full analysis pending"
+    ]
+  },
+  {
+    "videoId": "2GKYlFhuvr8",
+    "title": "These 5 Stocks Will Make Millionaires in 2026",
+    "publishedAt": "2025-12-22",
+    "thumbnail": "https://img.youtube.com/vi/2GKYlFhuvr8/maxresdefault.jpg",
+    "channelId": "everything-money",
+    "channelName": "Everything Money",
+    "tickersMentioned": [
+      "V",
+      "MO",
+      "T",
+      "SO"
+    ],
+    "tickersBought": [],
+    "tickersRecommended": [],
+    "tickersCautioned": [],
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
+    "summary": "Everything covers AI-related investment opportunities and which companies may benefit from AI growth.",
+    "keyInsights": [
+      "\ud83d\udcca Stocks mentioned: V, MO, T, SO",
+      "\u23f3 Full analysis pending"
+    ]
+  },
+  {
+    "videoId": "jl3pDtRy7eg",
+    "title": "Dividend Overview 2025",
+    "publishedAt": "2025-12-21",
+    "thumbnail": "https://img.youtube.com/vi/jl3pDtRy7eg/maxresdefault.jpg",
+    "channelId": "leven-van-dividend",
+    "channelName": "Leven van Dividend",
+    "tickersMentioned": [],
+    "tickersBought": [],
+    "tickersRecommended": [],
+    "tickersCautioned": [],
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
+    "summary": "Leven discusses dividend investing strategies and income-generating stocks.",
+    "keyInsights": [
+      "\ud83d\udcfa General market/investing discussion",
+      "\u23f3 Full analysis pending"
+    ]
+  },
+  {
+    "videoId": "aAdAmEUyWyk",
+    "title": "I Bought $8,000 More of These Stocks",
+    "publishedAt": "2025-12-21",
+    "thumbnail": "https://img.youtube.com/vi/aAdAmEUyWyk/maxresdefault.jpg",
+    "channelId": "couch-investor",
+    "channelName": "CouchInvestor",
+    "tickersMentioned": [
+      "T",
+      "PLTR",
+      "NOW",
+      "UNH",
+      "META",
+      "NVDA",
+      "GOOGL",
+      "TSLA"
+    ],
+    "tickersBought": [
+      "T",
+      "PLTR",
+      "NOW"
+    ],
+    "tickersRecommended": [],
+    "tickersCautioned": [],
+    "sentiment": "pending",
+    "titleSentiment": "bullish",
+    "summary": "CouchInvestor discusses stocks being bought, mentioning T, PLTR, NOW. Investment thesis and portfolio strategy shared.",
+    "keyInsights": [
+      "\ud83d\uded2 Title suggests buying: T, PLTR, NOW",
+      "\ud83d\udcca Stocks mentioned: UNH, META, NVDA, GOOGL, TSLA",
+      "\u23f3 Full analysis pending"
+    ]
+  },
+  {
+    "videoId": "WKbJn9g0ZLM",
+    "title": "2 Growth Stocks to Grab While Everyone Else Sells",
+    "publishedAt": "2025-12-21",
+    "thumbnail": "https://img.youtube.com/vi/WKbJn9g0ZLM/maxresdefault.jpg",
+    "channelId": "couch-investor",
+    "channelName": "CouchInvestor",
+    "tickersMentioned": [
+      "UNH",
+      "NVDA",
+      "T",
+      "TSLA"
+    ],
+    "tickersBought": [],
+    "tickersRecommended": [],
+    "tickersCautioned": [],
+    "sentiment": "pending",
+    "titleSentiment": "bearish",
+    "summary": "CouchInvestor analyzes UNH, NVDA, T and shares investment perspectives on these companies.",
+    "keyInsights": [
+      "\u26a0\ufe0f Title suggests caution",
+      "\ud83d\udcca Stocks mentioned: UNH, NVDA, T, TSLA",
+      "\u23f3 Full analysis pending"
+    ]
+  },
+  {
+    "videoId": "TJwfeQ9-GOU",
+    "title": "Tom Lee: \u201cYou\u2019ll Regret Not Buying Stocks RIGHT NOW!\u201d",
+    "publishedAt": "2025-12-20",
+    "thumbnail": "https://img.youtube.com/vi/TJwfeQ9-GOU/maxresdefault.jpg",
+    "channelId": "everything-money",
+    "channelName": "Everything Money",
+    "tickersMentioned": [
+      "V",
+      "MO",
+      "T",
+      "NOW"
+    ],
+    "tickersBought": [
+      "V",
+      "MO",
+      "T"
+    ],
+    "tickersRecommended": [],
+    "tickersCautioned": [],
+    "sentiment": "pending",
+    "titleSentiment": "bullish",
+    "summary": "Everything discusses stocks being bought, mentioning V, MO, T. Investment thesis and portfolio strategy shared.",
+    "keyInsights": [
+      "\ud83d\uded2 Title suggests buying: V, MO, T",
+      "\ud83d\udcca Stocks mentioned: NOW",
+      "\u23f3 Full analysis pending"
+    ]
+  },
+  {
+    "videoId": "sl911nM1r5U",
+    "title": "Time is running out!! (THIS IS INVESTORS LAST CHANCE)",
+    "publishedAt": "2025-12-20",
+    "thumbnail": "https://img.youtube.com/vi/sl911nM1r5U/maxresdefault.jpg",
+    "channelId": "financial-education",
+    "channelName": "Financial Education",
+    "tickersMentioned": [
+      "PLTR",
+      "NOW",
+      "META",
+      "NVDA",
+      "TSLA"
+    ],
+    "tickersBought": [],
+    "tickersRecommended": [],
+    "tickersCautioned": [],
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
+    "summary": "Financial analyzes PLTR, NOW, META and shares investment perspectives on these companies.",
+    "keyInsights": [
+      "\ud83d\udcca Stocks mentioned: PLTR, NOW, META, NVDA, TSLA",
+      "\u23f3 Full analysis pending"
+    ]
+  },
+  {
+    "videoId": "DZqPuCuCGjs",
+    "title": "Here's How Much SCHD Will Pay in 2026",
+    "publishedAt": "2025-12-19",
+    "thumbnail": "https://img.youtube.com/vi/DZqPuCuCGjs/maxresdefault.jpg",
+    "channelId": "dividend-bull",
+    "channelName": "Dividend Bull",
+    "tickersMentioned": [
+      "SCHD",
+      "NOW"
+    ],
+    "tickersBought": [],
+    "tickersRecommended": [],
+    "tickersCautioned": [],
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
+    "summary": "Dividend analyzes SCHD, NOW and shares investment perspectives on these companies.",
+    "keyInsights": [
+      "\ud83d\udcca Stocks mentioned: SCHD, NOW",
+      "\u23f3 Full analysis pending"
+    ]
+  },
+  {
+    "videoId": "YAasDQIa_8o",
+    "title": "5 BEST Stocks to BUY Now (I'M BUYING)",
+    "publishedAt": "2025-12-18",
+    "thumbnail": "https://img.youtube.com/vi/YAasDQIa_8o/maxresdefault.jpg",
+    "channelId": "fired-up-wealth",
+    "channelName": "FiredUpWealth",
+    "tickersMentioned": [
+      "ORCL",
+      "MELI",
+      "NOW",
+      "AVGO",
+      "AMD",
+      "NVDA"
+    ],
+    "tickersBought": [
+      "ORCL",
+      "MELI",
+      "NOW"
+    ],
+    "tickersRecommended": [],
+    "tickersCautioned": [],
+    "sentiment": "pending",
+    "titleSentiment": "bullish",
+    "summary": "FiredUpWealth discusses stocks being bought, mentioning ORCL, MELI, NOW. Investment thesis and portfolio strategy shared.",
+    "keyInsights": [
+      "\ud83d\uded2 Title suggests buying: ORCL, MELI, NOW",
+      "\ud83d\udcca Stocks mentioned: AVGO, AMD, NVDA",
+      "\u23f3 Full analysis pending"
+    ]
+  },
+  {
+    "videoId": "jHrHP0IqGdY",
+    "title": "VICI Is a Top High Yield Dividend Growth Stock Now",
+    "publishedAt": "2025-12-17",
+    "thumbnail": "https://img.youtube.com/vi/jHrHP0IqGdY/maxresdefault.jpg",
+    "channelId": "dividend-bull",
+    "channelName": "Dividend Bull",
+    "tickersMentioned": [
+      "NOW"
+    ],
+    "tickersBought": [],
+    "tickersRecommended": [],
+    "tickersCautioned": [],
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
+    "summary": "Dividend discusses dividend investing strategies and income-generating stocks.",
+    "keyInsights": [
+      "\ud83d\udcca Stocks mentioned: NOW",
+      "\u23f3 Full analysis pending"
+    ]
+  },
+  {
+    "videoId": "0vRlP8l142U",
+    "title": "$64,000 I Spent on these Stocks Today\u203c\ufe0f",
+    "publishedAt": "2025-12-17",
+    "thumbnail": "https://img.youtube.com/vi/0vRlP8l142U/maxresdefault.jpg",
+    "channelId": "financial-education",
+    "channelName": "Financial Education",
+    "tickersMentioned": [
+      "PLTR",
+      "NOW",
+      "META",
+      "NVDA",
+      "TSLA"
+    ],
+    "tickersBought": [],
+    "tickersRecommended": [],
+    "tickersCautioned": [],
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
+    "summary": "Financial analyzes PLTR, NOW, META and shares investment perspectives on these companies.",
+    "keyInsights": [
+      "\ud83d\udcca Stocks mentioned: PLTR, NOW, META, NVDA, TSLA",
+      "\u23f3 Full analysis pending"
+    ]
+  },
+  {
+    "videoId": "gR_iGDnxK4o",
+    "title": "5 BEST Stocks to BUY Now (I'M BUYING)",
+    "publishedAt": "2025-12-04",
+    "thumbnail": "https://img.youtube.com/vi/gR_iGDnxK4o/maxresdefault.jpg",
+    "channelId": "fired-up-wealth",
+    "channelName": "FiredUpWealth",
+    "tickersMentioned": [
+      "MSFT",
+      "PLTR",
+      "AMZN",
+      "NOW",
+      "NFLX",
+      "NVDA"
+    ],
+    "tickersBought": [
+      "MSFT",
+      "PLTR",
+      "AMZN"
+    ],
+    "tickersRecommended": [],
+    "tickersCautioned": [],
+    "sentiment": "pending",
+    "titleSentiment": "bullish",
+    "summary": "FiredUpWealth discusses stocks being bought, mentioning MSFT, PLTR, AMZN. Investment thesis and portfolio strategy shared.",
+    "keyInsights": [
+      "\ud83d\uded2 Title suggests buying: MSFT, PLTR, AMZN",
+      "\ud83d\udcca Stocks mentioned: NOW, NFLX, NVDA",
+      "\u23f3 Full analysis pending"
+    ]
+  },
+  {
+    "videoId": "zo1CltybP9M",
+    "title": "I Just Bought $77,000 Of This Stock",
+    "publishedAt": "2025-12-01",
+    "thumbnail": "https://img.youtube.com/vi/zo1CltybP9M/maxresdefault.jpg",
+    "channelId": "joseph-carlson",
+    "channelName": "The Joseph Carlson Show",
+    "tickersMentioned": [
+      "NVDA",
+      "GOOGL",
+      "AMZN",
+      "COST"
+    ],
+    "tickersBought": [
+      "NVDA",
+      "GOOGL",
+      "AMZN"
+    ],
+    "tickersRecommended": [],
+    "tickersCautioned": [],
+    "sentiment": "pending",
+    "titleSentiment": "bullish",
+    "summary": "The discusses stocks being bought, mentioning NVDA, GOOGL, AMZN. Investment thesis and portfolio strategy shared.",
+    "keyInsights": [
+      "\ud83d\uded2 Title suggests buying: NVDA, GOOGL, AMZN",
+      "\ud83d\udcca Stocks mentioned: COST",
+      "\u23f3 Full analysis pending"
+    ]
+  },
+  {
+    "videoId": "ovIom8GbQXM",
+    "title": "Revealed: 10 Best Stocks to Buy Now (We're Buying!)",
+    "publishedAt": "2025-11-26",
+    "thumbnail": "https://img.youtube.com/vi/ovIom8GbQXM/maxresdefault.jpg",
+    "channelId": "fired-up-wealth",
+    "channelName": "FiredUpWealth",
+    "tickersMentioned": [
+      "T",
+      "PLTR",
+      "NOW",
+      "AMD",
+      "NVDA",
+      "GOOGL"
+    ],
+    "tickersBought": [
+      "T",
+      "PLTR",
+      "NOW"
+    ],
+    "tickersRecommended": [],
+    "tickersCautioned": [],
+    "sentiment": "pending",
+    "titleSentiment": "bullish",
+    "summary": "FiredUpWealth discusses stocks being bought, mentioning T, PLTR, NOW. Investment thesis and portfolio strategy shared.",
+    "keyInsights": [
+      "\ud83d\uded2 Title suggests buying: T, PLTR, NOW",
+      "\ud83d\udcca Stocks mentioned: AMD, NVDA, GOOGL",
+      "\u23f3 Full analysis pending"
+    ]
+  },
+  {
+    "videoId": "--P9ha_OTJA",
+    "title": "6 Stocks To Buy In An Overvalued Market",
+    "publishedAt": "2025-11-05",
+    "thumbnail": "https://img.youtube.com/vi/--P9ha_OTJA/maxresdefault.jpg",
+    "channelId": "joseph-carlson",
+    "channelName": "The Joseph Carlson Show",
+    "tickersMentioned": [
+      "CRM",
+      "ADBE",
+      "AMZN",
+      "META",
+      "NFLX",
+      "COST"
+    ],
+    "tickersBought": [
+      "CRM",
+      "ADBE",
+      "AMZN"
+    ],
+    "tickersRecommended": [],
+    "tickersCautioned": [],
+    "sentiment": "pending",
+    "titleSentiment": "neutral",
+    "summary": "The analyzes current market valuations and discusses how to find value in an overvalued market.",
+    "keyInsights": [
+      "\ud83d\uded2 Title suggests buying: CRM, ADBE, AMZN",
+      "\ud83d\udcca Stocks mentioned: META, NFLX, COST",
+      "\u23f3 Full analysis pending"
+    ]
   }
 ]

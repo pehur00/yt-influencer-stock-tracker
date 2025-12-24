@@ -1341,10 +1341,134 @@
   },
   {
     "category": "Growth",
-    "ticker": "MSFT",
-    "name": "MSFT (pending analysis)",
+    "ticker": "T",
+    "name": "T (pending analysis)",
     "price": 0.0,
-    "initialPrice": 477.73,
+    "initialPrice": 24.31,
+    "recommendedDate": "2025-12-16",
+    "dcf": {
+      "conservative": "0-0",
+      "base": "0-0",
+      "aggressive": "0-0"
+    },
+    "fcfQuality": 3,
+    "roicStrength": 3,
+    "revenueDurability": 3,
+    "balanceSheetStrength": 3,
+    "insiderActivity": 3,
+    "valueRank": 3,
+    "expectedReturn": 3,
+    "lastUpdated": "2025-12-24",
+    "source": "Leven van Dividend",
+    "sourceDetails": {
+      "channelId": "leven-van-dividend",
+      "firstMentioned": "2025-12-16",
+      "videos": [
+        "DCA Tuesday - Buy Vopak"
+      ],
+      "isBought": true,
+      "addedOn": "2025-12-24"
+    }
+  },
+  {
+    "category": "Growth",
+    "ticker": "V",
+    "name": "V (pending analysis)",
+    "price": 0.0,
+    "initialPrice": 346.89,
+    "recommendedDate": "2025-12-16",
+    "dcf": {
+      "conservative": "0-0",
+      "base": "0-0",
+      "aggressive": "0-0"
+    },
+    "fcfQuality": 3,
+    "roicStrength": 3,
+    "revenueDurability": 3,
+    "balanceSheetStrength": 3,
+    "insiderActivity": 3,
+    "valueRank": 3,
+    "expectedReturn": 3,
+    "lastUpdated": "2025-12-24",
+    "source": "Leven van Dividend",
+    "sourceDetails": {
+      "channelId": "leven-van-dividend",
+      "firstMentioned": "2025-12-16",
+      "videos": [
+        "DCA Tuesday - Buy Vopak"
+      ],
+      "isBought": true,
+      "addedOn": "2025-12-24"
+    }
+  },
+  {
+    "category": "Growth",
+    "ticker": "TOT",
+    "name": "TOT (pending analysis)",
+    "price": 0.0,
+    "initialPrice": 21.31,
+    "recommendedDate": "2025-12-16",
+    "dcf": {
+      "conservative": "0-0",
+      "base": "0-0",
+      "aggressive": "0-0"
+    },
+    "fcfQuality": 3,
+    "roicStrength": 3,
+    "revenueDurability": 3,
+    "balanceSheetStrength": 3,
+    "insiderActivity": 3,
+    "valueRank": 3,
+    "expectedReturn": 3,
+    "lastUpdated": "2025-12-24",
+    "source": "Leven van Dividend",
+    "sourceDetails": {
+      "channelId": "leven-van-dividend",
+      "firstMentioned": "2025-12-16",
+      "videos": [
+        "DCA Tuesday - Buy Vopak"
+      ],
+      "isBought": true,
+      "addedOn": "2025-12-24"
+    }
+  },
+  {
+    "category": "Growth",
+    "ticker": "TSLA",
+    "name": "TSLA (pending analysis)",
+    "price": 0.0,
+    "initialPrice": 475.31,
+    "recommendedDate": "2025-12-16",
+    "dcf": {
+      "conservative": "0-0",
+      "base": "0-0",
+      "aggressive": "0-0"
+    },
+    "fcfQuality": 3,
+    "roicStrength": 3,
+    "revenueDurability": 3,
+    "balanceSheetStrength": 3,
+    "insiderActivity": 3,
+    "valueRank": 3,
+    "expectedReturn": 3,
+    "lastUpdated": "2025-12-24",
+    "source": "Financial Education",
+    "sourceDetails": {
+      "channelId": "financial-education",
+      "firstMentioned": "2025-12-16",
+      "videos": [
+        "My Prediction for Best Stocks in 2026 & Overall Market Performance\u203c\ufe0f"
+      ],
+      "isBought": true,
+      "addedOn": "2025-12-24"
+    }
+  },
+  {
+    "category": "Growth",
+    "ticker": "AMZN",
+    "name": "AMZN (pending analysis)",
+    "price": 0.0,
+    "initialPrice": 232.38,
     "recommendedDate": "2025-12-04",
     "dcf": {
       "conservative": "0-0",
@@ -1372,10 +1496,10 @@
   },
   {
     "category": "Growth",
-    "ticker": "AMZN",
-    "name": "AMZN (pending analysis)",
+    "ticker": "MSFT",
+    "name": "MSFT (pending analysis)",
     "price": 0.0,
-    "initialPrice": 232.38,
+    "initialPrice": 477.73,
     "recommendedDate": "2025-12-04",
     "dcf": {
       "conservative": "0-0",

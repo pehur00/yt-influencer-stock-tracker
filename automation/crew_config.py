@@ -195,11 +195,11 @@ Video {i+1}:
         - All ticker symbols should be uppercase (e.g., AAPL, GOOGL, NVDA)
         - Output ONLY valid JSON array, no commentary or markdown
 
-        Save the output to output/youtube_videos.json""",
+        NOTE: Do NOT save to youtube_videos.json - the video data is already captured by the fetcher.""",
         agent=formatter,
-        expected_output="Valid JSON array saved to output/youtube_videos.json with correct video IDs and transcript-based sentiment",
-        context=[youtube_task],
-        output_file="output/youtube_videos.json"
+        expected_output="Valid JSON array with correct video IDs and transcript-based sentiment (for reference only)",
+        context=[youtube_task]
+        # Removed output_file to prevent overwriting good data from fetch_youtube_videos.py
     )
 
     # Get tickers dynamically at crew creation time

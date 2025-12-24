@@ -4,6 +4,37 @@
     "ticker": "AAPL",
     "name": "Apple Inc.",
     "price": 272.36,
+    "initialPrice": 270.97,
+    "recommendedDate": "2025-12-22",
+    "dcf": {
+      "conservative": "220-240",
+      "base": "250-270",
+      "aggressive": "260-290"
+    },
+    "fcfQuality": 5,
+    "roicStrength": 4,
+    "revenueDurability": 5,
+    "balanceSheetStrength": 4,
+    "insiderActivity": 3,
+    "valueRank": 3,
+    "expectedReturn": 4,
+    "lastUpdated": "2025-12-24",
+    "source": "CouchInvestor",
+    "sourceDetails": {
+      "channelId": "couch-investor",
+      "firstMentioned": "2025-12-22",
+      "videos": [
+        "Are These Incredible Stocks Still Worth Buying Today?"
+      ],
+      "isBought": true,
+      "addedOn": "2025-12-24"
+    }
+  },
+  {
+    "category": "Growth",
+    "ticker": "AAPL",
+    "name": "Apple Inc.",
+    "price": 272.36,
     "initialPrice": 234.35,
     "recommendedDate": "2025-09-10",
     "dcf": {
@@ -63,6 +94,37 @@
   },
   {
     "category": "Growth",
+    "ticker": "ADBE",
+    "name": "Adobe Inc.",
+    "price": 352.42,
+    "initialPrice": 335.35,
+    "recommendedDate": "2025-11-05",
+    "dcf": {
+      "conservative": "300-320",
+      "base": "330-350",
+      "aggressive": "340-370"
+    },
+    "fcfQuality": 3,
+    "roicStrength": 4,
+    "revenueDurability": 4,
+    "balanceSheetStrength": 4,
+    "insiderActivity": 2,
+    "valueRank": 3,
+    "expectedReturn": 3,
+    "lastUpdated": "2025-12-24",
+    "source": "The Joseph Carlson Show",
+    "sourceDetails": {
+      "channelId": "joseph-carlson",
+      "firstMentioned": "2025-11-05",
+      "videos": [
+        "6 Stocks To Buy In An Overvalued Market"
+      ],
+      "isBought": true,
+      "addedOn": "2025-12-24"
+    }
+  },
+  {
+    "category": "Growth",
     "ticker": "AMD",
     "name": "Advanced Micro Devices",
     "price": 214.9,
@@ -71,7 +133,7 @@
     "dcf": {
       "conservative": "180-200",
       "base": "210-230",
-      "aggressive": "220-240"
+      "aggressive": "220-250"
     },
     "fcfQuality": 4,
     "roicStrength": 4,
@@ -102,12 +164,12 @@
     "dcf": {
       "conservative": "200-220",
       "base": "220-240",
-      "aggressive": "230-250"
+      "aggressive": "240-260"
     },
     "fcfQuality": 4,
     "roicStrength": 3,
     "revenueDurability": 5,
-    "balanceSheetStrength": 3,
+    "balanceSheetStrength": 4,
     "insiderActivity": 3,
     "valueRank": 3,
     "expectedReturn": 4,
@@ -133,12 +195,12 @@
     "dcf": {
       "conservative": "200-220",
       "base": "220-240",
-      "aggressive": "230-250"
+      "aggressive": "240-260"
     },
     "fcfQuality": 4,
     "roicStrength": 3,
     "revenueDurability": 5,
-    "balanceSheetStrength": 3,
+    "balanceSheetStrength": 4,
     "insiderActivity": 3,
     "valueRank": 3,
     "expectedReturn": 4,
@@ -164,12 +226,12 @@
     "dcf": {
       "conservative": "200-220",
       "base": "220-240",
-      "aggressive": "230-250"
+      "aggressive": "240-260"
     },
     "fcfQuality": 4,
     "roicStrength": 3,
     "revenueDurability": 5,
-    "balanceSheetStrength": 3,
+    "balanceSheetStrength": 4,
     "insiderActivity": 3,
     "valueRank": 3,
     "expectedReturn": 4,
@@ -195,14 +257,14 @@
     "recommendedDate": "2025-12-18",
     "dcf": {
       "conservative": "300-320",
-      "base": "330-350",
+      "base": "320-340",
       "aggressive": "340-370"
     },
     "fcfQuality": 5,
     "roicStrength": 4,
     "revenueDurability": 4,
     "balanceSheetStrength": 3,
-    "insiderActivity": 3,
+    "insiderActivity": 4,
     "valueRank": 3,
     "expectedReturn": 4,
     "lastUpdated": "2025-12-24",
@@ -226,14 +288,14 @@
     "recommendedDate": "2025-10-13",
     "dcf": {
       "conservative": "300-320",
-      "base": "330-350",
+      "base": "320-340",
       "aggressive": "340-370"
     },
     "fcfQuality": 5,
     "roicStrength": 4,
     "revenueDurability": 4,
     "balanceSheetStrength": 3,
-    "insiderActivity": 3,
+    "insiderActivity": 4,
     "valueRank": 3,
     "expectedReturn": 4,
     "lastUpdated": "2025-12-24",
@@ -322,13 +384,13 @@
     "dcf": {
       "conservative": "230-250",
       "base": "250-270",
-      "aggressive": "260-280"
+      "aggressive": "270-290"
     },
     "fcfQuality": 4,
-    "roicStrength": 4,
+    "roicStrength": 3,
     "revenueDurability": 4,
     "balanceSheetStrength": 3,
-    "insiderActivity": 3,
+    "insiderActivity": 2,
     "valueRank": 3,
     "expectedReturn": 4,
     "lastUpdated": "2025-12-24",
@@ -361,7 +423,7 @@
     "balanceSheetStrength": 2,
     "insiderActivity": 1,
     "valueRank": 2,
-    "expectedReturn": 1,
+    "expectedReturn": 2,
     "lastUpdated": "2025-12-24",
     "source": "FiredUpWealth",
     "sourceDetails": {
@@ -384,7 +446,7 @@
     "dcf": {
       "conservative": "40-50",
       "base": "50-60",
-      "aggressive": "55-65"
+      "aggressive": "60-70"
     },
     "fcfQuality": 1,
     "roicStrength": 2,
@@ -392,7 +454,7 @@
     "balanceSheetStrength": 2,
     "insiderActivity": 1,
     "valueRank": 2,
-    "expectedReturn": 1,
+    "expectedReturn": 2,
     "lastUpdated": "2025-12-24",
     "source": "Everything Money",
     "sourceDetails": {
@@ -415,7 +477,7 @@
     "dcf": {
       "conservative": "280-300",
       "base": "300-320",
-      "aggressive": "310-340"
+      "aggressive": "320-340"
     },
     "fcfQuality": 5,
     "roicStrength": 4,
@@ -446,7 +508,7 @@
     "dcf": {
       "conservative": "280-300",
       "base": "300-320",
-      "aggressive": "310-340"
+      "aggressive": "320-340"
     },
     "fcfQuality": 5,
     "roicStrength": 4,
@@ -485,7 +547,7 @@
     "balanceSheetStrength": 2,
     "insiderActivity": 1,
     "valueRank": 2,
-    "expectedReturn": 1,
+    "expectedReturn": 2,
     "lastUpdated": "2025-12-24",
     "source": "FiredUpWealth",
     "sourceDetails": {
@@ -506,14 +568,14 @@
     "initialPrice": 613.05,
     "recommendedDate": "2025-11-24",
     "dcf": {
-      "conservative": "600-650",
-      "base": "650-680",
-      "aggressive": "670-700"
+      "conservative": "600-620",
+      "base": "620-640",
+      "aggressive": "640-670"
     },
     "fcfQuality": 4,
-    "roicStrength": 4,
+    "roicStrength": 3,
     "revenueDurability": 4,
-    "balanceSheetStrength": 3,
+    "balanceSheetStrength": 4,
     "insiderActivity": 3,
     "valueRank": 3,
     "expectedReturn": 4,
@@ -537,14 +599,14 @@
     "initialPrice": 636.22,
     "recommendedDate": "2025-11-26",
     "dcf": {
-      "conservative": "600-650",
-      "base": "650-680",
-      "aggressive": "670-700"
+      "conservative": "600-620",
+      "base": "620-640",
+      "aggressive": "640-670"
     },
     "fcfQuality": 4,
-    "roicStrength": 4,
+    "roicStrength": 3,
     "revenueDurability": 4,
-    "balanceSheetStrength": 3,
+    "balanceSheetStrength": 4,
     "insiderActivity": 3,
     "valueRank": 3,
     "expectedReturn": 4,
@@ -568,14 +630,14 @@
     "initialPrice": 751.67,
     "recommendedDate": "2025-10-30",
     "dcf": {
-      "conservative": "600-650",
-      "base": "650-680",
-      "aggressive": "670-700"
+      "conservative": "600-620",
+      "base": "620-640",
+      "aggressive": "640-670"
     },
     "fcfQuality": 4,
-    "roicStrength": 4,
+    "roicStrength": 3,
     "revenueDurability": 4,
-    "balanceSheetStrength": 3,
+    "balanceSheetStrength": 4,
     "insiderActivity": 3,
     "valueRank": 3,
     "expectedReturn": 4,
@@ -599,14 +661,14 @@
     "initialPrice": 627.32,
     "recommendedDate": "2025-11-05",
     "dcf": {
-      "conservative": "600-650",
-      "base": "650-680",
-      "aggressive": "670-700"
+      "conservative": "600-620",
+      "base": "620-640",
+      "aggressive": "640-670"
     },
     "fcfQuality": 4,
-    "roicStrength": 4,
+    "roicStrength": 3,
     "revenueDurability": 4,
-    "balanceSheetStrength": 3,
+    "balanceSheetStrength": 4,
     "insiderActivity": 3,
     "valueRank": 3,
     "expectedReturn": 4,
@@ -637,7 +699,7 @@
     "fcfQuality": 4,
     "roicStrength": 3,
     "revenueDurability": 3,
-    "balanceSheetStrength": 3,
+    "balanceSheetStrength": 2,
     "insiderActivity": 3,
     "valueRank": 3,
     "expectedReturn": 4,
@@ -658,15 +720,46 @@
     "ticker": "MSFT",
     "name": "Microsoft Corporation",
     "price": 486.85,
+    "initialPrice": 484.92,
+    "recommendedDate": "2025-12-22",
+    "dcf": {
+      "conservative": "420-450",
+      "base": "450-480",
+      "aggressive": "480-510"
+    },
+    "fcfQuality": 5,
+    "roicStrength": 4,
+    "revenueDurability": 5,
+    "balanceSheetStrength": 5,
+    "insiderActivity": 3,
+    "valueRank": 3,
+    "expectedReturn": 4,
+    "lastUpdated": "2025-12-24",
+    "source": "CouchInvestor",
+    "sourceDetails": {
+      "channelId": "couch-investor",
+      "firstMentioned": "2025-12-22",
+      "videos": [
+        "Are These Incredible Stocks Still Worth Buying Today?"
+      ],
+      "isBought": true,
+      "addedOn": "2025-12-24"
+    }
+  },
+  {
+    "category": "Growth",
+    "ticker": "MSFT",
+    "name": "Microsoft Corporation",
+    "price": 486.85,
     "initialPrice": 477.73,
     "recommendedDate": "2025-12-04",
     "dcf": {
-      "conservative": "400-450",
-      "base": "450-500",
-      "aggressive": "500-550"
+      "conservative": "420-450",
+      "base": "450-480",
+      "aggressive": "480-510"
     },
     "fcfQuality": 5,
-    "roicStrength": 5,
+    "roicStrength": 4,
     "revenueDurability": 5,
     "balanceSheetStrength": 5,
     "insiderActivity": 3,
@@ -692,9 +785,9 @@
     "initialPrice": 202.25,
     "recommendedDate": "2025-11-18",
     "dcf": {
-      "conservative": "150-180",
-      "base": "180-200",
-      "aggressive": "200-220"
+      "conservative": "150-170",
+      "base": "170-190",
+      "aggressive": "190-210"
     },
     "fcfQuality": 4,
     "roicStrength": 3,
@@ -728,7 +821,7 @@
       "aggressive": "100-110"
     },
     "fcfQuality": 4,
-    "roicStrength": 4,
+    "roicStrength": 3,
     "revenueDurability": 4,
     "balanceSheetStrength": 3,
     "insiderActivity": 3,
@@ -758,7 +851,7 @@
       "base": "140-160",
       "aggressive": "160-180"
     },
-    "fcfQuality": 4,
+    "fcfQuality": 5,
     "roicStrength": 4,
     "revenueDurability": 4,
     "balanceSheetStrength": 4,
@@ -789,7 +882,7 @@
       "base": "140-160",
       "aggressive": "160-180"
     },
-    "fcfQuality": 4,
+    "fcfQuality": 5,
     "roicStrength": 4,
     "revenueDurability": 4,
     "balanceSheetStrength": 4,
@@ -820,7 +913,7 @@
       "base": "140-160",
       "aggressive": "160-180"
     },
-    "fcfQuality": 4,
+    "fcfQuality": 5,
     "roicStrength": 4,
     "revenueDurability": 4,
     "balanceSheetStrength": 4,
@@ -851,7 +944,7 @@
       "base": "140-160",
       "aggressive": "160-180"
     },
-    "fcfQuality": 4,
+    "fcfQuality": 5,
     "roicStrength": 4,
     "revenueDurability": 4,
     "balanceSheetStrength": 4,
@@ -882,7 +975,7 @@
       "base": "140-160",
       "aggressive": "160-180"
     },
-    "fcfQuality": 4,
+    "fcfQuality": 5,
     "roicStrength": 4,
     "revenueDurability": 4,
     "balanceSheetStrength": 4,
@@ -913,7 +1006,7 @@
       "base": "140-160",
       "aggressive": "160-180"
     },
-    "fcfQuality": 4,
+    "fcfQuality": 5,
     "roicStrength": 4,
     "revenueDurability": 4,
     "balanceSheetStrength": 4,
@@ -945,7 +1038,7 @@
       "aggressive": "200-220"
     },
     "fcfQuality": 5,
-    "roicStrength": 5,
+    "roicStrength": 4,
     "revenueDurability": 5,
     "balanceSheetStrength": 5,
     "insiderActivity": 3,
@@ -977,7 +1070,7 @@
       "aggressive": "200-220"
     },
     "fcfQuality": 5,
-    "roicStrength": 5,
+    "roicStrength": 4,
     "revenueDurability": 5,
     "balanceSheetStrength": 5,
     "insiderActivity": 3,
@@ -1008,7 +1101,7 @@
       "aggressive": "200-220"
     },
     "fcfQuality": 5,
-    "roicStrength": 5,
+    "roicStrength": 4,
     "revenueDurability": 5,
     "balanceSheetStrength": 5,
     "insiderActivity": 3,
@@ -1040,7 +1133,7 @@
       "aggressive": "200-220"
     },
     "fcfQuality": 5,
-    "roicStrength": 5,
+    "roicStrength": 4,
     "revenueDurability": 5,
     "balanceSheetStrength": 5,
     "insiderActivity": 3,
@@ -1076,7 +1169,7 @@
     "balanceSheetStrength": 2,
     "insiderActivity": 1,
     "valueRank": 2,
-    "expectedReturn": 1,
+    "expectedReturn": 2,
     "lastUpdated": "2025-12-24",
     "source": "FiredUpWealth",
     "sourceDetails": {
@@ -1087,6 +1180,37 @@
       ],
       "isBought": true,
       "addedOn": "2025-11-28"
+    }
+  },
+  {
+    "category": "Growth",
+    "ticker": "PLTR",
+    "name": "Palantir Technologies Inc.",
+    "price": 194.13,
+    "initialPrice": 193.38,
+    "recommendedDate": "2025-12-21",
+    "dcf": {
+      "conservative": "150-170",
+      "base": "170-190",
+      "aggressive": "190-210"
+    },
+    "fcfQuality": 4,
+    "roicStrength": 3,
+    "revenueDurability": 3,
+    "balanceSheetStrength": 4,
+    "insiderActivity": 3,
+    "valueRank": 3,
+    "expectedReturn": 4,
+    "lastUpdated": "2025-12-24",
+    "source": "CouchInvestor",
+    "sourceDetails": {
+      "channelId": "couch-investor",
+      "firstMentioned": "2025-12-21",
+      "videos": [
+        "I Bought $8,000 More of These Stocks"
+      ],
+      "isBought": true,
+      "addedOn": "2025-12-24"
     }
   },
   {
@@ -1165,7 +1289,7 @@
       "aggressive": "80-90"
     },
     "fcfQuality": 4,
-    "roicStrength": 4,
+    "roicStrength": 3,
     "revenueDurability": 4,
     "balanceSheetStrength": 3,
     "insiderActivity": 3,
@@ -1201,7 +1325,7 @@
     "balanceSheetStrength": 2,
     "insiderActivity": 1,
     "valueRank": 2,
-    "expectedReturn": 1,
+    "expectedReturn": 2,
     "lastUpdated": "2025-12-24",
     "source": "Dividend Bull",
     "sourceDetails": {
@@ -1223,8 +1347,8 @@
     "recommendedDate": "2025-11-24",
     "dcf": {
       "conservative": "20-22",
-      "base": "22-25",
-      "aggressive": "25-28"
+      "base": "22-24",
+      "aggressive": "24-26"
     },
     "fcfQuality": 4,
     "roicStrength": 3,
@@ -1254,8 +1378,8 @@
     "recommendedDate": "2025-11-25",
     "dcf": {
       "conservative": "20-22",
-      "base": "22-25",
-      "aggressive": "25-28"
+      "base": "22-24",
+      "aggressive": "24-26"
     },
     "fcfQuality": 4,
     "roicStrength": 3,
@@ -1285,8 +1409,8 @@
     "recommendedDate": "2025-12-20",
     "dcf": {
       "conservative": "20-22",
-      "base": "22-25",
-      "aggressive": "25-28"
+      "base": "22-24",
+      "aggressive": "24-26"
     },
     "fcfQuality": 4,
     "roicStrength": 3,
@@ -1316,8 +1440,8 @@
     "recommendedDate": "2025-11-07",
     "dcf": {
       "conservative": "20-22",
-      "base": "22-25",
-      "aggressive": "25-28"
+      "base": "22-24",
+      "aggressive": "24-26"
     },
     "fcfQuality": 4,
     "roicStrength": 3,
@@ -1379,12 +1503,12 @@
     "recommendedDate": "2025-11-27",
     "dcf": {
       "conservative": "400-450",
-      "base": "450-500",
-      "aggressive": "500-550"
+      "base": "450-480",
+      "aggressive": "480-510"
     },
-    "fcfQuality": 4,
+    "fcfQuality": 5,
     "roicStrength": 4,
-    "revenueDurability": 4,
+    "revenueDurability": 5,
     "balanceSheetStrength": 4,
     "insiderActivity": 3,
     "valueRank": 3,
@@ -1414,9 +1538,9 @@
       "aggressive": "340-360"
     },
     "fcfQuality": 5,
-    "roicStrength": 5,
+    "roicStrength": 4,
     "revenueDurability": 5,
-    "balanceSheetStrength": 5,
+    "balanceSheetStrength": 4,
     "insiderActivity": 3,
     "valueRank": 3,
     "expectedReturn": 4,

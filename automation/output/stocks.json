@@ -3,12 +3,12 @@
     "category": "Growth",
     "ticker": "AAPL",
     "name": "Apple Inc.",
-    "price": 319.97,
+    "price": 332.27,
     "initialPrice": 270.97,
     "recommendedDate": "2025-12-22",
     "dcf": {
       "conservative": "280-300",
-      "base": "310-330",
+      "base": "310-340",
       "aggressive": "340-360"
     },
     "fcfQuality": 5,
@@ -18,7 +18,7 @@
     "insiderActivity": 3,
     "valueRank": 3,
     "expectedReturn": 4,
-    "lastUpdated": "2026-09-06",
+    "lastUpdated": "2026-09-13",
     "source": "CouchInvestor",
     "sourceDetails": {
       "channelId": "couch-investor",
@@ -34,12 +34,12 @@
     "category": "Growth",
     "ticker": "AAPL",
     "name": "Apple Inc.",
-    "price": 319.97,
+    "price": 332.27,
     "initialPrice": 234.35,
     "recommendedDate": "2025-09-10",
     "dcf": {
       "conservative": "280-300",
-      "base": "310-330",
+      "base": "310-340",
       "aggressive": "340-360"
     },
     "fcfQuality": 5,
@@ -49,7 +49,7 @@
     "insiderActivity": 3,
     "valueRank": 3,
     "expectedReturn": 4,
-    "lastUpdated": "2026-09-06",
+    "lastUpdated": "2026-09-13",
     "source": "The Joseph Carlson Show",
     "sourceDetails": {
       "channelId": "joseph-carlson",
@@ -64,23 +64,23 @@
   {
     "category": "Growth",
     "ticker": "AD",
-    "name": "Alliance Data Systems",
-    "price": 38.5,
+    "name": "Array Digital Infrastructure, Inc.",
+    "price": 38.12,
     "initialPrice": 50.02,
     "recommendedDate": "2026-05-17",
     "dcf": {
-      "conservative": "30-35",
-      "base": "36-40",
-      "aggressive": "41-43"
+      "conservative": "30-34",
+      "base": "34-40",
+      "aggressive": "40-42"
     },
-    "fcfQuality": 3,
+    "fcfQuality": 4,
     "roicStrength": 3,
     "revenueDurability": 3,
     "balanceSheetStrength": 2,
-    "insiderActivity": 2,
+    "insiderActivity": 3,
     "valueRank": 3,
-    "expectedReturn": 3,
-    "lastUpdated": "2026-09-06",
+    "expectedReturn": 4,
+    "lastUpdated": "2026-09-13",
     "source": "Leven van Dividend",
     "sourceDetails": {
       "channelId": "leven-van-dividend",
@@ -96,22 +96,22 @@
     "category": "Growth",
     "ticker": "ADBE",
     "name": "Adobe Inc.",
-    "price": 266.51,
+    "price": 252.23,
     "initialPrice": 317.52,
     "recommendedDate": "2025-11-27",
     "dcf": {
-      "conservative": "240-250",
-      "base": "260-280",
-      "aggressive": "290-310"
+      "conservative": "210-230",
+      "base": "230-260",
+      "aggressive": "260-280"
     },
     "fcfQuality": 5,
     "roicStrength": 4,
     "revenueDurability": 5,
     "balanceSheetStrength": 3,
-    "insiderActivity": 4,
+    "insiderActivity": 3,
     "valueRank": 3,
     "expectedReturn": 4,
-    "lastUpdated": "2026-09-06",
+    "lastUpdated": "2026-09-13",
     "source": "CouchInvestor",
     "sourceDetails": {
       "channelId": "couch-investor",
@@ -127,22 +127,22 @@
     "category": "Growth",
     "ticker": "ADBE",
     "name": "Adobe Inc.",
-    "price": 266.51,
+    "price": 252.23,
     "initialPrice": 335.35,
     "recommendedDate": "2025-11-05",
     "dcf": {
-      "conservative": "240-250",
-      "base": "260-280",
-      "aggressive": "290-310"
+      "conservative": "210-230",
+      "base": "230-260",
+      "aggressive": "260-280"
     },
     "fcfQuality": 5,
     "roicStrength": 4,
     "revenueDurability": 5,
     "balanceSheetStrength": 3,
-    "insiderActivity": 4,
+    "insiderActivity": 3,
     "valueRank": 3,
     "expectedReturn": 4,
-    "lastUpdated": "2026-09-06",
+    "lastUpdated": "2026-09-13",
     "source": "The Joseph Carlson Show",
     "sourceDetails": {
       "channelId": "joseph-carlson",
@@ -157,14 +157,14 @@
   {
     "category": "Growth",
     "ticker": "AMD",
-    "name": "Advanced Micro Devices",
-    "price": 477.57,
+    "name": "Advanced Micro Devices, Inc.",
+    "price": 516.13,
     "initialPrice": 516.1,
     "recommendedDate": "2026-05-31",
     "dcf": {
-      "conservative": "420-450",
-      "base": "460-490",
-      "aggressive": "500-520"
+      "conservative": "450-480",
+      "base": "480-520",
+      "aggressive": "520-550"
     },
     "fcfQuality": 4,
     "roicStrength": 4,
@@ -173,7 +173,7 @@
     "insiderActivity": 3,
     "valueRank": 3,
     "expectedReturn": 4,
-    "lastUpdated": "2026-09-06",
+    "lastUpdated": "2026-09-13",
     "source": "Everything Money",
     "sourceDetails": {
       "channelId": "everything-money",
@@ -188,14 +188,14 @@
   {
     "category": "Growth",
     "ticker": "AMD",
-    "name": "Advanced Micro Devices",
-    "price": 477.57,
+    "name": "Advanced Micro Devices, Inc.",
+    "price": 516.13,
     "initialPrice": 206.13,
     "recommendedDate": "2025-11-26",
     "dcf": {
-      "conservative": "420-450",
-      "base": "460-490",
-      "aggressive": "500-520"
+      "conservative": "450-480",
+      "base": "480-520",
+      "aggressive": "520-550"
     },
     "fcfQuality": 4,
     "roicStrength": 4,
@@ -204,7 +204,7 @@
     "insiderActivity": 3,
     "valueRank": 3,
     "expectedReturn": 4,
-    "lastUpdated": "2026-09-06",
+    "lastUpdated": "2026-09-13",
     "source": "FiredUpWealth",
     "sourceDetails": {
       "channelId": "fired-up-wealth",
@@ -219,14 +219,14 @@
   {
     "category": "Growth",
     "ticker": "AMZN",
-    "name": "Amazon.com Inc.",
-    "price": 258.51,
+    "name": "Amazon.com, Inc.",
+    "price": 256.78,
     "initialPrice": 228.43,
     "recommendedDate": "2025-12-22",
     "dcf": {
-      "conservative": "230-240",
-      "base": "250-270",
-      "aggressive": "280-300"
+      "conservative": "220-240",
+      "base": "240-270",
+      "aggressive": "270-290"
     },
     "fcfQuality": 3,
     "roicStrength": 3,
@@ -235,7 +235,7 @@
     "insiderActivity": 3,
     "valueRank": 3,
     "expectedReturn": 4,
-    "lastUpdated": "2026-09-06",
+    "lastUpdated": "2026-09-13",
     "source": "CouchInvestor",
     "sourceDetails": {
       "channelId": "couch-investor",
@@ -250,14 +250,14 @@
   {
     "category": "Growth",
     "ticker": "AMZN",
-    "name": "Amazon.com Inc.",
-    "price": 258.51,
+    "name": "Amazon.com, Inc.",
+    "price": 256.78,
     "initialPrice": 232.38,
     "recommendedDate": "2025-12-04",
     "dcf": {
-      "conservative": "230-240",
-      "base": "250-270",
-      "aggressive": "280-300"
+      "conservative": "220-240",
+      "base": "240-270",
+      "aggressive": "270-290"
     },
     "fcfQuality": 3,
     "roicStrength": 3,
@@ -266,7 +266,7 @@
     "insiderActivity": 3,
     "valueRank": 3,
     "expectedReturn": 4,
-    "lastUpdated": "2026-09-06",
+    "lastUpdated": "2026-09-13",
     "source": "FiredUpWealth",
     "sourceDetails": {
       "channelId": "fired-up-wealth",
@@ -281,14 +281,14 @@
   {
     "category": "Growth",
     "ticker": "AMZN",
-    "name": "Amazon.com Inc.",
-    "price": 258.51,
+    "name": "Amazon.com, Inc.",
+    "price": 256.78,
     "initialPrice": 238.24,
     "recommendedDate": "2025-09-10",
     "dcf": {
-      "conservative": "230-240",
-      "base": "250-270",
-      "aggressive": "280-300"
+      "conservative": "220-240",
+      "base": "240-270",
+      "aggressive": "270-290"
     },
     "fcfQuality": 3,
     "roicStrength": 3,
@@ -297,7 +297,7 @@
     "insiderActivity": 3,
     "valueRank": 3,
     "expectedReturn": 4,
-    "lastUpdated": "2026-09-06",
+    "lastUpdated": "2026-09-13",
     "source": "The Joseph Carlson Show",
     "sourceDetails": {
       "channelId": "joseph-carlson",
